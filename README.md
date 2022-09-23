@@ -1,4 +1,4 @@
-# LCDMA
+# LCMDMA
 La Cour De Monseigneur Ambert
 
 Bienvenue à tous dans notre projet !
