@@ -139,6 +139,7 @@ INSERT INTO achat(achat_prix, prestataire_id) VALUES(40.00, 4);
 SELECT * FROM activite;
 SELECT * FROM spectacle;
 SELECT * FROM livre_or;
+SELECT * FROM token;
 SELECT * FROM service;
 SELECT * FROM organisateur;
 SELECT * FROM prestataire;
