@@ -7,11 +7,11 @@ CREATE TABLE IF NOT EXISTS livre_or(
    PRIMARY KEY(id_commentaire)
 );
 CREATE TABLE IF NOT EXISTS users(
-   users_id INT AUTO_INCREMENT,
-   users_login VARCHAR(255),
-   users_password VARCHAR(255),
-   users_role INT,
-   PRIMARY KEY(users_id)
+   id INT AUTO_INCREMENT,
+   login VARCHAR(255),
+   pass_word VARCHAR(255),
+   roles INT,
+   PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS token(
@@ -19,9 +19,9 @@ CREATE TABLE IF NOT EXISTS token(
    ip VARCHAR(256),
    date_creation DATE,
    date_peremption DATE,
-   users_id INT NOT NULL,
+   id INT NOT NULL,
    PRIMARY KEY(token),
-   FOREIGN KEY(users_id) REFERENCES users(users_id)
+   FOREIGN KEY(id) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS service(
@@ -38,9 +38,9 @@ CREATE TABLE IF NOT EXISTS activite(
    activite_heure_debut TIME,
    activite_heure_fin TIME,
    activite_description VARCHAR(250),
-   users_id INT NOT NULL,
+   id INT NOT NULL,
    PRIMARY KEY(activite_id),
-   FOREIGN KEY(users_id) REFERENCES users(users_id)
+   FOREIGN KEY(id) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS spectacle(
@@ -49,9 +49,9 @@ CREATE TABLE IF NOT EXISTS spectacle(
    spectacle_nom VARCHAR(50),
    spectacle_heure_fin TIME,
    spectacle_description VARCHAR(250),
-   users_id INT NOT NULL,
+   id INT NOT NULL,
    PRIMARY KEY(spectacle_id),
-   FOREIGN KEY(users_id) REFERENCES users(users_id)
+   FOREIGN KEY(id) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS prestataire(
@@ -61,10 +61,10 @@ CREATE TABLE IF NOT EXISTS prestataire(
    prestataire_mail VARCHAR(50),
    prestataire_description VARCHAR(500),
    prestataire_besoin_logistique VARCHAR(500),
-   users_id INT NOT NULL,
+   id INT NOT NULL,
    service_id INT NOT NULL,
    PRIMARY KEY(prestataire_id),
-   FOREIGN KEY(users_id) REFERENCES users(users_id),
+   FOREIGN KEY(id) REFERENCES users(id),
    FOREIGN KEY(service_id) REFERENCES service(service_id)
 );
 
@@ -89,36 +89,36 @@ INSERT INTO livre_or(texte_commentaire, date_commentaire) VALUES('commentaire2',
 INSERT INTO livre_or(texte_commentaire, date_commentaire) VALUES('commentaire3', '2019-01-03');
 INSERT INTO livre_or(texte_commentaire, date_commentaire) VALUES('commentaire4', '2019-01-04');
 
-INSERT INTO users(users_login, users_password, users_role) VALUES('admin1', 'admin1', 2);
-INSERT INTO users(users_login, users_password, users_role) VALUES('admin2', 'admin2', 2);
-INSERT INTO users(users_login, users_password, users_role) VALUES('prestataire1', 'prestataire1', 1);
-INSERT INTO users(users_login, users_password, users_role) VALUES('prestataire2', 'prestataire2', 1);
-INSERT INTO users(users_login, users_password, users_role) VALUES('prestataire3', 'prestataire3', 0);
+INSERT INTO users(login, pass_word, roles) VALUES('admin1', 'admin1', 2);
+INSERT INTO users(login, pass_word, roles) VALUES('admin2', 'admin2', 2);
+INSERT INTO users(login, pass_word, roles) VALUES('prestataire1', 'prestataire1', 1);
+INSERT INTO users(login, pass_word, roles) VALUES('prestataire2', 'prestataire2', 1);
+INSERT INTO users(login, pass_word, roles) VALUES('prestataire3', 'prestataire3', 0);
 
-INSERT INTO token(token, ip, date_creation, date_peremption, users_id) VALUES('token1', '127.0.0.1', '2019-01-01', '2019-01-02', 1);
-INSERT INTO token(token, ip, date_creation, date_peremption, users_id) VALUES('token2', '127.0.0.2', '2019-01-01', '2019-01-02', 2);
-INSERT INTO token(token, ip, date_creation, date_peremption, users_id) VALUES('token3', '127.0.0.3', '2019-01-01', '2019-01-02', 3);
-INSERT INTO token(token, ip, date_creation, date_peremption, users_id) VALUES('token4', '127.0.0.4', '2019-01-01', '2019-01-02', 4);
-INSERT INTO token(token, ip, date_creation, date_peremption, users_id) VALUES('token5', '127.0.0.5', '2019-01-01', '2019-01-02', 5);
+INSERT INTO token(token, ip, date_creation, date_peremption, id) VALUES('token1', '127.0.0.1', '2019-01-01', '2019-01-02', 1);
+INSERT INTO token(token, ip, date_creation, date_peremption, id) VALUES('token2', '127.0.0.2', '2019-01-01', '2019-01-02', 2);
+INSERT INTO token(token, ip, date_creation, date_peremption, id) VALUES('token3', '127.0.0.3', '2019-01-01', '2019-01-02', 3);
+INSERT INTO token(token, ip, date_creation, date_peremption, id) VALUES('token4', '127.0.0.4', '2019-01-01', '2019-01-02', 4);
+INSERT INTO token(token, ip, date_creation, date_peremption, id) VALUES('token5', '127.0.0.5', '2019-01-01', '2019-01-02', 5);
 
 INSERT INTO service(service_nom, id_commentaire) VALUES('service1', 1);
 INSERT INTO service(service_nom, id_commentaire) VALUES('service2', 2);
 INSERT INTO service(service_nom, id_commentaire) VALUES('service3', 3);
 INSERT INTO service(service_nom, id_commentaire) VALUES('service4', 4);
 
-INSERT INTO activite(activite_nom, activite_heure_debut, activite_heure_fin, activite_description, users_id) VALUES('activite1', '10:00:00', '11:00:00', 'description1', 1);
-INSERT INTO activite(activite_nom, activite_heure_debut, activite_heure_fin, activite_description, users_id) VALUES('activite2', '10:00:00', '11:00:00', 'description2', 1);
-INSERT INTO activite(activite_nom, activite_heure_debut, activite_heure_fin, activite_description, users_id) VALUES('activite3', '10:00:00', '11:00:00', 'description3', 1);
-INSERT INTO activite(activite_nom, activite_heure_debut, activite_heure_fin, activite_description, users_id) VALUES('activite4', '10:00:00', '11:00:00', 'description4', 1);
+INSERT INTO activite(activite_nom, activite_heure_debut, activite_heure_fin, activite_description, id) VALUES('activite1', '10:00:00', '11:00:00', 'description1', 1);
+INSERT INTO activite(activite_nom, activite_heure_debut, activite_heure_fin, activite_description, id) VALUES('activite2', '10:00:00', '11:00:00', 'description2', 1);
+INSERT INTO activite(activite_nom, activite_heure_debut, activite_heure_fin, activite_description, id) VALUES('activite3', '10:00:00', '11:00:00', 'description3', 1);
+INSERT INTO activite(activite_nom, activite_heure_debut, activite_heure_fin, activite_description, id) VALUES('activite4', '10:00:00', '11:00:00', 'description4', 1);
 
-INSERT INTO spectacle(spectacle_nom, spectacle_heure_debut, spectacle_heure_fin, spectacle_description, users_id) VALUES('spectacle1', '10:00:00', '11:00:00', 'description1', 1);
-INSERT INTO spectacle(spectacle_nom, spectacle_heure_debut, spectacle_heure_fin, spectacle_description, users_id) VALUES('spectacle2', '10:00:00', '11:00:00', 'description2', 1);
-INSERT INTO spectacle(spectacle_nom, spectacle_heure_debut, spectacle_heure_fin, spectacle_description, users_id) VALUES('spectacle3', '10:00:00', '11:00:00', 'description3', 1);
-INSERT INTO spectacle(spectacle_nom, spectacle_heure_debut, spectacle_heure_fin, spectacle_description, users_id) VALUES('spectacle4', '10:00:00', '11:00:00', 'description4', 1);
+INSERT INTO spectacle(spectacle_nom, spectacle_heure_debut, spectacle_heure_fin, spectacle_description, id) VALUES('spectacle1', '10:00:00', '11:00:00', 'description1', 1);
+INSERT INTO spectacle(spectacle_nom, spectacle_heure_debut, spectacle_heure_fin, spectacle_description, id) VALUES('spectacle2', '10:00:00', '11:00:00', 'description2', 1);
+INSERT INTO spectacle(spectacle_nom, spectacle_heure_debut, spectacle_heure_fin, spectacle_description, id) VALUES('spectacle3', '10:00:00', '11:00:00', 'description3', 1);
+INSERT INTO spectacle(spectacle_nom, spectacle_heure_debut, spectacle_heure_fin, spectacle_description, id) VALUES('spectacle4', '10:00:00', '11:00:00', 'description4', 1);
 
-INSERT INTO prestataire(prestataire_metier, prestataire_nom, prestataire_mail, prestataire_description, prestataire_besoin_logistique, users_id, service_id) VALUES('metier1', 'nom1', 'mail1@gmail.com', 'description1', 'besoin1', 3, 2);
-INSERT INTO prestataire(prestataire_metier, prestataire_nom, prestataire_mail, prestataire_description, prestataire_besoin_logistique, users_id, service_id) VALUES('metier2', 'nom2', 'mail2@gmail.com', 'description2', 'besoin2', 4, 3);
-INSERT INTO prestataire(prestataire_metier, prestataire_nom, prestataire_mail, prestataire_description, prestataire_besoin_logistique, users_id, service_id) VALUES('metier3', 'nom3', 'mail3@gmail.com', 'description3', 'besoin3', 5, 4);
+INSERT INTO prestataire(prestataire_metier, prestataire_nom, prestataire_mail, prestataire_description, prestataire_besoin_logistique, id, service_id) VALUES('metier1', 'nom1', 'mail1@gmail.com', 'description1', 'besoin1', 3, 2);
+INSERT INTO prestataire(prestataire_metier, prestataire_nom, prestataire_mail, prestataire_description, prestataire_besoin_logistique, id, service_id) VALUES('metier2', 'nom2', 'mail2@gmail.com', 'description2', 'besoin2', 4, 3);
+INSERT INTO prestataire(prestataire_metier, prestataire_nom, prestataire_mail, prestataire_description, prestataire_besoin_logistique, id, service_id) VALUES('metier3', 'nom3', 'mail3@gmail.com', 'description3', 'besoin3', 5, 4);
 
 INSERT INTO reservation(reservation_prix, prestataire_id) VALUES(10.00, 1);
 INSERT INTO reservation(reservation_prix, prestataire_id) VALUES(20.00, 2);
