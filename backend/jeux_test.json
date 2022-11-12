@@ -136,21 +136,25 @@
       {
         "service_id": 1,
         "service_nom": "service1",
+        "service_description": "description1",
         "id_commentaire": 1
       },
       {
         "service_id": 2,
         "service_nom": "service2",
+        "service_description": "description2",
         "id_commentaire": 2
       },
       {
         "service_id": 3,
         "service_nom": "service3",
+        "service_description": "description3",
         "id_commentaire": 3
       },
       {
         "service_id": 4,
         "service_nom": "service4",
+        "service_description": "description4",
         "id_commentaire": 4
       }
     ]
@@ -265,4 +269,3 @@
     ]
     }
 ]
-

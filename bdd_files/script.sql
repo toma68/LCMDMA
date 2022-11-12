@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS token(
 CREATE TABLE IF NOT EXISTS service(
    service_id INT AUTO_INCREMENT NOT NULL,
    service_nom VARCHAR(50),
+   service_description VARCHAR(255),
    id_commentaire INT NOT NULL,
    PRIMARY KEY(service_id),
    FOREIGN KEY(id_commentaire) REFERENCES livre_or(id_commentaire)
@@ -101,10 +102,10 @@ INSERT INTO token(token, ip, date_creation, date_peremption, id) VALUES('token3'
 INSERT INTO token(token, ip, date_creation, date_peremption, id) VALUES('token4', '127.0.0.4', '2019-01-01', '2019-01-02', 4);
 INSERT INTO token(token, ip, date_creation, date_peremption, id) VALUES('token5', '127.0.0.5', '2019-01-01', '2019-01-02', 5);
 
-INSERT INTO service(service_nom, id_commentaire) VALUES('service1', 1);
-INSERT INTO service(service_nom, id_commentaire) VALUES('service2', 2);
-INSERT INTO service(service_nom, id_commentaire) VALUES('service3', 3);
-INSERT INTO service(service_nom, id_commentaire) VALUES('service4', 4);
+INSERT INTO service(service_nom, id_commentaire) VALUES('service1', 'description1', 1);
+INSERT INTO service(service_nom, id_commentaire) VALUES('service2', 'description2', 2);
+INSERT INTO service(service_nom, id_commentaire) VALUES('service3', 'description3', 3);
+INSERT INTO service(service_nom, id_commentaire) VALUES('service4', 'description4', 4);
 
 INSERT INTO activite(activite_nom, activite_heure_debut, activite_heure_fin, activite_description, id) VALUES('activite1', '10:00:00', '11:00:00', 'description1', 1);
 INSERT INTO activite(activite_nom, activite_heure_debut, activite_heure_fin, activite_description, id) VALUES('activite2', '10:00:00', '11:00:00', 'description2', 1);
