@@ -1,5 +1,5 @@
-const {Sequelize,DataTypes} = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const {DataTypes} = require('sequelize');
+const sequelize = require('../../db.js');
 const Token = sequelize.define('token', {
     token: {
         type: DataTypes.STRING, allowNull: false, primaryKey: true

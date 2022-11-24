@@ -1,5 +1,5 @@
-const {Sequelize, DataType, DataTypes} = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const { DataTypes} = require('sequelize');
+const sequelize = require('../../db.js');
 const Achat = sequelize.define('achat', {
     id: {
         type: DataTypes.INTEGER,
