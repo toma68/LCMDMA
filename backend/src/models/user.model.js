@@ -1,34 +1,34 @@
-const {Sequelize} = require('sequelize');
+const {Sequelize, DataTypes} = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 const User = sequelize.define('user', {
     id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
     login: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     password: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
-    role: {
-        type: Sequelize.STRING,
+    roleId: {
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     nom : {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     prenom : {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     email : {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     }
 },{
