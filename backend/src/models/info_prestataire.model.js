@@ -1,33 +1,33 @@
-const {Sequelize} = require('sequelize');
+const {Sequelize, DataType, DataTypes} = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
-const User = sequelize.define('user', {
+const infoPrestataire = sequelize.define('infoPrestataire', {
     numeroSiret: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
     },
     userId: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     contenuPage: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     pageMasque: {
-        type: Sequelize.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         allowNull: false,
     },
     nomEntreprise: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     infoPrestataire:{
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     }
 }, {
     timestamps: false
 });
 
-module.exports = User;
+module.exports = infoPrestataire;
