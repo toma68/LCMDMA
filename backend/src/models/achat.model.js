@@ -1,26 +1,26 @@
-const {Sequelize} = require('sequelize');
+const {Sequelize, DataType, DataTypes} = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
-const User = sequelize.define('user', {
+const Achat = sequelize.define('achat', {
     id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
     tarifId: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     dateAchat: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false
     },
     qrCode: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     }
 }, {
     timestamps: false
 });
 
-module.exports = User;
+module.exports = Achat;
