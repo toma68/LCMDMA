@@ -1,28 +1,21 @@
 const {Sequelize} = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 const User = sequelize.define('user', {
-    numeroSiret: {
-        type: Sequelize.STRING,
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    userId: {
+    tarifId: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-    contenuPage: {
-        type: Sequelize.STRING,
+    dateAchat: {
+        type: Sequelize.DATE,
         allowNull: false
     },
-    pageMasque: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-    },
-    nomEntreprise: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    infoPrestataire:{
+    qrCode: {
         type: Sequelize.STRING,
         allowNull: false
     }
