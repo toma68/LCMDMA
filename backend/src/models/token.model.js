@@ -1,20 +1,20 @@
-const {Sequelize} = require('sequelize');
+const {Sequelize,DataTypes} = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 const Token = sequelize.define('token', {
     token: {
-        type: Sequelize.STRING, allowNull: false, primaryKey: true
+        type: DataTypes.STRING, allowNull: false, primaryKey: true
     },
     ip: {
-        type: Sequelize.STRING, allowNull: false
+        type: DataTypes.STRING, allowNull: false
     },
     dateCreation: {
-        type: Sequelize.DATE, allowNull: false
+        type: DataTypes.DATE, allowNull: false
     },
     dateExpiration: {
-        type: Sequelize.DATE, allowNull: false
+        type: DataTypes.DATE, allowNull: false
     },
     userId: {
-        type: Sequelize.INTEGER, allowNull: false
+        type: DataTypes.INTEGER, allowNull: false
     }
 }, {
     timestamps: false
