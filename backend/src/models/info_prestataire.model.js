@@ -1,4 +1,4 @@
-const {Sequelize, DataType, DataTypes} = require('sequelize');
+const {Sequelize,DataTypes} = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 const infoPrestataire = sequelize.define('infoPrestataire', {
     numeroSiret: {
