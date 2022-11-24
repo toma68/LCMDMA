@@ -1,28 +1,30 @@
 const {Sequelize} = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
-const User = sequelize.define('user', {
-    numeroSiret: {
-        type: Sequelize.STRING,
+const Activite = sequelize.define('activite', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    userId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+    nom: {
+        type: Sequelize.STRING,
+        allowNull: false
+
     },
-    contenuPage: {
+    type: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    pageMasque: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-    },
-    nomEntreprise: {
+    heureDebut: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    infoPrestataire:{
+    heureFin: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    description: {
         type: Sequelize.STRING,
         allowNull: false
     }
@@ -30,4 +32,4 @@ const User = sequelize.define('user', {
     timestamps: false
 });
 
-module.exports = User;
+module.exports = Activite;
