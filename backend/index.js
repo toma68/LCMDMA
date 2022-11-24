@@ -2,13 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 
-const sequelize = require('./db');
 
-User = require('./src/models/user.model');
-Token = require('./src/models/token.model');
-
-
-sequelize.sync({force: true}).then()
+require('./utils/importDB');
 
 
 
