@@ -10,13 +10,36 @@ const Token = require('../src/models/token.model');
 const TypeActivite = require('../src/models/typeActivite.model');
 const User = require('../src/models/user.model');
 
-User.belongsTo(Role, {foreignKey: 'users_role'});
+// One-to-Many Join
 
-User.hasOne(InfoPrestataire, {foreignKey: 'userId'});
+User.belongsTo(Role, {foreignKey: 'roleId'});
+
+Token.belongsTo(User, {foreignKey: 'userId'});
+
+Achat.belongsTo(Tarif, {foreignKey: 'tarifId'});
+
+InfoPrestataire.belongsTo(User, {foreignKey: 'userId'});
+
+Activite.belongsTo(TypeActivite, {foreignKey: 'typeActiviteId'});
+Activite.belongsTo(Stand, {foreignKey: 'standId'});
+
+//Many-To-Many Join
+
+User.belongsToMany(Activite, {through: 'reserve'});
+Activite.belongsToMany(User, {through: 'reserve'});
+
+InfoPrestataire.belongsToMany(Activite, {through: 'organise'});
+Activite.belongsToMany(InfoPrestataire, {through: 'organise'});
+
+User.belongsToMany(Achat, {through: 'achete'});
+Achat.belongsToMany(User, {through: 'achete'});
 
 
 
-//todo: add foreign key
+
+
+
+
 
 
 sequelize.sync({force: true}).then()
