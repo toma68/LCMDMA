@@ -36,10 +36,4 @@ Achat.belongsToMany(User, {through: 'achete'});
 
 
 
-
-
-
-
-
-
 sequelize.sync({force: true}).then()

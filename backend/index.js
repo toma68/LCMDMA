@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 
 
 require('./utils/importDB');
-
-
+const insertData = require('./utils/insertData');
+insertData()
 
 
 
