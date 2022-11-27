@@ -1,5 +1,8 @@
 const sequelize = require('../db.js');
 
+const insertData = require('./insertData.js');
+
+
 const Achat = require('../src/models/achat.model');
 const Activite = require('../src/models/activite.model');
 const InfoPrestataire = require('../src/models/infoPrestataire.model');
@@ -36,4 +39,8 @@ Achat.belongsToMany(User, {through: 'achete'});
 
 
 
-sequelize.sync({force: true}).then()
+sequelize.sync({force: true})
+    .then(() => {
+        console.log("Tables created");
+        insertData();
+    })
