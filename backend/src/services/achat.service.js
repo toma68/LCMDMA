@@ -1,6 +1,9 @@
 const Achat = require('../models/achat.model');
+
 const findAll = () => Achat.findAll();
+
 const findById = (id) => Achat.findByPk(id);
+
 const deleteByid = (id) => Achat.destroy({where: {id: id}});
 
 const create = (achat) => {
