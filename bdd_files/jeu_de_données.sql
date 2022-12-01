@@ -1,7 +1,8 @@
 INSERT INTO Type_activite VALUES
 (default, 'Spectacles'),
 (default, 'Animations'),
-(default, 'Presentations');
+(default, 'Demonstrations');
+
 
 INSERT INTO Tarif VALUES
 (default, '1 adulte 1 jour', 6.0),
@@ -11,6 +12,7 @@ INSERT INTO Tarif VALUES
 (default, 'Enfant -10', 0.0),
 (default, 'Pass Clan (2 adultes, 2 enfants) 1 jour', 12.0),
 (default, 'Pass Clan (2 adultes, 2 enfants) 2 jour', 20.0);
+
 
 INSERT INTO Stand VALUES
 (default, 45.0, 'Acces eau et "four"'), --Forgerons
@@ -28,13 +30,15 @@ INSERT INTO Stand VALUES
 (default, 70.0, 'Acces electricite'), --Scene 1
 (default, 80.0, 'Acces electricite'), --Scene 2
 (default, 100.0, 'Pas de besoins logistiques particulier'), --Terrain de combat de joûte
-(default, 50.0, 'Pas de besoins logistiques particulier'), --Stand de tir a l'arc
+(default, 70.0, 'Pas de besoins logistiques particulier'), --Stand de tir a l'arc
 (default, 2.0, 'Acces eau'); --Toilettes
+
 
 INSERT INTO Role VALUES
 (1, 'Visiteur'),
 (2, 'Prestataire'),
 (3, 'Admin');
+
 
 INSERT INTO users VALUES
 (default, 'Becher', 'Thomas', 'thomas', 'thomas', 'thomas@gmail.com', 3),
@@ -44,7 +48,7 @@ INSERT INTO users VALUES
 (default, 'Meister', 'Nicolas', 'nicolas', 'nicolas', 'nicolas@gmail.com', 3),
 (default, 'Du Lac', 'Lancelot', 'lancelot', 'lancelot', 'lancelot@gmail.com', 2), --Forgeron1 (épée / couteaux)
 (default, 'Myé', 'Alain', 'alain', 'alain', 'alain@gmail.com', 2), --Forgeron2 (outils)
-(default, 'Trefle', 'Clotilde', 'clotilde', 'clotilde', 'clotilde@gmail.com', 2), --Forgeron3 (Marechal f errant)
+(default, 'Trefle', 'Clotilde', 'clotilde', 'clotilde', 'clotilde@gmail.com', 2), --Forgeron3 (Marechal ferrant)
 (default, 'Passier', 'Francois', 'francois', 'francois', 'francois@gmail.com', 2), --Menuisier / Ebeniste
 (default, 'Seraph', 'Eulalie', 'eulalie', 'eulalie', 'eulalie@gmail.com', 2), --Luttière
 (default, 'Reymond', 'Calixte', 'calixte', 'calixte', 'calixte@gmail.com', 2), --Tavernier
@@ -57,7 +61,7 @@ INSERT INTO users VALUES
 (default, 'De Bouillon', 'Agathe', 'agathe', 'agathe', 'agathe@gmail.com', 2), --Remede et plante
 (default, 'Rock', 'Hildebert', 'hildebert', 'hildebert', 'hildebert@gmail.com', 2), --Armes de siège
 (default, 'Blanche', 'Constance', 'constance', 'constance', 'constance@gmail.com', 2), --Boulangère
-(default, 'Honoré', 'Arthaud', 'arthaud', 'arthaud', 'arthaud@gmail.com', 2), --Presentateur / commentateur / animateur des scènes
+(default, 'Domas', 'Stephane', 'stephane', 'stephane', 'stephane@gmail.com', 2), --Presentateur / commentateur / animateur des scènes
 (default, 'De La Tour', 'Aimée', 'aimée', 'aimée', 'aimée@gmail.com', 2); --Gerant de l'association de tir à l'arc
 
 
@@ -82,19 +86,10 @@ INSERT INTO info_prestataire VALUES
 
 
 INSERT INTO activite VALUES
-(default, 'Lancer de nains', '14:00:00', '14:30:00', 'SUS AUX ENNEMIS !! Invasion de nains chez nos ennemis !', 11, 1),
-(default, '', '14:00:00', '14:30:00', '', 11, 2);
-
---spectacles animations presentations
-
-INSERT INTO Achat VALUES
-();
-
-INSERT INTO organise VALUES
-();
-
-INSERT INTO achete VALUES
-();
-
-INSERT INTO reserve VALUES
-();
+(default, 'Lancer de nains', '20230708 14:00:00', '20230708 14:30:00', 'SUS AUX ENNEMIS !! Invasion de nains chez nos ennemis !', 11, 1),
+(default, 'Tir à l arc', '20230708 15:00:00', '20230708 15:30:00', 'Initiation au tir à l arc pour tous', 16, 2),
+(default, 'Création d une épée', '20230708 14:00:00', '20230708 16:00:00', 'Venez apprendre a créer une épée dans le respect des traditions médiévales', 1, 3),
+(default, 'Voyante Irma', '20230708 10:00:00', '20230708 18:00:00', 'Madame Irma vous lis votre avenir', 9, 2),
+(default, 'Animation Torture', '20230708 11:00:00', '20230708 11:30:00', 'Animations sur différentes méthodes de torture', 8, 2),
+(default, 'Combat de joûte', '20230708 16:00:00', '20230708 17:00:00', '', 15, 1),
+(default, 'Concours de la plus belle armure', '20230709 17:00:00', '20230709 18:00:00', 'Venez déguisez avec votre plus belle armure médiévale', 14, 2);
