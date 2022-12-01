@@ -1,3 +1,5 @@
+DROP TABLE reserve, achete, organise, Achat, activite, Token, info_prestataire, users, Role, Stand, Tarif, Type_activite;
+
 CREATE TABLE Type_activite(
    id SERIAL,
    libelle TEXT,
@@ -19,7 +21,7 @@ CREATE TABLE Stand(
 );
 
 CREATE TABLE Role(
-   id INTEGER,
+   id INT,
    libelle TEXT,
    PRIMARY KEY(id)
 );
@@ -61,7 +63,6 @@ CREATE TABLE Token(
 CREATE TABLE activite(
    id SERIAL,
    nom TEXT,
-   type TEXT,
    heure_debut TIME,
    heure_fin TIME,
    description TEXT,
@@ -69,7 +70,7 @@ CREATE TABLE activite(
    id_2 INTEGER NOT NULL,
    PRIMARY KEY(id),
    FOREIGN KEY(id_1) REFERENCES Stand(id),
-   FOREIGN KEY(id_2) REFERENCES Type_activité(id)
+   FOREIGN KEY(id_2) REFERENCES Type_activite(id)
 );
 
 CREATE TABLE Achat(
