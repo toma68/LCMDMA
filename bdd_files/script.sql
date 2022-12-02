@@ -63,8 +63,8 @@ CREATE TABLE Token(
 CREATE TABLE activite(
    id SERIAL,
    nom TEXT,
-   heure_debut TIME,
-   heure_fin TIME,
+   heure_debut DATE,
+   heure_fin DATE,
    description TEXT,
    id_1 INTEGER NOT NULL,
    id_2 INTEGER NOT NULL,

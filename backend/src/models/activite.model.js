@@ -12,10 +12,6 @@ const Activite = sequelize.define('activite', {
         allowNull: false
 
     },
-    type: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
     heureDebut: {
         type: DataTypes.DATE,
         allowNull: false
