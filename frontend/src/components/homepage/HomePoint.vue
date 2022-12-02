@@ -10,7 +10,7 @@
       </div>
       <div class="date-lieux">
         <h2>Le 8 et 9 juillet 2023</h2>
-        <h2>au château de Montby</h2>
+        <h2>au chateau de Montby</h2>
       </div>
       <div class="button-see-more">
         <a href="#explication1">
