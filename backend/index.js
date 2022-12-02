@@ -7,8 +7,16 @@ require('./utils/importDB');
 
 
 //import des routes
-const UserRoutes = require('./src/routers/users.router');
+const UserRoutes = require('./src/routers/user.router');
 const AuthRoutes = require('./src/routers/auth.router');
+
+const AchatRoutes = require('./src/routers/achat.router');
+const ActiviteRoutes = require('./src/routers/activite.router');
+const InfoPrestataireRoutes = require('./src/routers/infoPrestataire.router');
+const StandRoutes = require('./src/routers/stand.router');
+const TarifRoutes = require('./src/routers/tarif.router');
+const TypeActiviteRoutes = require('./src/routers/typeActivite.router');
+
 
 
 
@@ -28,6 +36,14 @@ app.use((req, res, next) => {
 
 //mise en place des routes
 app.use('/api/auth', AuthRoutes);
+app.use('/api/users', UserRoutes);
+
+app.use('/api/achats', AchatRoutes);
+app.use('/api/activites', ActiviteRoutes);
+app.use('/api/infoPrestataires', InfoPrestataireRoutes);
+app.use('/api/stands', StandRoutes);
+app.use('/api/tarifs', TarifRoutes);
+app.use('/api/typeActivites', TypeActiviteRoutes);
 
 
 //lancement de l'application

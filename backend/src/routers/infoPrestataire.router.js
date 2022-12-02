@@ -3,10 +3,10 @@ const InfoPrestataireController = require("../controllers/infoPrestataire.contro
 
 const router = InfoPrestataireRouter();
 
-router.post("/", InfoPrestataireController.createAchat);
-router.get("/:id", InfoPrestataireController.getAchatById);
-router.delete("/:id", InfoPrestataireController.deleteAchatById);
-router.put("/:id", InfoPrestataireController.updateAchat);
-router.get("/", InfoPrestataireController.getAllAchats);
+router.get("/", InfoPrestataireController.getAllInfoPrestataires);
+router.get("/:id", InfoPrestataireController.getInfoPrestataireById);
+router.delete("/:id", InfoPrestataireController.deleteInfoPrestataireById);
+router.put("/:id", InfoPrestataireController.updateInfoPrestataire);
+router.get("/", InfoPrestataireController.createInfoPrestataire);
 
 module.exports = router;

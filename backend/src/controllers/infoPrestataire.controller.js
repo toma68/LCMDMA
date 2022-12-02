@@ -1,14 +1,15 @@
-const InfoPrestataireController = require('../controllers/infoPrestataire.controller');
+const InfoPrestataireController = require('../services/infoPrestataire.service');
 
-const GetAllInfoPrestataires = (req, res) => {
+const getAllInfoPrestataires = (req, res) => {
     InfoPrestataireController.findAll().then((infoPrestataires) => {
+        console.log(infoPrestataires);
         res.status(200).json(infoPrestataires);
     }).catch((err) => {
         res.status(500).json(err);
     });
 }
 
-const GetInfoPrestataireById = (req, res) => {
+const getInfoPrestataireById = (req, res) => {
     let id = req.params.id;
     InfoPrestataireController.findById(id).then((infoPrestataire) => {
         res.status(200).json(infoPrestataire);
@@ -18,7 +19,7 @@ const GetInfoPrestataireById = (req, res) => {
     });
 }
 
-const DeleteInfoPrestataireById = (req, res) => {
+const deleteInfoPrestataireById = (req, res) => {
     let id = req.params.id;
     InfoPrestataireController.deleteByid(id).then((infoPrestataire) => {
         res.status(200).json(infoPrestataire);
@@ -28,7 +29,7 @@ const DeleteInfoPrestataireById = (req, res) => {
     });
 }
 
-const CreateInfoPrestataire = (req, res) => {
+const createInfoPrestataire = (req, res) => {
     let infoPrestataire = req.body;
     InfoPrestataireController.create(infoPrestataire).then((infoPrestataire) => {
         res.status(200).json(infoPrestataire);
@@ -38,7 +39,7 @@ const CreateInfoPrestataire = (req, res) => {
     });
 }
 
-const UpdateInfoPrestataire = (req, res) => {
+const updateInfoPrestataire = (req, res) => {
     let id = req.params.id;
     let infoPrestataire = req.body;
     InfoPrestataireController.update(id, infoPrestataire).then((infoPrestataire) => {
@@ -50,9 +51,9 @@ const UpdateInfoPrestataire = (req, res) => {
 }
 
 module.exports = {
-    GetAllInfoPrestataires,
-    GetInfoPrestataireById,
-    DeleteInfoPrestataireById,
-    CreateInfoPrestataire,
-    UpdateInfoPrestataire
+    getAllInfoPrestataires: getAllInfoPrestataires,
+    getInfoPrestataireById: getInfoPrestataireById,
+    deleteInfoPrestataireById: deleteInfoPrestataireById,
+    createInfoPrestataire: createInfoPrestataire,
+    updateInfoPrestataire: updateInfoPrestataire
 }
