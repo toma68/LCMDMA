@@ -1,10 +1,10 @@
-INSERT INTO Type_activite VALUES
+INSERT INTO "typeActivites" VALUES
 (default, 'Spectacles'),
 (default, 'Animations'),
 (default, 'Demonstrations');
 
 
-INSERT INTO Tarif VALUES
+INSERT INTO tarifs VALUES
 (default, '1 adulte 1 jour', 6.0),
 (default, '1 adulte 2 jour', 10.0),
 (default, 'Enfant 10-17 1 jour', 2.0),
@@ -14,7 +14,7 @@ INSERT INTO Tarif VALUES
 (default, 'Pass Clan (2 adultes, 2 enfants) 2 jour', 20.0);
 
 
-INSERT INTO Stand VALUES
+INSERT INTO stands VALUES
 (default, 45.0, 'Acces eau et "four"'), --Forgerons
 (default, 45.0, 'Pas de besoins logistiques particulier'), --Menuisier / Ebeniste / Luttiere
 (default, 50.0, 'Acces eau et electricite'), --Taverne
@@ -33,11 +33,6 @@ INSERT INTO Stand VALUES
 (default, 70.0, 'Pas de besoins logistiques particulier'), --Stand de tir a l'arc
 (default, 2.0, 'Acces eau'); --Toilettes
 
-
-INSERT INTO Role VALUES
-(1, 'Visiteur'),
-(2, 'Prestataire'),
-(3, 'Admin');
 
 
 INSERT INTO users VALUES
@@ -65,7 +60,7 @@ INSERT INTO users VALUES
 (default, 'De La Tour', 'Aimée', 'aimée', 'aimée', 'aimée@gmail.com', 2); --Gerant de l'association de tir à l'arc
 
 
-INSERT INTO info_prestataire VALUES
+INSERT INTO "infoPrestataires" VALUES
 (87080662337635, '', 0, 'Nidavallir', 'Forgeron', 1),
 (95048096745763, '', 0, 'Forgeciel', 'Forgeron', 2),
 (97080662337635, '', 0, 'Gaston Deffere', 'Forgeron', 3),
@@ -85,7 +80,7 @@ INSERT INTO info_prestataire VALUES
 (70584918093208, '', 0, 'Spam Bow', 'Stand de tir à l arc', 17);
 
 
-INSERT INTO activite VALUES
+INSERT INTO activites VALUES
 (default, 'Lancer de nains', '20230708 14:00:00', '20230708 14:30:00', 'SUS AUX ENNEMIS !! Invasion de nains chez nos ennemis !', 11, 1),
 (default, 'Tir à l arc', '20230708 15:00:00', '20230708 15:30:00', 'Initiation au tir à l arc pour tous', 16, 2),
 (default, 'Création d une épée', '20230708 14:00:00', '20230708 16:00:00', 'Venez apprendre a créer une épée dans le respect des traditions médiévales', 1, 3),

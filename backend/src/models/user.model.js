@@ -5,23 +5,19 @@ const User = sequelize.define('user', {
         type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true,
 
     },
-    login: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    roleId: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
     nom : {
         type: DataTypes.STRING,
         allowNull: false
     },
     prenom : {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    login: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    password: {
         type: DataTypes.STRING,
         allowNull: false
     },
