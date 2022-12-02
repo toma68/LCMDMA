@@ -60,7 +60,7 @@ INSERT INTO users VALUES
 (default, 'De La Tour', 'Aimée', 'aimée', 'aimée', 'aimée@gmail.com', 2); --Gerant de l'association de tir à l'arc
 
 
-INSERT INTO info_prestataire VALUES
+INSERT INTO "infoPrestataires" VALUES
 ('87080662337635', 'Forgeron', false, 'Nidavallir', 'Forgeron', 1),
 ('95048096745763', 'Forgeron', false, 'Forgeciel', 'Forgeron', 2),
 ('97080662337635', 'Forgeron', false, 'Gaston Deffere', 'Forgeron', 3),
