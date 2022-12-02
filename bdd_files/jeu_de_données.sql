@@ -60,7 +60,7 @@ INSERT INTO users VALUES
 (default, 'De La Tour', 'Aimée', 'aimée', 'aimée', 'aimée@gmail.com', 2); --Gerant de l'association de tir à l'arc
 
 
-INSERT INTO info_prestataire VALUES
+INSERT INTO "infoPrestataires" VALUES
 (87080662337635, '', false, 'Nidavallir', 'Forgeron', 1),
 (95048096745763, '', false, 'Forgeciel', 'Forgeron', 2),
 (97080662337635, '', false, 'Gaston Deffere', 'Forgeron', 3),
@@ -80,7 +80,7 @@ INSERT INTO info_prestataire VALUES
 (70584918093208, '', false, 'Spam Bow', 'Stand de tir à l arc', 17);
 
 
-INSERT INTO activite VALUES
+INSERT INTO activites VALUES
 (default, 'Lancer de nains', '20230708 14:00:00', '20230708 14:30:00', 'SUS AUX ENNEMIS !! Invasion de nains chez nos ennemis !', 11, 1),
 (default, 'Tir à l arc', '20230708 15:00:00', '20230708 15:30:00', 'Initiation au tir à l arc pour tous', 16, 2),
 (default, 'Création d une épée', '20230708 14:00:00', '20230708 16:00:00', 'Venez apprendre a créer une épée dans le respect des traditions médiévales', 1, 3),

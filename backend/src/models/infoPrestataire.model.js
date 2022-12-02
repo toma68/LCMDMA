@@ -6,10 +6,6 @@ const infoPrestataire = sequelize.define('infoPrestataire', {
         allowNull: false,
         primaryKey: true
     },
-    userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     contenuPage: {
         type: DataTypes.STRING,
         allowNull: false

@@ -23,8 +23,8 @@ Achat.belongsTo(Tarif, {foreignKey: 'tarifId'});
 
 InfoPrestataire.belongsTo(User, {foreignKey: 'userId'});
 
-Activite.belongsTo(TypeActivite, {foreignKey: 'typeActiviteId'});
 Activite.belongsTo(Stand, {foreignKey: 'standId'});
+Activite.belongsTo(TypeActivite, {foreignKey: 'typeActiviteId'});
 
 //Many-To-Many Join
 
