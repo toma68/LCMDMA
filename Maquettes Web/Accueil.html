@@ -223,8 +223,8 @@
 
 <main>
     <div class="debut_trop_style">
-        <img src="./images/le_chateau_sans_ciel.png" height="100%" width="2000" id="chateau">
-        <img src="./images/le_ciel_du_chateau.png" height="100%" width="2000" id="ciel">
+        <img src="./images/le_chateau_sans_ciel.png" height="113%" width="2000" id="chateau">
+        <img src="./images/le_ciel_du_chateau.png" height="113%" width="2000" id="ciel">
         <img src="./images/avion.png" id="avion">
         <div class="titre">
             <h1>La Cours Médievale De </h1>
@@ -235,21 +235,36 @@
             <h2>au chateau de Montby</h2>
         </div>
         <div class="button-see-more">
-            <href>
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#fff" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+            <a href="#explication1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#fff"
+                     class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    <path fill-rule="evenodd"
+                          d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                 </svg>
-            </href>
+            </a>
         </div>
-
     </div>
-    <section class="explication1">
+    <section class="explication1" id="explication1">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <h2>La Cours Médievale De Monseigneur Ambert</h2>
-                    <p>La Cours Médievale De Monseigneur Ambert est un festival de jeux de rôles médiévaux qui se déroule au chateau de Montby. Il est organisé par l'association LCMDMA.</p>
+                    <p>La Cours Médievale De Monseigneur Ambert est un festival de jeux de rôles médiévaux qui se
+                        déroule au chateau de Montby. Il est organisé par l'association LCMDMA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="explication2" id="explication2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+
+                </div>
+                <div class="col-lg-6">
                 </div>
             </div>
         </div>
@@ -267,7 +282,7 @@
         var x = e.clientX;
         var y = e.clientY;
         var chateau = document.getElementById('chateau');
-        var ciel = document.getElementById('ciel');
+        var gradient = document.getElementsByClassName('gradient-image');
 
         chateau.style.transform = 'translate(' + x / 100 + 'px, ' + y / 100 + 'px)';
     });

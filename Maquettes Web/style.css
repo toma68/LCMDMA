@@ -27,21 +27,25 @@ header{
 /* Les images */
 .debut_trop_style{
     height: 100vh;
+    overflow-y: hidden;
 }
 #chateau{
     position: absolute;
-    z-index: 2;
+    z-index: 0;
     left:-20px;
+    top: -100px;
+
 }
 
 #ciel{
     position: absolute;
+    top: -100px;
     z-index: -1;
 }
 
 #avion{
     position: relative;
-    z-index: 1;
+    z-index: -1;
     top: 200px;
     left: -100px;
     height: 100px;
@@ -63,7 +67,7 @@ header{
     color: white;
     font-family: 'Secular One', sans-serif;
     text-align: center;
-    z-index: 3;
+    z-index: 1;
     text-align: justify;
 }
 .titre h1{
@@ -71,13 +75,6 @@ header{
     font-weight: bold;
 }
 
-.t1{
-    z-index: 1;
-}
-
-.t2{
-    z-index: 3;
-}
 
 .date-lieux{
     position: absolute;
@@ -86,7 +83,7 @@ header{
     color: white;
     font-family: 'Secular One', sans-serif;
     text-align: center;
-    z-index: 2;
+    z-index: 0;
     text-align: justify;
 }
 
@@ -101,9 +98,31 @@ header{
 
 .button-see-more:hover{
     transform: scale(1.2);
+
+
+}
+.explication1 {
+    z-index: 3;
+    padding-top: 100px;
+    height: 100vh;
+    overflow-y: hidden;
+    background: #fff;
+    color: #000;
+    font-family: 'Secular One', sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
-.explication1{
-    margin-top: 100px;
+.explication2 {
+    z-index: 3;
+    padding-top: 100px;
+    height: 100vh;
+    overflow-y: hidden;
+    background: #ff3;
+    color: #000;
+    font-family: 'Secular One', sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
 }
-
