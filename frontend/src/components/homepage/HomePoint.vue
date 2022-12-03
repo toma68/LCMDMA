@@ -5,7 +5,7 @@
       <img src="/images/le_ciel_du_chateau.png" height="113%" width="113%" id="ciel" alt ="Jolie Image du ciel">
       <img src="/images/avion.png" id="avion" alt="Avion">
       <div class="titre">
-        <h1>La Cours Médievale De </h1>
+        <h1>La Cour Médievale De </h1>
         <h1>Monseigneur Ambert </h1>
       </div>
       <div class="date-lieux">
@@ -13,7 +13,7 @@
         <h2>au chateau de Montby</h2>
       </div>
       <div class="button-see-more">
-        <a href="#explication1">
+        <a @click="ClickSuivant">
           <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#fff"
                class="bi bi-chevron-double-down" viewBox="0 0 16 16">
             <path fill-rule="evenodd"
@@ -37,7 +37,12 @@ document.addEventListener('mousemove', function (e) {
   chateau.style.transform = 'translate(' + x / 100 + 'px, ' + y / 100 + 'px)';
 });
 export default {
-  name: "HomePoint"
+  name: "HomePoint",
+  methods: {
+    ClickSuivant() {
+      this.$emit("click-suivant");
+    }
+  }
 }
 </script>
 
