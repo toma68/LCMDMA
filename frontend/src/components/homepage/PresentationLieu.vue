@@ -7,7 +7,7 @@
 
 <script>
 import TitlePresentation from "@/components/homepage/TitlePresentation.vue";
-import InteractiveMap from "@/components/homepage/InteractiveMap.vue";
+import InteractiveMap from "@/components/InteractiveMap.vue";
 
 export default {
   name: "PresentationLieu",
