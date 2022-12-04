@@ -75,8 +75,8 @@ export default {
           description: "Découvrez l'art de boire, selon les traditions du moyen-âge. De nombreux chevaux et cavaliers vous attendent pour vous faire découvrir cette discipline !"
         }, {
           image: "images/joutes.jpg",
-          title: "Activité 3",
-          description: "Découvrez l'art de la joute, selon les traditions du moyen-âge. De nombreux chevaux et cavaliers vous attendent pour vous faire découvrir cette discipline !"
+          title: "Tir à l'arc",
+          description: "Venez mettre à l'épreuve votre précision et votre concentration dans une épreuve de tir à l'arc, une discipline historiquement utilisée pour la chasse et le combat."
         },
         {
           image: "images/joutes.jpg",
