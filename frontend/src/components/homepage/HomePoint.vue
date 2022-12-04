@@ -4,7 +4,6 @@
       <img src="/images/le_chateau_sans_ciel.png" height="113%" width="113%" id="chateau" alt="Jolie Image de Chateau">
       <img src="/images/le_ciel_du_chateau.png" height="113%" width="113%" id="ciel" alt ="Jolie Image du ciel">
       <img src="/images/rocher.png" id="rocher" alt="rocher">
-      <img src="https://www.pngmart.com/files/15/Explosion-Fire-PNG-Photos.png" id="explosion" alt="BOOM">
       <div class="titre">
         <h1>La Cour Médievale De </h1>
         <h1>Monseigneur Ambert </h1>
@@ -82,22 +81,15 @@ header{
   top: 200px;
   left: -100px;
   height: 100px;
-  animation: mymove 10s infinite, float 2s infinite;
+  animation: mymove 5s infinite, float 2s infinite, myrotate 10s infinite;
 }
 
-#explosion{
-  position: absolute;
-  z-index: 0;
-  top: -200px;
-  left: 600px;
-  height: 1000px;
-  visibility: hidden;
-  animation: explode 10s infinite;
-}
+
+
 @keyframes mymove {
-  0%   {left: -10%; top : 500px; z-index: 10;}
-  30%  { top : 200px; z-index: 0}
-  40%   {top : 2000px; z-index: -1;}
+  0%   {left: -10%; top : 600px; z-index: 10;}
+  35%  { top : 200px; z-index: 0}
+  45%   {top : 250px;}
   100% {left: 150%;}
 }
 @keyframes float {
@@ -114,16 +106,9 @@ header{
 
 @keyframes myrotate {
   0%   {transform: rotate(0deg);}
-  100% {transform: rotate(1000000deg);}
+  100% {transform: rotate(2000deg);}
 }
 
-@keyframes explode{
-  0%   {visibility: hidden}
-  30% {visibility: hidden}
-  31% {visibility: visible}
-  32% {visibility: hidden}
-  100% {visibility: hidden}
-}
 
 /* Les textes */
 
