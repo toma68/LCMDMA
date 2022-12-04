@@ -1,15 +1,15 @@
 <template>
   <main>
-    <Inscription/>
+    <InscriptionComponent/>
   </main>
 </template>
 
 <script>
-import Inscription from "@/components/auth/Inscription.vue";
+import InscriptionComponent from "@/components/auth/InscriptionComponent.vue";
 
 export default {
-  name: "Auth",
-  components: {Inscription}
+  name: "AuthView",
+  components: {InscriptionComponent}
 }
 </script>
 
