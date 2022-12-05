@@ -109,7 +109,6 @@ export default {
 .presentation {
   padding: 100px 50px 50px 50px;
   height: 100vh;
-  /*background: url("~@/assets/abwer.jpg");*/
   background: #000000;
   background-size: cover;
 }
