@@ -1,6 +1,6 @@
 <template>
   <main>
-    <HomePoint style="overflow: hidden"/>
+    <HomePoint style="overflow: hidden" @click-suivant="clicksuivant()"/>
     <PresentationConvention/>
     <PresentationLieu style="z-index: 100"/>
   </main>
@@ -17,6 +17,14 @@ import PresentationLieu from "@/components/homepage/PresentationLieu.vue";
       PresentationConvention,
       HomePoint
     },
+    methods: {
+      clicksuivant() {
+        window.scrollTo({
+          top: window.innerHeight,
+          behavior: 'smooth'
+        });
+      }
+    }
 
   }
 </script>
