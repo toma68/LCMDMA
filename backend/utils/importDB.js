@@ -21,7 +21,7 @@ Token.belongsTo(User, {foreignKey: 'userId'});
 
 Achat.belongsTo(Tarif, {foreignKey: 'tarifId'});
 
-InfoPrestataire.belongsTo(User, {foreignKey: 'userId'});
+User.hasOne(InfoPrestataire, {foreignKey: 'userId'});
 
 Activite.belongsTo(Stand, {foreignKey: 'standId'});
 Activite.belongsTo(TypeActivite, {foreignKey: 'typeActiviteId'});
@@ -39,8 +39,15 @@ Achat.belongsToMany(User, {through: 'achete'});
 
 
 
+sequelize.sync()
+    .then(() => {
+        console.log("Tables created");
+    })
+
+/*
 sequelize.sync({force: true})
     .then(() => {
         console.log("Tables created");
         insertData();
-    })
+    }
+    );*/

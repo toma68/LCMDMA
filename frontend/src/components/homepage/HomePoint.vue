@@ -29,19 +29,21 @@
 </template>
 
 <script>
-document.addEventListener('mousemove', function (e) {
-  var x = e.clientX;
-  var y = e.clientY;
-  var chateau = document.getElementById('chateau');
-
-  chateau.style.transform = 'translate(' + x / 100 + 'px, ' + y / 100 + 'px)';
-});
 export default {
   name: "HomePoint",
   methods: {
     ClickSuivant() {
       this.$emit("click-suivant");
     }
+  },
+  mounted() {
+    document.addEventListener('mousemove', function (e) {
+      var x = e.clientX;
+      var y = e.clientY;
+      var chateau = document.getElementById('chateau');
+
+      chateau.style.transform = 'translate(' + x / 100 + 'px, ' + y / 100 + 'px)';
+    })
   }
 }
 </script>

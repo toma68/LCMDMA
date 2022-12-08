@@ -1,25 +1,57 @@
 const User = require('../models/user.model');
+const infoPrestataire = require('../models/infoPrestataire.model');
 const TokenController = require('./token.controller');
 
 const bcrypt = require('bcrypt');
 
 exports.login = (req, res) => {
-    User.findOne({ login: req.body.login }).
-        then(user => {
-            if (!user) {
-                return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+    User.findOne({login: req.body.login}).then(user => {
+        if (!user) {
+            return res.status(401).json({error: 'Utilisateur non trouvé !'});
+        }
+        bcrypt.compare(req.body.password, user.password).then(valid => {
+            if (!valid) {
+                return res.status(401).json({error: 'Mot de passe incorrect !'});
             }
-            bcrypt.compare(req.body.password, user.password).
-                then(valid => {
-                    if (!valid) {
-                        return res.status(401).json({ error: 'Mot de passe incorrect !' });
-                    }
-                    res.status(200).json({
-                        token: TokenController.createToken(user.id, req.ip),
-                        userId: user.id,
-                        userRole: user.roleId
-                    });
-                }).catch(error => res.status(500).json({ error }));
-        }).catch(error => res.status(500).json({ error }));
+            res.status(200).json({
+                token: TokenController.createToken(user.id, req.ip),
+                userId: user.id,
+                userRole: user.roleId
+            });
+        }).catch(error => res.status(500).json({error}));
+    }).catch(error => res.status(500).json({error}));
 }
+
+exports.register = (req, res) => {
+    bcrypt.hash(req.body.password, 10).then(hash => {
+        User.create({
+            login: req.body.login,
+            password: hash,
+            nom: req.body.firstName,
+            prenom: req.body.lastName,
+            email: req.body.email,
+            roleId: 1,
+        })
+            .then(user => {
+                if (req.body.siret) {
+                    infoPrestataire.create({
+                        userId: user.id,
+                        numeroSiret: req.body.siret,
+                        nomEntreprise: req.body.nomEntreprise,
+                        description: req.body.description,
+                        contenuPage: req.body.description
+                    }).then(() => {
+                        res.status(201).json({message: 'Prestataire créé, veuillez attendre la validation d\'un administrateur !'});
+                    }).catch(
+                        error => res.status(500).json({error: error, message: 'Numéro SIRET déjà utilisé !'})
+                    );
+                }
+                else {
+                    res.status(201).json({message: 'Utilisateur créé !'});
+                    }
+            }).catch(error => res.status(500).json({error, message: 'Login déjà utilisé !'}));
+            }).catch(error => res.status(500).json({error, message: 'Erreur, veuillez reessayer !'}));
+
+
+    }
 
