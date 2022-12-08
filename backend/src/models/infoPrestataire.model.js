@@ -8,17 +8,18 @@ const infoPrestataire = sequelize.define('infoPrestataire', {
     },
     contenuPage: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     pageMasque: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        defaultValue: true
     },
     nomEntreprise: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    infoPrestataire:{
+    description:{
         type: DataTypes.STRING,
         allowNull: false
     }
