@@ -32,7 +32,12 @@ const routes = [
     path: '/planning',
     name: 'planning',
     component: () => import(/* webpackChunkName: "planning" */ '../views/PlanningView.vue')
-  }
+  },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: () => import(/* webpackChunkName: "admin" */ '../views/AdminView.vue')
+    }
 ]
 
 const router = new VueRouter({
