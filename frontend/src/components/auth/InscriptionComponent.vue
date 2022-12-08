@@ -176,82 +176,82 @@
         <v-card-title class="login-title">
           Inscription
         </v-card-title>
-          <v-form @submit.prevent="submit">
-            <v-text-field
-                v-model="login"
-                label="Pseudo"
-                name="login"
-                prepend-icon="mdi-account-circle"
-                type="text"
-                required></v-text-field>
-            <v-text-field
-                v-model="password"
-                label="Mot de passe"
-                name="password"
-                prepend-icon="mdi-lock"
-                type="password"
-                required></v-text-field>
-            <v-row>
-              <v-col cols="12" sm="6">
-                <v-text-field
-                    v-model="firstName"
-                    label="Prénom"
-                    name="firstName"
-                    prepend-icon="mdi-account"
-                    type="text"
-                    required></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-text-field
-                    v-model="lastName"
-                    label="Nom"
-                    name="lastName"
-                    type="text"
-                    required></v-text-field>
-              </v-col>
-            </v-row>
-            <v-text-field
-                v-model="email"
-                label="Email"
-                name="email"
-                prepend-icon="mdi-email"
-                type="email"
-                required></v-text-field>
-            <v-card-subtitle class="login-subtitle">
-              Informations prestataire
-            </v-card-subtitle>
-            <transition name="bounce">
-              <div v-if="switchPrestataire">
-                <v-text-field
-                    v-model="siret"
-                    label="SIRET"
-                    name="siret"
-                    prepend-icon="mdi-account-card"
-                    type="text"
-                    required></v-text-field>
-                <v-text-field
-                    v-model="companyName"
-                    label="Nom de l'entreprise"
-                    name="companyName"
-                    prepend-icon="mdi-opacity"
-                    type="text"
-                    required></v-text-field>
-                <v-text-field
-                    v-model="companyDescription"
-                    label="Description de l'entreprise"
-                    name="companyDescription"
-                    prepend-icon="mdi-comment-outline"
-                    type="text"
-                    required></v-text-field>
-              </div>
-            </transition>
-            <v-switch
-                v-model="switchPrestataire"
-                :label="'Prestataire'"
-                @change="prestataire(switchPrestataire)"
-            ></v-switch>
-            <v-btn class="align-center"  :disabled="invalid">S'inscrire</v-btn>
-          </v-form>
+        <v-form @submit.prevent="submit">
+          <v-text-field
+              v-model="login"
+              label="Pseudo"
+              name="login"
+              prepend-icon="mdi-account-circle"
+              type="text"
+              required></v-text-field>
+          <v-text-field
+              v-model="password"
+              label="Mot de passe"
+              name="password"
+              prepend-icon="mdi-lock"
+              type="password"
+              required></v-text-field>
+          <v-row>
+            <v-col cols="12" sm="6">
+              <v-text-field
+                  v-model="firstName"
+                  label="Prénom"
+                  name="firstName"
+                  prepend-icon="mdi-account"
+                  type="text"
+                  required></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="6">
+              <v-text-field
+                  v-model="lastName"
+                  label="Nom"
+                  name="lastName"
+                  type="text"
+                  required></v-text-field>
+            </v-col>
+          </v-row>
+          <v-text-field
+              v-model="email"
+              label="Email"
+              name="email"
+              prepend-icon="mdi-email"
+              type="email"
+              required></v-text-field>
+          <transition name="bounce">
+            <div v-if="switchPrestataire">
+              <v-card-subtitle class="login-subtitle">
+                Informations prestataire
+              </v-card-subtitle>
+              <v-text-field
+                  v-model="siret"
+                  label="SIRET"
+                  name="siret"
+                  prepend-icon="mdi-account-card"
+                  type="text"
+                  required></v-text-field>
+              <v-text-field
+                  v-model="companyName"
+                  label="Nom de l'entreprise"
+                  name="companyName"
+                  prepend-icon="mdi-opacity"
+                  type="text"
+                  required></v-text-field>
+              <v-text-field
+                  v-model="companyDescription"
+                  label="Description de l'entreprise"
+                  name="companyDescription"
+                  prepend-icon="mdi-comment-outline"
+                  type="text"
+                  required></v-text-field>
+            </div>
+          </transition>
+          <v-switch
+              v-model="switchPrestataire"
+              :label="'Prestataire'"
+              @change="prestataire(switchPrestataire)"
+          ></v-switch>
+          <v-btn class="align-center" type="submit">S'inscrire</v-btn>
+        </v-form>
 
       </div>
     </v-card>
@@ -268,7 +268,10 @@ export default {
       firstName: "",
       lastName: "",
       email: "",
-      switchPrestataire: false
+      switchPrestataire: false,
+      siret: "",
+      companyName: "",
+      companyDescription: "",
     };
   },
   methods: {
@@ -281,10 +284,21 @@ export default {
       }
     },
     submit: function () {
-      console.log("submit");
+      let login = this.login;
+      let password = this.password;
+      let firstName = this.firstName;
+      let lastName = this.lastName;
+      let email = this.email;
+      if (this.switchPrestataire) {
+        let siret = this.siret;
+        let companyName = this.companyName;
+        let companyDescription = this.companyDescription;
+
+
+      }
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -319,9 +333,11 @@ v-form {
 .bounce-enter-active {
   animation: bounce-in 0.5s;
 }
+
 .bounce-leave-active {
   animation: bounce-in 0.5s reverse;
 }
+
 @keyframes bounce-in {
   0% {
     transform: scale(0);
