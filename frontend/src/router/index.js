@@ -27,7 +27,17 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
-  }
+  },
+  {
+    path: '/planning',
+    name: 'planning',
+    component: () => import(/* webpackChunkName: "planning" */ '../views/PlanningView.vue')
+  },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: () => import(/* webpackChunkName: "admin" */ '../views/AdminView.vue')
+    }
 ]
 
 const router = new VueRouter({
