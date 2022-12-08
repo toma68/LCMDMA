@@ -1,11 +1,9 @@
 <template>
-  <div class="navbar">
-    <v-app-bar
-        color="#f5f5f5"
-        height="80px"
-    >
-      <v-app-bar-nav-icon>
-        <svg viewBox="192.34797516321805 108.36917018890381 127.30404804810678 199.09403228759766" height="50"
+  <main class="bg">
+    <v-card elevation="5" style="margin-top: 150px;">
+      <div class="card-body">
+        <svg id="icon-chateau" viewBox="192.34797516321805 108.36917018890381 127.30404804810678 199.09403228759766"
+             height="100"
              class="logo-img">
           <g xmlns="http://www.w3.org/2000/svg"
              transform="matrix(4.147792369127274, 0, 0, 4.147792369127274, 148.1573929786682, 100.07358694076538)">
@@ -175,55 +173,105 @@
                   transform="matrix(1, 0, 0, 1, 0, 0)"></path>
           </g>
         </svg>
-      </v-app-bar-nav-icon>
-
-      <v-toolbar-title class="navbar-title">LCMDMA</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-toolbar-items>
-        <v-btn text> <router-link to="/" class="toolbar-item">Accueil</router-link></v-btn>
-        <v-btn text> <router-link to="#" class="toolbar-item">Carte</router-link></v-btn>
-        <v-btn text> <router-link to="#" class="toolbar-item">Programme</router-link></v-btn>
-        <v-btn text> <router-link to="#" class="toolbar-item">Prestataires</router-link></v-btn>
-        <v-btn text> <router-link to="#" class="toolbar-item">Billeterie</router-link></v-btn>
-        <v-btn text> <router-link to="login" class="toolbar-item">Connexion/Inscription</router-link></v-btn>
-
-
-      </v-toolbar-items>
-    </v-app-bar>
-  </div>
+        <v-card-title class="login-title">
+          Connexion
+        </v-card-title>
+        <v-form @submit.prevent="submit">
+          <v-text-field
+              v-model="login"
+              label="Pseudo"
+              name="login"
+              :rules="loginRules"
+              prepend-icon="mdi-account-circle"
+              type="text"
+              required
+          ></v-text-field>
+          <v-text-field
+              v-model="password"
+              label="Mot de passe"
+              name="password"
+              prepend-icon="mdi-lock"
+              :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+              :rules="passwordRules"
+              :type="showPassword ? 'text' : 'password'"
+              required
+              @click:append="showPassword = !showPassword"
+          ></v-text-field>
+          <br>
+          <v-btn :disabled="invalid">Se connecter</v-btn>
+          <v-btn @click="reset">Annuler</v-btn>
+        </v-form>
+      </div>
+    </v-card>
+  </main>
 </template>
 
 <script>
 export default {
-  name: "NavBar"
-}
+  name: "ConnexionComponent",
+  data() {
+    return {
+      login: "",
+      loginRules: [
+        v => !!v || 'Un pseudo est requis',
+      ],
+      password: "",
+      showPassword: false,
+      passwordRules: [
+        v => !!v || 'Un mot de passe est requis',
+        v => (v && v.length >= 8) || 'Minimum 8 caractères',
+      ],
+    };
+  },
+  methods: {
+    submit: function() {
+      console.log("submit");
+    },
+    fields: undefined,
+    reset() {
+      this.login = "";
+      this.password = "";
+    },
+  },
+};
 </script>
 
 <style scoped>
-.navbar{
-  position: fixed;
-  width: 100%;
-}
-.navbar-title{
-  font-family: 'Pirata One', cursive;
-  font-size: 2rem !important;
-}
-
-.logo-img{
-  transition: transform .5s;
+.bg {
+  width: 100vw;
+  height: 49.95vw;
+  position: absolute;
+  background: url( '../../assets/baroque_foncé.jpg') no-repeat center center;
+  background-size: cover;
+  transform: scale(1.1);
 }
 
-.logo-img:hover{
-  transform: scale(1.3) rotateY(360deg);
-}
-.toolbar-item{
-  text-decoration: none;
-  text-transform: none;
-  color: #1b2239;
-  font-size: 1.2rem;
-  font-family: 'Pirata One', cursive;
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+}
+
+v-form {
+  margin: 50px;
+}
+
+.login-title {
+  font-family: 'Secular One', sans-serif;
+  font-size: 30px;
+}
+
+button{
+  margin-right: 12px;
+}
 </style>
+
