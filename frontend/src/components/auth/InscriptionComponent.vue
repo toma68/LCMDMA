@@ -268,13 +268,31 @@
               :label="'Devenir prestataire'"
               @change="prestataire(switchPrestataire)"
           ></v-switch>
-          <div class = "btn-toolbar">
-          <v-btn :disabled="invalid">S'inscrire</v-btn>
-          <v-btn @click="reset">Annuler</v-btn>
+          <div class="btn-toolbar">
+            <v-btn :disabled="invalid" type="submit">S'inscrire</v-btn>
+            <v-btn @click="reset">Annuler</v-btn>
           </div>
         </v-form>
       </div>
     </v-card>
+    <v-snackbar
+        v-model="snackbar"
+        :timeout="-1"
+        :value="true"
+        absolute
+        bottom
+        :color="snackbarColor"
+        outlined
+        right
+    >
+      {{ snackbarText }}
+      <v-btn
+          text
+          @click="snackbar = false"
+      >
+        Fermer
+      </v-btn>
+    </v-snackbar>
   </main>
 </template>
 
@@ -320,9 +338,23 @@ export default {
       companyDescriptionRules: [
         v => !!v || "Une description est requise",
       ],
+      snackbar: false,
+      snackbarText: "",
+      snackbarColor: "",
     };
   },
   methods: {
+
+    successRequest(message) {
+      this.snackbar = true;
+      this.snackbarText = message;
+      this.snackbarColor = "success";
+    },
+    errorRequest(message) {
+      this.snackbar = true;
+      this.snackbarText = message;
+      this.snackbarColor = "error";
+    },
     prestataire: function (switchPrestataire) {
       var chateau = document.getElementById("icon-chateau");
       if (switchPrestataire) {
@@ -332,8 +364,47 @@ export default {
       }
     },
     submit: function () {
-      console.log("submit");
-    },
+      console.log('Submit executé')
+      if (this.switchPrestataire) {
+        console.log('Submit prestataire')
+        this.$store.dispatch("registerPrestataire", {
+          login: this.login,
+          password: this.password,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          siret: this.siret,
+          companyName: this.companyName,
+          companyDescription: this.companyDescription,
+        }).then(response => {
+              if (response.error) {
+                this.errorRequest(response.message)
+              } else {
+                this.successRequest(response.message)
+              }
+            }
+        )
+            .catch(error => {
+              this.errorRequest(error.response)
+            });
+      } else {
+        console.log('Submit client')
+        this.$store.dispatch("registerUser", {
+          login: this.login,
+          password: this.password,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+        }).then(response => {
+          if (response.error) {
+            this.errorRequest(response.message)
+          } else {
+            this.successRequest(response.message)
+          }
+        })
+      }
+    }
+    ,
     reset() {
       this.login = "";
       this.password = "";
@@ -345,6 +416,8 @@ export default {
       this.companyName = "";
       this.companyDescription = "";
     }
+    ,
+
   }
 }
 </script>
@@ -378,7 +451,7 @@ v-form {
   font-size: 30px;
 }
 
-button{
+button {
   margin-right: 12px;
 }
 
