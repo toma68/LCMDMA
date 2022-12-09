@@ -17,7 +17,8 @@ const StandRoutes = require('./src/routers/stand.router');
 const TarifRoutes = require('./src/routers/tarif.router');
 const TypeActiviteRoutes = require('./src/routers/typeActivite.router');
 
-
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 
 //--------Application
@@ -34,6 +35,28 @@ app.use((req, res, next) => {
     next();
 });
 
+
+/** Swagger Initialization - START */
+const swaggerOption = {
+    swaggerDefinition: (swaggerJsDoc.Options = {
+        info: {
+            title: "LCMDMA app",
+            description: "API documentation",
+            contact: {
+                name: "Raphael",
+            },
+            servers: ["http://localhost:3000/"],
+        },
+    }),
+    apis: ["index.js", "./src/routers/*.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOption);
+
+
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+
 //mise en place des routes
 app.use('/api/auth', AuthRoutes);
 app.use('/api/users', UserRoutes);
@@ -44,7 +67,6 @@ app.use('/api/infoPrestataires', InfoPrestataireRoutes);
 app.use('/api/stands', StandRoutes);
 app.use('/api/tarifs', TarifRoutes);
 app.use('/api/typeActivites', TypeActiviteRoutes);
-
 
 //lancement de l'application
 app.listen(port,()=>{
