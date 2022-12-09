@@ -27,7 +27,22 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
-  }
+  },
+  {
+    path: '/planning',
+    name: 'planning',
+    component: () => import(/* webpackChunkName: "planning" */ '../views/PlanningView.vue')
+  },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: () => import(/* webpackChunkName: "admin" */ '../views/AdminView.vue')
+    },
+    {
+      path: '/admin/prestataires',
+      name: 'adminPrestataires',
+      component: () => import(/* webpackChunkName: "adminPrestataires" */ '../views/AdminPrestatairesView.vue')
+    }
 ]
 
 const router = new VueRouter({

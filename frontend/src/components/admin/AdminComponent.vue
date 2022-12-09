@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <v-card elevation="5">
+  <main class="bg">
+    <v-card elevation="5" style="margin-top: 150px;">
       <div class="card-body">
         <svg id="icon-chateau" viewBox="192.34797516321805 108.36917018890381 127.30404804810678 199.09403228759766"
              height="100"
@@ -174,258 +174,24 @@
           </g>
         </svg>
         <v-card-title class="login-title">
-          Inscription
+          Admin
         </v-card-title>
-        <v-form @submit.prevent="submit">
-          <v-text-field
-              v-model="login"
-              label="Pseudo"
-              name="login"
-              :rules="loginRules"
-              prepend-icon="mdi-account-circle"
-              type="text"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="password"
-              label="Mot de passe"
-              name="password"
-              prepend-icon="mdi-lock"
-              :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              :rules="passwordRules"
-              :type="showPassword ? 'text' : 'password'"
-              required
-              @click:append="showPassword = !showPassword"
-          ></v-text-field>
-          <v-row>
-            <v-col cols="12" sm="6">
-              <v-text-field
-                  v-model="firstName"
-                  label="Prénom"
-                  name="firstName"
-                  :rules="firstNameRules"
-                  prepend-icon="mdi-account"
-                  type="text"
-                  required
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-text-field
-                  v-model="lastName"
-                  label="Nom"
-                  name="lastName"
-                  :rules="lastNameRules"
-                  type="text"
-                  required
-              ></v-text-field>
-            </v-col>
-          </v-row>
-          <v-text-field
-              v-model="email"
-              label="Email"
-              name="email"
-              :rules="emailRules"
-              prepend-icon="mdi-email"
-              type="email"
-              required
-          ></v-text-field>
-          <v-card-subtitle class="login-subtitle">
-          </v-card-subtitle>
-          <transition name="bounce">
-            <div v-if="switchPrestataire">
-              <div>Informations prestataire</div>
-              <v-text-field
-                  v-model="siret"
-                  label="SIRET"
-                  name="siret"
-                  :rules="siretRules"
-                  prepend-icon="mdi-account-card"
-                  type="text"
-                  required
-              ></v-text-field>
-              <v-text-field
-                  v-model="companyName"
-                  label="Nom de l'entreprise"
-                  name="companyName"
-                  :rules="companyNameRules"
-                  prepend-icon="mdi-opacity"
-                  type="text"
-                  required
-              ></v-text-field>
-              <v-text-field
-                  v-model="companyDescription"
-                  label="Description de l'entreprise"
-                  name="companyDescription"
-                  :rules="companyDescriptionRules"
-                  prepend-icon="mdi-comment-outline"
-                  type="text"
-                  required
-              ></v-text-field>
-            </div>
-          </transition>
-          <v-switch
-              v-model="switchPrestataire"
-              :label="'Devenir prestataire'"
-              @change="prestataire(switchPrestataire)"
-          ></v-switch>
-          <div class="btn-toolbar">
-            <v-btn :disabled="invalid" type="submit">S'inscrire</v-btn>
-            <v-btn @click="reset">Annuler</v-btn>
-          </div>
-        </v-form>
+        <v-btn text><router-link to="/admin/prestataires" class="toolbar-item">Prestataires</router-link></v-btn>
+        <v-btn text><router-link to="#" class="toolbar-item">bouton 2</router-link></v-btn>
+        <v-btn text><router-link to="#" class="toolbar-item">bouton 3</router-link></v-btn>
+        <v-btn text><router-link to="#" class="toolbar-item">bouton 4</router-link></v-btn>
       </div>
     </v-card>
-    <v-snackbar
-        v-model="snackbar"
-        :timeout="-1"
-        :value="true"
-        absolute
-        bottom
-        :color="snackbarColor"
-        outlined
-        right
-    >
-      {{ snackbarText }}
-      <v-btn
-          text
-          @click="snackbar = false"
-      >
-        Fermer
-      </v-btn>
-    </v-snackbar>
   </main>
 </template>
 
 <script>
 export default {
-  name: "InscriptionComponent",
-  data() {
-    return {
-      login: "",
-      loginRules: [
-        v => !!v || "Un pseudo est requis",
-      ],
-      password: "",
-      showPassword: false,
-      passwordRules: [
-        v => !!v || 'Un mot de passe est requis',
-        v => (v && v.length >= 8) || 'Minimum 8 caractères',
-      ],
-      firstName: "",
-      firstNameRules: [
-        v => !!v || "Un prénom est requis",
-      ],
-      lastName: "",
-      lastNameRules: [
-        v => !!v || "Un nom est requis",
-      ],
-      email: "",
-      emailRules: [
-        v => !!v || "Un email est requis",
-        v => /.+@.+\..+/.test(v) || "Email invalide",
-      ],
-      switchPrestataire: false,
-      siret: "",
-      siretRules: [
-        v => !!v || "Un SIRET est requis",
-        v => (v && v.length >= 14) || 'Le siret ne fait pas 14 caractères',
-      ],
-      companyName: "",
-      companyNameRules: [
-        v => !!v || "Un nom d'entreprise est requis",
-      ],
-      companyDescription: "",
-      companyDescriptionRules: [
-        v => !!v || "Une description est requise",
-      ],
-      snackbar: false,
-      snackbarText: "",
-      snackbarColor: "",
-    };
-  },
-  methods: {
-
-    successRequest(message) {
-      this.snackbar = true;
-      this.snackbarText = message;
-      this.snackbarColor = "success";
-    },
-    errorRequest(message) {
-      this.snackbar = true;
-      this.snackbarText = message;
-      this.snackbarColor = "error";
-    },
-    prestataire: function (switchPrestataire) {
-      var chateau = document.getElementById("icon-chateau");
-      if (switchPrestataire) {
-        chateau.style.transform = "rotate(360deg)";
-      } else {
-        chateau.style.transform = "rotate(-360deg)";
-      }
-    },
-    submit: function () {
-      console.log('Submit executé')
-      if (this.switchPrestataire) {
-        console.log('Submit prestataire')
-        this.$store.dispatch("registerPrestataire", {
-          login: this.login,
-          password: this.password,
-          firstName: this.firstName,
-          lastName: this.lastName,
-          email: this.email,
-          siret: this.siret,
-          companyName: this.companyName,
-          companyDescription: this.companyDescription,
-        }).then(response => {
-              if (response.error) {
-                this.errorRequest(response.message)
-              } else {
-                this.successRequest(response.message)
-              }
-            }
-        )
-            .catch(error => {
-              this.errorRequest(error.response)
-            });
-      } else {
-        console.log('Submit client')
-        this.$store.dispatch("registerUser", {
-          login: this.login,
-          password: this.password,
-          firstName: this.firstName,
-          lastName: this.lastName,
-          email: this.email,
-        }).then(response => {
-          if (response.error) {
-            this.errorRequest(response.message)
-          } else {
-            this.successRequest(response.message)
-          }
-        })
-      }
-    }
-    ,
-    reset() {
-      this.login = "";
-      this.password = "";
-      this.firstName = "";
-      this.lastName = "";
-      this.email = "";
-      this.switchPrestataire = false;
-      this.siret = "";
-      this.companyName = "";
-      this.companyDescription = "";
-    }
-    ,
-
-  }
+  name: "AdminComponent.vue"
 }
 </script>
 
 <style scoped>
-#icon-chateau {
-  transition: transform 0.5s;
-}
 
 main {
   display: flex;
@@ -447,23 +213,20 @@ v-form {
 }
 
 .login-title {
-  font-family: 'Secular One', sans-serif;
   font-size: 30px;
+  font-family: 'Secular One', sans-serif;
 }
 
 button {
   margin-right: 12px;
 }
 
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.25);
-  }
-  100% {
-    transform: scale(1);
-  }
+.toolbar-item {
+  text-decoration: none;
+  text-transform: none;
+  color: #1b2239;
+  font-size: 1.2rem;
+  font-family: 'Pirata One', cursive;
 }
+
 </style>
