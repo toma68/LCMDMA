@@ -19,4 +19,7 @@ export default {
 };
 </script>
 
-
+<style>
+@import './assets/timetablejs.css';
+@import './assets/demo.css';
+</style>

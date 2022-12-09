@@ -1,14 +1,14 @@
 <template>
   <main>
-    <PlanningComponent/>
+    <PlanningComponnent/>
   </main>
 </template>
 
 <script>
-import PlanningComponent from "@/components/planningpage/PlanningComponent.vue";
+import PlanningComponnent from "@/components/planningpage/PlanningComponent.vue";
 export default {
   name: 'PlanningView',
-  components: { PlanningComponent }
+  components: { PlanningComponnent }
 }
 </script>
 
