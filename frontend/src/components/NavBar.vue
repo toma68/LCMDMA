@@ -184,9 +184,9 @@
       <v-toolbar-items>
         <v-btn text> <router-link to="/" class="toolbar-item">Accueil</router-link></v-btn>
         <v-btn text> <router-link to="#" class="toolbar-item">Carte</router-link></v-btn>
-        <v-btn text> <router-link to="#" class="toolbar-item">Programme</router-link></v-btn>
+        <v-btn text> <router-link to="planning" class="toolbar-item">Programme</router-link></v-btn>
         <v-btn text> <router-link to="#" class="toolbar-item">Prestataires</router-link></v-btn>
-        <v-btn text> <router-link to="#" class="toolbar-item">Billeterie</router-link></v-btn>
+        <v-btn text> <router-link to="billeterie" class="toolbar-item">Billeterie</router-link></v-btn>
         <v-btn text> <router-link to="login" class="toolbar-item">Connexion/Inscription</router-link></v-btn>
 
 

@@ -6,10 +6,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: null
+        user: null,
+        tarifs: null,
     }, getters: {}, mutations: {
         setUser(state, user) {
             state.user = user
+        },
+        clearUser(state) {
+            state.user = null
+        },
+        setTarifs(state, tarifs) {
+            state.tarifs = tarifs
         }
     }, actions: {
         registerPrestataire({commit}, prestataire) {
@@ -39,6 +46,18 @@ export default new Vuex.Store({
                     return response
                 })
                 .catch(error => console.error('Error:', error))
-        }
+        },
+        getTarifs({commit}) {
+            return fetch('http://localhost:3000/api/tarifs', {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(response => {
+                    commit('setTarifs', response)
+        })
+                .catch(error => console.error('Error:', error))
+        },
     }, modules: {}
 })

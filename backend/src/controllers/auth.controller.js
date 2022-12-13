@@ -3,9 +3,11 @@ const infoPrestataire = require('../models/infoPrestataire.model');
 const TokenController = require('./token.controller');
 
 const bcrypt = require('bcrypt');
+const {where} = require("sequelize");
 
 exports.login = (req, res) => {
-    User.findOne({login: req.body.login}).then(user => {
+    User.findOne({where: {login: req.body.login}})
+        .then(user => {
         if (!user) {
             return res.status(401).json({error: 'Utilisateur non trouvé !'});
         }
@@ -17,11 +19,10 @@ exports.login = (req, res) => {
                 token: TokenController.createToken(user.id, req.ip),
                 userId: user.id,
                 userRole: user.roleId
-            });
+            }).catch(error => res.status(500).json({error}));
         }).catch(error => res.status(500).json({error}));
-    }).catch(error => res.status(500).json({error}));
+    });
 }
-
 exports.register = (req, res) => {
     bcrypt.hash(req.body.password, 10).then(hash => {
         User.create({
@@ -48,10 +49,10 @@ exports.register = (req, res) => {
                 }
                 else {
                     res.status(201).json({message: 'Utilisateur créé !'});
-                    }
+                }
             }).catch(error => res.status(500).json({error, message: 'Login déjà utilisé !'}));
-            }).catch(error => res.status(500).json({error, message: 'Erreur, veuillez reessayer !'}));
+    }).catch(error => res.status(500).json({error, message: 'Erreur, veuillez reessayer !'}));
 
 
-    }
+}
 
