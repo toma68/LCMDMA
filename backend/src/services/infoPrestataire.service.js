@@ -4,7 +4,7 @@ const findAll = () => InfoPrestataire.findAll();
 
 const findById = (id) => InfoPrestataire.findByPk(id);
 
-const deleteByid = (id) => InfoPrestataire.destroy({where: {id: id}});
+const deleteByid = (id) => InfoPrestataire.destroy({where: {numeroSiret: id}});
 
 
 const create = (infoPrestataire) => {
@@ -14,14 +14,13 @@ const create = (infoPrestataire) => {
 
 const update = (id, infoPrestataire) => {
     var updateInfoPrestataire = {
-        numeroSiret: infoPrestataire.numeroSiret,
         userId: infoPrestataire.userId,
         contenuPage: infoPrestataire.contenuPage,
         pageMasque: infoPrestataire.pageMasque,
         nomEntreprise: infoPrestataire.nomEntreprise,
-        infoPrestataire: infoPrestataire.infoPrestataire
+        description: infoPrestataire.description
     }
-    return InfoPrestataire.update(updateInfoPrestataire, {where: {id: id}});
+    return InfoPrestataire.update(updateInfoPrestataire, {where: {numeroSiret: id}});
 }
 
 module.exports = {

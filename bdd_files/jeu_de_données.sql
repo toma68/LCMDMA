@@ -33,7 +33,10 @@ INSERT INTO stands VALUES
 (default, 70.0, 'Pas de besoins logistiques particulier'), --Stand de tir a l'arc
 (default, 2.0, 'Acces eau'); --Toilettes
 
-
+INSERT INTO "roles" VALUES
+(default, 'User'),
+(default, 'Prestataire'),
+(default, 'Administrateur');
 
 INSERT INTO users VALUES
 (default, 'Becher', 'Thomas', 'thomas', 'thomas', 'thomas@gmail.com', 3),

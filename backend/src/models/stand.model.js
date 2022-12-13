@@ -8,7 +8,7 @@ const Stand = sequelize.define('stand', {
         primaryKey: true
     },
     surface: {
-        type: DataTypes.STRING,
+        type: DataTypes.DECIMAL(5,2),
         allowNull: false,
     },
     logistique: {

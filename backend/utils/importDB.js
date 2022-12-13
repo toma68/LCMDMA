@@ -39,15 +39,8 @@ Achat.belongsToMany(User, {through: 'achete'});
 
 
 
-sequelize.sync()
+sequelize.sync({alter:true})
     .then(() => {
         console.log("Tables created");
+        //insertData();
     })
-
-/*
-sequelize.sync({force: true})
-    .then(() => {
-        console.log("Tables created");
-        insertData();
-    }
-    );*/

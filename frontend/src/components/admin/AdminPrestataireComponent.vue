@@ -174,12 +174,9 @@
           </g>
         </svg>
         <v-card-title class="login-title">
-          Admin
+          Prestataire
         </v-card-title>
-        <v-btn text><router-link to="/admin/prestataires" class="toolbar-item">Prestataires</router-link></v-btn>
-        <v-btn text><router-link to="#" class="toolbar-item">bouton 2</router-link></v-btn>
-        <v-btn text><router-link to="#" class="toolbar-item">bouton 3</router-link></v-btn>
-        <v-btn text><router-link to="#" class="toolbar-item">bouton 4</router-link></v-btn>
+
       </div>
     </v-card>
   </main>
@@ -187,7 +184,7 @@
 
 <script>
 export default {
-  name: "AdminComponent.vue"
+  name: "AdminPrestataireComponent"
 }
 </script>
 
@@ -215,18 +212,6 @@ v-form {
 .login-title {
   font-size: 30px;
   font-family: 'Secular One', sans-serif;
-}
-
-button {
-  margin-right: 12px;
-}
-
-.toolbar-item {
-  text-decoration: none;
-  text-transform: none;
-  color: #1b2239;
-  font-size: 1.2rem;
-  font-family: 'Pirata One', cursive;
 }
 
 </style>
