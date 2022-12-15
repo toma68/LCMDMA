@@ -21,7 +21,7 @@ const routes = [
   {
     path: '/register',
     name: 'register',
-    component: () => import(/* webpackChunkName: "register" */ '../views/AuthView.vue')
+    component: () => import(/* webpackChunkName: "register" */ '../views/InscriptionView.vue')
   },
   {
     path: '/login',
@@ -42,7 +42,12 @@ const routes = [
       path: '/admin/prestataires',
       name: 'adminPrestataires',
       component: () => import(/* webpackChunkName: "adminPrestataires" */ '../views/AdminPrestatairesView.vue')
-    }
+    },
+  {
+    path: '/billeterie',
+    name: 'billeterie',
+    component: () => import(/* webpackChunkName: "billeterie" */ '../views/BilleterieView.vue'),
+  }
 ]
 
 const router = new VueRouter({
