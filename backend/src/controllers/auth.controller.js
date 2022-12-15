@@ -5,7 +5,7 @@ const TokenController = require('./token.controller');
 const bcrypt = require('bcrypt');
 
 exports.login = (req, res) => {
-    User.findOne({login: req.body.login}).then(user => {
+    User.findOne({where: {login: req.body.login}}).then(user => {
         if (!user) {
             return res.status(401).json({error: 'Utilisateur non trouvé !'});
         }

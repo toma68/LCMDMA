@@ -198,7 +198,7 @@
               @click:append="showPassword = !showPassword"
           ></v-text-field>
           <br>
-          <v-btn :disabled="invalid">Se connecter</v-btn>
+          <v-btn :disabled="invalid" type="submit">Se connecter</v-btn>
           <v-btn @click="reset">Annuler</v-btn>
         </v-form>
       </div>
@@ -219,15 +219,27 @@ export default {
       showPassword: false,
       passwordRules: [
         v => !!v || 'Un mot de passe est requis',
-        v => (v && v.length >= 8) || 'Minimum 8 caractères',
       ],
+      snackbar: false,
+      snackbarText: "",
+      snackbarColor: "",
     };
   },
   methods: {
     submit: function() {
-      console.log("submit");
+      console.log('Submit execute')
+      this.$store.dispatch('connexionUser', {
+        login: this.login,
+        password: this.password
+      })
+          .then((reponse) => {
+            console.log(reponse)
+          })
+          .catch(error => {
+            this.errorRequest(error.response)
+          });
     },
-    fields: undefined,
+
     reset() {
       this.login = "";
       this.password = "";
