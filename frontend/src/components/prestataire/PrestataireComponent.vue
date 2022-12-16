@@ -174,9 +174,42 @@
           </g>
         </svg>
         <v-card-title class="login-title">
-          Utilisateur
+          Prestataire
         </v-card-title>
+        <v-row>
+          <v-col cols="12" sm="6">
+            <v-text-field
+                v-model="firstName"
+                label="Prénom"
+                name="firstName"
+                :rules="firstNameRules"
+                prepend-icon="mdi-account"
+                type="text"
+                required
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-text-field
+                v-model="lastName"
+                label="Nom"
+                name="lastName"
+                :rules="lastNameRules"
+                type="text"
+                required
+            ></v-text-field>
+          </v-col>
 
+          <v-text-field
+              v-model="fonction"
+              label="Fonction"
+              name="fonction"
+              :rules="fonctionRules"
+              type="text"
+              required
+          ></v-text-field>
+        </v-row>
+        Ajouter images
+        <vue-multi-image-upload @data-image="images" :max="1" :data-reset="vdata"/>
       </div>
     </v-card>
   </main>
@@ -184,7 +217,7 @@
 
 <script>
 export default {
-  name: "AdminPrestataireComponent"
+  name: "PrestataireComponent"
 }
 </script>
 
@@ -213,5 +246,4 @@ v-form {
   font-size: 30px;
   font-family: 'Secular One', sans-serif;
 }
-
 </style>
