@@ -1,54 +1,52 @@
 <template>
   <main>
-    <div class="container">
+    <div class="container text-center">
       <div class="row">
-        <div class="col-12">
+        <div class="mx-auto">
           <h1 class="text-center">Billeterie</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vitae
-            aliquam lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet
-          </p>
+            <table class="table-tarifaire">
+              <tr>
+                <td></td>
+                <td>Enfant (10/17 ans)</td>
+                <td>Adulte</td>
+                <td>Pass' Clan (2 adultes + 2 enfants)</td>
+              </tr>
+              <tr>
+                <td>1 jour</td>
+                <td>2 €</td>
+                <td>6 €</td>
+                <td>12 €</td>
+              </tr>
+              <tr>
+                <td>2 jours</td>
+                <td>3 €</td>
+                <td>10 €</td>
+                <td>20 €</td>
+              </tr>
+            </table>
         </div>
       </div>
     </div>
-    {{tarifs}}
+    <achat-billet-component/>
   </main>
 
 </template>
 
 <script>
+
+import AchatBilletComponent from "@/components/billeterie/achatBilletComponent.vue";
+
 export default {
   name: "BilleterieComponent",
+  components: {AchatBilletComponent},
   data() {
     return {
-      tarifs:null,
+      tarifs: null,
     };
   },
   methods: {},
   created() {
-    this.$store.dispatch("getTarifs").then(
-      (response) => {
-        this.tarifs = response.data;
-      },
-      (error) => {
-        console.log(error);
-      }
-
-    )
+    this.$store.dispatch("getTarifs");
   }
 
 }
@@ -57,5 +55,20 @@ export default {
 <style scoped>
 .container {
   margin-top: 100px;
+}
+
+.table-tarifaire {
+  margin-top: 30px;
+}
+
+.table-tarifaire td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+
+.table-tarifaire tr:hover {
+  background-color: #ddd;
 }
 </style>

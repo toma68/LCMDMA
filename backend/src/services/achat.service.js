@@ -7,7 +7,16 @@ const findById = (id) => Achat.findByPk(id);
 const deleteByid = (id) => Achat.destroy({where: {id: id}});
 
 const create = (achat) => {
-    var newAchat = new Achat(achat);
+    //achat = [{id:1, quantite:2}, {id:2, quantite:3}]
+    var achats = [];
+    for (var i = 0; i < achat.length; i++) {
+        achats.push({
+            tarifId: achat[i].id,
+            dateAchat: new Date(),
+            qrCode: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+            quantite: achat[i].quantite
+        });
+    }
     return newAchat.save();
 }
 

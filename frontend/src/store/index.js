@@ -59,5 +59,9 @@ export default new Vuex.Store({
         })
                 .catch(error => console.error('Error:', error))
         },
+        validerPanier({commit}, panier) {
+            console.log(panier)
+            commit('setUser', "toto")
+        }
     }, modules: {}
 })

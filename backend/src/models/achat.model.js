@@ -18,6 +18,10 @@ const Achat = sequelize.define('achat', {
     qrCode: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    quantite: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 }, {
     timestamps: false
