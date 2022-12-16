@@ -5,12 +5,8 @@
       <br>
       <br>
       <br>
-      <div class="text-center">
-        <v-btn replace outlined class="mx-6">Samedi</v-btn>
-        <v-btn replace outlined class="mx-6">Dimanche</v-btn>
-      </div>
-      <h1>Planning</h1>
-      <div class="timetable timetablePlanning"></div>
+      <PlanningSamediComponent></PlanningSamediComponent>
+      <PlanningDimancheComponent></PlanningDimancheComponent>
     </v-container>
   </main>
 </template>
@@ -23,4 +19,3 @@ export default {
   components: { PlanningSamediComponent, PlanningDimancheComponent },
 }
 </script>
-
