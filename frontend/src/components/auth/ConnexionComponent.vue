@@ -201,6 +201,10 @@
           <v-btn :disabled="invalid" type="submit">Se connecter</v-btn>
           <v-btn @click="reset">Annuler</v-btn>
         </v-form>
+        <div>
+          <br>
+          Vous n'êtes pas inscrit? <router-link to="/register">Inscrivez-vous</router-link>
+        </div>
       </div>
     </v-card>
   </main>
