@@ -23,13 +23,14 @@ exports.login = (req, res) => {
         }).catch(error => res.status(500).json({error}));
     });
 }
+
 exports.register = (req, res) => {
     bcrypt.hash(req.body.password, 10).then(hash => {
         User.create({
             login: req.body.login,
             password: hash,
-            nom: req.body.firstName,
-            prenom: req.body.lastName,
+            nom: req.body.nom,
+            prenom: req.body.prenom,
             email: req.body.email,
             roleId: 1,
         })

@@ -47,6 +47,11 @@ const routes = [
     path: '/billeterie',
     name: 'billeterie',
     component: () => import(/* webpackChunkName: "billeterie" */ '../views/BilleterieView.vue'),
+  },
+  {
+    path: '/prestataires',
+    name: 'prestataires',
+    component: () => import(/* webpackChunkName: "prestataires" */ '../views/PrestatairesView.vue'),
   }
 ]
 

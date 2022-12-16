@@ -174,7 +174,7 @@
           </g>
         </svg>
         <v-card-title class="login-title">
-          Prestataire
+          Utilisateur
         </v-card-title>
 
       </div>

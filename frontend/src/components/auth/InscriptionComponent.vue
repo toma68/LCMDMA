@@ -273,6 +273,10 @@
             <v-btn @click="reset">Annuler</v-btn>
           </div>
         </v-form>
+        <div>
+          <br>
+          Vous êtes déjà connecté? <router-link to="/login">Connectez-vous</router-link>
+        </div>
       </div>
     </v-card>
     <v-snackbar

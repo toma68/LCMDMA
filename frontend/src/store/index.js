@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import router from "@/router";
 
 Vue.use(Vuex)
 
@@ -57,6 +58,32 @@ export default new Vuex.Store({
                 .then(response => {
                     commit('setTarifs', response)
         })
+                .catch(error => console.error('Error:', error))
+        },
+        connexionUser({commit}, user) {
+            return fetch('http://localhost:3000/api/auth/login', {
+
+                method: 'POST', headers: {
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify(user)
+            })
+                .then(response => response.json())
+                .then(response => {
+                    commit('setUser', response.data)
+                    localStorage.setItem('token', response.token)
+
+                    if (response.userRole === 1) {
+                        router.push({name: 'home'})
+                            .then(r => console.log(r))
+                    } else if (response.userRole === 2) {
+                        router.push({name: 'prestataires'})
+                            .then(r => console.log(r))
+                    } else if (response.userRole === 3) {
+                        router.push({name: 'admin'})
+                            .then(r => console.log(r))
+                    }
+                    return response
+                })
                 .catch(error => console.error('Error:', error))
         },
         validerPanier({commit}, panier) {
