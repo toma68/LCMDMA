@@ -21,11 +21,16 @@ Token.belongsTo(User, {foreignKey: 'userId'});
 
 Achat.belongsTo(Tarif, {foreignKey: 'tarifId'});
 
+
+Achat.belongsTo(User, {foreignKey: 'userId'});
+
 User.hasOne(InfoPrestataire, {foreignKey: 'userId'});
+InfoPrestataire.belongsTo(User, {foreignKey: 'userId'});
+
 
 Activite.belongsTo(Stand, {foreignKey: 'standId'});
 Activite.belongsTo(TypeActivite, {foreignKey: 'typeActiviteId'});
-
+Activite.belongsTo(InfoPrestataire, {foreignKey: 'infoPrestataireId'});
 //Many-To-Many Join
 
 User.belongsToMany(Activite, {through: 'reserve'});
@@ -34,8 +39,7 @@ Activite.belongsToMany(User, {through: 'reserve'});
 InfoPrestataire.belongsToMany(Activite, {through: 'organise'});
 Activite.belongsToMany(InfoPrestataire, {through: 'organise'});
 
-User.belongsToMany(Achat, {through: 'achete'});
-Achat.belongsToMany(User, {through: 'achete'});
+
 
 
 
