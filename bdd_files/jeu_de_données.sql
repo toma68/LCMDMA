@@ -14,6 +14,7 @@ INSERT INTO tarifs VALUES
 (default, 'Pass Clan (2 adultes, 2 enfants) 2 jour', 20.0);
 
 
+
 INSERT INTO stands VALUES
 (default, 45.0, 'Acces eau et "four"'), --Forgerons
 (default, 45.0, 'Pas de besoins logistiques particulier'), --Menuisier / Ebeniste / Luttiere
@@ -39,7 +40,7 @@ INSERT INTO "roles" VALUES
 (default, 'Administrateur');
 
 INSERT INTO users VALUES
-(default, 'Becher', 'Thomas', 'thomas', 'thomas', 'thomas@gmail.com', 3),
+(default, 'Becher', 'Thomas', 'thomas', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'thomas@gmail.com', 3),
 (default, 'Dal Gobbo', 'Theo', 'theo', 'theo', 'theo@gmail.com', 3),
 (default, 'Fridelance', 'Raphael', 'raphael', 'raphael', 'raphael@gmail.com', 3),
 (default, 'Kohler', 'Jarod', 'jarod', 'jarod', 'jarod@gmail.com', 3),
@@ -49,7 +50,7 @@ INSERT INTO users VALUES
 (default, 'Trefle', 'Clotilde', 'clotilde', 'clotilde', 'clotilde@gmail.com', 2), --Forgeron3 (Marechal ferrant)
 (default, 'Passier', 'Francois', 'francois', 'francois', 'francois@gmail.com', 2), --Menuisier / Ebeniste
 (default, 'Seraph', 'Eulalie', 'eulalie', 'eulalie', 'eulalie@gmail.com', 2), --Luttière
-(default, 'Reymond', 'Calixte', 'calixte', 'calixte', 'calixte@gmail.com', 2), --Tavernier
+(default, 'Reymond', 'Calixte', 'calixte', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'calixte@gmail.com', 2), --Tavernier
 (default, 'Sand', 'Isaac', 'isaac', 'isaac', 'isaac@gmail.com', 2), --Vitrailliste
 (default, 'Dawn', 'Aurore', 'aurore', 'aurore', 'aurore@gmail.com', 2), --Poterie
 (default, 'Baudouin', 'Louis', 'louis', 'louis', 'louis@gmail.com', 2), --Cordonnier
