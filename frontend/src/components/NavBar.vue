@@ -181,15 +181,55 @@
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items>
+
+      <v-toolbar-items v-if="$store.state.user">
         <v-btn text> <router-link to="/" class="toolbar-item">Accueil</router-link></v-btn>
         <v-btn text> <router-link to="#" class="toolbar-item">Carte</router-link></v-btn>
-        <v-btn text> <router-link to="planning" class="toolbar-item">Programme</router-link></v-btn>
+        <v-btn text> <router-link to="/planning" class="toolbar-item">Programme</router-link></v-btn>
         <v-btn text> <router-link to="#" class="toolbar-item">Prestataires</router-link></v-btn>
-        <v-btn text> <router-link to="billeterie" class="toolbar-item">Billeterie</router-link></v-btn>
-        <v-btn text> <router-link to="login" class="toolbar-item">Connexion/Inscription</router-link></v-btn>
+        <v-btn text> <router-link to="/billeterie" class="toolbar-item">Billeterie</router-link></v-btn>
 
+        <v-menu offset-y v-if="$store.state.user.userRole == 3">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+                text
+                v-bind="attrs"
+                v-on="on"
+                class="toolbar-item"
+            >
+              Administration
+            </v-btn>
+          </template>
+          <v-list>
+           <v-btn text> <router-link to="/admin/prestataires" class="toolbar-item">Gestion Prestataires</router-link></v-btn>
+          </v-list>
+        </v-menu>
+        <v-menu offset-y v-if="$store.state.user.userRole == 2">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+                text
+                v-bind="attrs"
+                v-on="on"
+                class="toolbar-item"
+            >
+              Gestion
+            </v-btn>
+          </template>
+          <v-list>
+           <v-btn text> <router-link to="/prestataire/home" class="toolbar-item">Gestion Prestataires</router-link></v-btn>
+          </v-list>
+        </v-menu>
 
+        <v-btn text @click="logout"> <router-link to="/login" class="toolbar-item">Déconnexion</router-link></v-btn>
+      </v-toolbar-items>
+
+      <v-toolbar-items v-else>
+        <v-btn text> <router-link to="/" class="toolbar-item">Accueil</router-link></v-btn>
+        <v-btn text> <router-link to="#" class="toolbar-item">Carte</router-link></v-btn>
+        <v-btn text> <router-link to="/planning" class="toolbar-item">Programme</router-link></v-btn>
+        <v-btn text> <router-link to="#" class="toolbar-item">Prestataires</router-link></v-btn>
+        <v-btn text> <router-link to="/billeterie" class="toolbar-item">Billeterie</router-link></v-btn>
+        <v-btn text> <router-link to="/login" class="toolbar-item">Connexion/Inscription</router-link></v-btn>
       </v-toolbar-items>
     </v-app-bar>
   </div>
@@ -197,7 +237,12 @@
 
 <script>
 export default {
-  name: "NavBar"
+  name: "NavBar",
+  methods: {
+    logout() {
+      this.$store.dispatch("deconnexionUser");
+    }
+  }
 }
 </script>
 
