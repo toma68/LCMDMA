@@ -1,9 +1,14 @@
 const Router = require("express").Router;
 const Achatcontroller = require("../controllers/achat.controller");
+const auth = require("../../utils/auth");
 
 const router = Router();
 
-router.post("/", Achatcontroller.createAchat);
+
+
+
+
+router.post("/",auth(3), Achatcontroller.createAchat);
 router.get("/:id", Achatcontroller.getAchatById);
 router.delete("/:id", Achatcontroller.deleteAchatById);
 router.put("/:id", Achatcontroller.updateAchat);
