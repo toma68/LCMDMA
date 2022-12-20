@@ -1,8 +1,24 @@
 const InfoPrestataire = require('../models/infoPrestataire.model');
+const User = require("../models/user.model");
+const Activite = require("../models/activite.model");
+
+
 
 const findAll = () => InfoPrestataire.findAll();
 
-const findById = (id) => InfoPrestataire.findByPk(id);
+const findById = (id) => InfoPrestataire.findOne({
+    where: {userId: id},
+    include: [
+        {
+            model: User,
+            attributes: ['id', 'nom', 'prenom', 'roleId']
+        },
+        {
+            model: Activite,
+
+        }
+    ]
+});
 
 const deleteByid = (id) => InfoPrestataire.destroy({where: {numeroSiret: id}});
 
@@ -13,14 +29,8 @@ const create = (infoPrestataire) => {
 };
 
 const update = (id, infoPrestataire) => {
-    var updateInfoPrestataire = {
-        userId: infoPrestataire.userId,
-        contenuPage: infoPrestataire.contenuPage,
-        pageMasque: infoPrestataire.pageMasque,
-        nomEntreprise: infoPrestataire.nomEntreprise,
-        description: infoPrestataire.description
-    }
-    return InfoPrestataire.update(updateInfoPrestataire, {where: {numeroSiret: id}});
+    console.log(infoPrestataire);
+    return InfoPrestataire.update(infoPrestataire, {where: {userId: id}});
 }
 
 module.exports = {
