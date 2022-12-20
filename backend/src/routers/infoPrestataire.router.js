@@ -1,9 +1,10 @@
 const InfoPrestataireRouter = require("express").Router;
 const InfoPrestataireController = require("../controllers/infoPrestataire.controller");
+const auth = require("../../utils/auth");
 
 const router = InfoPrestataireRouter();
 
-router.get("/", InfoPrestataireController.getAllInfoPrestataires);
+router.get("/", auth(3), InfoPrestataireController.getAllInfoPrestataires);
 /**
  * @swagger
  * /api/infoPrestataires:
@@ -20,7 +21,7 @@ router.get("/", InfoPrestataireController.getAllInfoPrestataires);
  *              description: Bad request
  */
 
-router.get("/:id", InfoPrestataireController.getInfoPrestataireById);
+router.get("/:id", auth(2), InfoPrestataireController.getInfoPrestataireById);
 /**
  * @swagger
  * /api/infoPrestataires/{siret}:
@@ -43,7 +44,7 @@ router.get("/:id", InfoPrestataireController.getInfoPrestataireById);
  *              description: Bad request
  */
 
-router.delete("/:id", InfoPrestataireController.deleteInfoPrestataireById);
+router.delete("/:id", auth(3), InfoPrestataireController.deleteInfoPrestataireById);
 /**
  * @swagger
  * /api/infoPrestataires/{siret}:
@@ -67,7 +68,7 @@ router.delete("/:id", InfoPrestataireController.deleteInfoPrestataireById);
  */
 
 
-router.put("/:id", InfoPrestataireController.updateInfoPrestataire);
+router.put("/:id",auth(2), InfoPrestataireController.updateInfoPrestataire);
 /**
  * @swagger
  * /api/infoPrestataires/{siret}:
