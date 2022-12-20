@@ -19,7 +19,7 @@ exports.login = (req, res) => {
                 token: TokenController.createToken(user.id, req.ip),
                 userId: user.id,
                 userRole: user.roleId
-            }).catch(error => res.status(500).json({error}));
+            })
         }).catch(error => res.status(500).json({error}));
     });
 }
