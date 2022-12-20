@@ -374,12 +374,12 @@ export default {
         this.$store.dispatch("registerPrestataire", {
           login: this.login,
           password: this.password,
-          firstName: this.firstName,
-          lastName: this.lastName,
+          prenom: this.firstName,
+          nom: this.lastName,
           email: this.email,
           siret: this.siret,
-          companyName: this.companyName,
-          companyDescription: this.companyDescription,
+          nomEntreprise: this.companyName,
+          description: this.companyDescription,
         }).then(response => {
               if (response.error) {
                 this.errorRequest(response.message)
