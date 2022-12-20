@@ -30,7 +30,7 @@ const deleteAchatById = (req, res) => {
 
 const createAchat = (req, res) => {
     let achat = req.body;
-    AchatService.create(achat).then((achat) => {
+    AchatService.create(achat,req.headers.authorization.split(' ')[1], req.ip).then((achat) => {
         res.status(200).json(achat);
     }
     ).catch((err) => {
