@@ -74,7 +74,6 @@ export default {
       } else {
         this.panier.find(element => element.id == this.selectedBillet).quantite++;
       }
-      console.log(this.panier);
     },
     supprimerDuPanier(index) {
       this.panier.splice(index, 1);
@@ -90,7 +89,11 @@ export default {
       }
     },
     validerPanier() {
-      this.$store.dispatch("validerPanier", this.panier);
+      this.$store.dispatch("validerPanier", this.panier).then(
+          () => {
+            this.panier = [];
+          }
+      )
     }
   },
   created() {
