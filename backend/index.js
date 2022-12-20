@@ -38,7 +38,9 @@ app.use((req, res, next) => {
 
 //logger des requêtes
 app.use((req, res, next) => {
+    console.log('#######')
     console.log('Requête reçue à ' + new Date().toLocaleString() + ' : ' + req.method + ' ' + req.url + ' ' + JSON.stringify(req.body));
+
     next();
 });
 
