@@ -1,23 +1,39 @@
 <template>
-  <main>
-    <div class="container">
-      <h1>Vous êtes connecté en tant que {{ user.user.prenom }} {{user.user.nom}}</h1>
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Informations</h2>
-          <p>Numero de Siret : {{user.numeroSiret}}</p>
-          <p>Entreprise : {{user.nomEntreprise}}</p>
-          <p>Description : {{user.description}}</p>
-          <p>Page prestataire visible :
-            <span v-if="user.pageMasque">Non</span>
-            <span v-else>Oui</span>
+  <main class="bg">
+    <div>
+      <v-card elevation="5" style="margin-top: 150px;">
+      <div class="card-body">
+        <v-card-title class="prestataire-title">
+          Vos informations
+        </v-card-title>
+        <v-form>
+          <br>
+          Vous êtes connecté en tant que prestataire :
+          <br>
+          {{ user.user.prenom }} {{ user.user.nom }}
+          <br><br>
+          <v-icon class="mdi-account-search">mdi-account-search</v-icon> Numero de Siret : {{user.numeroSiret}}
+          <v-divider></v-divider><br>
+          <v-icon class="mdi-account-group">mdi-account-group</v-icon> Entreprise : {{user.nomEntreprise}}
+          <v-divider></v-divider><br>
+          <v-icon class="mdi-application-edit-outline">mdi-application-edit-outline</v-icon> Description :
+          <br>{{user.description}}
+          <v-divider></v-divider><br>
+          <span v-if="user.pageMasque">
+            <v-icon class="mdi-eye-off">mdi-eye-off</v-icon> Page prestataire visible : Non
+          </span>
+          <span v-else>
+            <v-icon class="mdi-eye">mdi-eye</v-icon> Page prestataire visible : Oui
+          </span>
+          <div style="float: right">
             <v-btn @click="togglePageMasque" color="primary" v-if="user.pageMasque">Afficher</v-btn>
             <v-btn @click="togglePageMasque" color="primary" v-else>Cacher</v-btn>
-          </p>
+          </div><br><br>
+          <v-divider></v-divider><br>
           <v-btn @click="editerPagePrestataire" color="primary">Modifier ma page prestataire</v-btn>
-
-        </div>
+        </v-form>
       </div>
+    </v-card>
     </div>
   </main>
 </template>
@@ -45,10 +61,20 @@ export default {
 </script>
 
 <style scoped>
+.bg {
+  width: 100vw;
+  height: 49.95vw;
+  position: absolute;
+  background: url( '../../assets/baroque_foncé.jpg') no-repeat center;
+  background-size: cover;
+  transform: scale(1.1);
+}
 
 main {
-  height: 100vh;
-  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
 .card-body {
@@ -57,13 +83,15 @@ main {
   align-items: center;
   flex-direction: column;
   padding: 50px;
+  width: 500px;
+
 }
 
 v-form {
   margin: 50px;
 }
 
-.login-title {
+.prestataire-title {
   font-size: 30px;
   font-family: 'Secular One', sans-serif;
 }

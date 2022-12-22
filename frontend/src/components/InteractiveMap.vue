@@ -554,7 +554,9 @@
           <img src="../assets/carte/forgeron_armes.jpg" alt="forgeron_armes">
         </li>
         <li id="forgeron_marechal_ferrant-text">Forgeron marechal ferrant</li>
-        <li id="forgeron_outils-text">Forgeron d'outils</li>
+        <li id="forgeron_outils-text">Forgeron d'outils
+          <img src="../assets/carte/forgeron_outils.jpeg" alt="forgeron_outils">
+        </li>
         <li id="cordonnier-text">Cordonnier</li>
         <li id="ebeniste-text">Ebeniste</li>
         <li id="scene1-text">Scene 1</li>
@@ -589,8 +591,6 @@
         <li id="taverne-text">Taverne
           <img src="../assets/carte/taverne.jpg" alt="taverne">
         </li>
-
-
       </ul>
     </v-col>
   </v-row>

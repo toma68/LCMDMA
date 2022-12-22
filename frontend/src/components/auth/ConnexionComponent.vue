@@ -257,7 +257,7 @@ export default {
   width: 100vw;
   height: 49.95vw;
   position: absolute;
-  background: url( '../../assets/baroque_foncé.jpg') no-repeat center center;
+  background: url( '../../assets/baroque_foncé.jpg') no-repeat center;
   background-size: cover;
   transform: scale(1.1);
 }
