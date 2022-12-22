@@ -80,15 +80,44 @@ INSERT INTO "infoPrestataires" VALUES
 ('33733448737176', NULL, false, 'Aux herbes du seigneur', 'Remede et plante', 13),
 ('40727170487273', NULL, false, 'Bosiege', 'Armes de siège', 14),
 ('84174659147008', NULL, false, 'Boulan-gégé', 'Boulangère', 15),
-('60732143167747', NULL, false, 'La compagnie excalibur', 'Presentateur / commentateur / animateur', 16),
+('60732143167747', NULL, false, 'La compagnie excalibur', 'Presentateur et chevaliers', 16),
 ('70584918093208', NULL, false, 'Spam Bow', 'Stand de tir à l arc', 17);
 
 
 INSERT INTO activites VALUES
+--Samedi
 (default, 'Lancer de nains', '20230708 14:00:00', '20230708 14:30:00', 'SUS AUX ENNEMIS !! Invasion de nains chez nos ennemis !', 11, 1),
 (default, 'Tir à l arc', '20230708 15:00:00', '20230708 15:30:00', 'Initiation au tir à l arc pour tous', 16, 2),
+(default, 'Tir à l arc', '20230708 12:00:00', '20230708 12:30:00', 'Initiation au tir à l arc pour tous', 16, 2),
 (default, 'Création d une épée', '20230708 14:00:00', '20230708 16:00:00', 'Venez apprendre a créer une épée dans le respect des traditions médiévales', 1, 3),
 (default, 'Voyante Irma', '20230708 10:00:00', '20230708 18:00:00', 'Madame Irma vous lis votre avenir', 9, 2),
 (default, 'Animation Torture', '20230708 11:00:00', '20230708 11:30:00', 'Animations sur différentes méthodes de torture', 8, 2),
-(default, 'Combat de joûte', '20230708 16:00:00', '20230708 17:00:00', '', 15, 1),
-(default, 'Concours de la plus belle armure', '20230709 17:00:00', '20230709 18:00:00', 'Venez déguisez avec votre plus belle armure médiévale', 14, 2);
+(default, 'Combat de joûte', '20230708 16:00:00', '20230708 17:00:00', 'Combat entre 2 chevalier', 15, 1),
+-- Dimanche
+(default, 'Concours de la plus belle armure', '20230709 17:00:00', '20230709 18:00:00', 'Venez déguisez avec votre plus belle armure médiévale', 14, 2),
+(default, 'Tir à l arc', '20230709 12:00:00', '20230709 12:30:00', 'Initiation au tir à l arc pour tous', 16, 2),
+(default, 'Tir à l arc', '20230709 14:00:00', '20230709 14:30:00', 'Initiation au tir à l arc pour tous', 16, 2),
+(default, 'Voyante Irma', '20230708 10:00:00', '20230708 18:00:00', 'Madame Irma vous lis votre avenir', 9, 2),
+(default, 'Balade en poney ou cheval', '20230709 11:00:00', '20230709 11:30:00', 'Balade en poney ou cheval', 7, 2),
+(default, 'Balade en poney ou cheval', '20230709 16:00:00', '20230709 16:30:00', 'Balade en poney ou cheval', 7, 2),
+(default, 'Combat de joûte', '20230709 15:00:00', '20230709 16:00:00', 'Combat entre 2 chevalier', 15, 1),
+(default, 'Creation d une statue en bois', '20230709 13:00:00', '20230709 15:00:00', 'Venez apprendre a créer une statue en bois dans le respect des traditions médiévales', 4, 3);
+
+INSERT INTO organise VALUES
+--Samedi
+(NOW(), NOW(), '40727170487273', 1),
+(NOW(), NOW(),'70584918093208', 2),
+(NOW(), NOW(),'70584918093208', 3),
+(NOW(), NOW(),'87080662337635', 4),
+(NOW(), NOW(),'39628881709477', 5),
+(NOW(), NOW(),'50335216387331', 6),
+(NOW(), NOW(),'60732143167747', 7),
+--Dimanche
+(NOW(), NOW(), '60732143167747', 8),
+(NOW(), NOW(),'70584918093208', 9),
+(NOW(), NOW(),'70584918093208', 10),
+(NOW(), NOW(),'39628881709477', 11),
+(NOW(), NOW(),'17277788681573', 12),
+(NOW(), NOW(),'17277788681573', 13),
+(NOW(), NOW(),'60732143167747', 14),
+(NOW(), NOW(),'62059248221134', 15);
