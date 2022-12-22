@@ -65,23 +65,23 @@ INSERT INTO users VALUES
 
 
 INSERT INTO "infoPrestataires" VALUES
-('87080662337635', 'Forgeron', false, 'Nidavallir', 'Forgeron', 1),
-('95048096745763', 'Forgeron', false, 'Forgeciel', 'Forgeron', 2),
-('97080662337635', 'Forgeron', false, 'Gaston Deffere', 'Forgeron', 3),
-('62059248221134', 'Menuisier', false, 'Wodan&Cie', 'Menuisier', 4),
-('27522326133922', 'Luttière', false, 'Scie-Physis', 'Luttière', 5),
-('82059704500021', 'Tavernier', false, 'ABII', 'Tavernier', 6),
-('70192293194212', 'Vitrailliste', false, 'Claudus Vitrail', 'Vitrailliste', 7),
-('32121568188127', 'Poterie', false, 'Pot ofeu', 'Poterie', 8),
-('28233418929499', 'Cordonnier', false, 'Chaussures au moines', 'Cordonnier', 9),
-('17277788681573', 'Ecurie', false, 'Ecurie Addada', 'Ecurie', 10),
-('50335216387331', 'Torture', false, 'Aux petits plaisirs', 'Torture', 11),
-('39628881709477', 'Voyante', false, 'Dubiff', 'Voyante', 12),
-('33733448737176', 'Remede et plante', false, 'Aux herbes du seigneur', 'Remede et plante', 13),
-('40727170487273', 'Armes de siège', false, 'Bosiege', 'Armes de siège', 14),
-('84174659147008', 'Boulangère', false, 'Boulan-gégé', 'Boulangère', 15),
-('60732143167747', 'Presentateur / commentateur / animateur', false, 'La compagnie excalibur', 'Presentateur / commentateur / animateur', 16),
-('70584918093208', 'Stand de tir à l arc', false, 'Spam Bow', 'Stand de tir à l arc', 17);
+('87080662337635', NULL, false, 'Nidavallir', 'Forgeron', 1),
+('95048096745763', NULL, false, 'Forgeciel', 'Forgeron', 2),
+('97080662337635', NULL, false, 'Gaston Deffere', 'Forgeron', 3),
+('62059248221134', NULL, false, 'Wodan&Cie', 'Menuisier', 4),
+('27522326133922', NULL, false, 'Scie-Physis', 'Luttière', 5),
+('82059704500021', NULL, false, 'ABII', 'Tavernier', 6),
+('70192293194212', NULL, false, 'Claudus Vitrail', 'Vitrailliste', 7),
+('32121568188127', NULL, false, 'Pot ofeu', 'Poterie', 8),
+('28233418929499', NULL, false, 'Chaussures au moines', 'Cordonnier', 9),
+('17277788681573', NULL, false, 'Ecurie Addada', 'Ecurie', 10),
+('50335216387331', NULL, false, 'Aux petits plaisirs', 'Torture', 11),
+('39628881709477', NULL, false, 'Dubiff', 'Voyante', 12),
+('33733448737176', NULL, false, 'Aux herbes du seigneur', 'Remede et plante', 13),
+('40727170487273', NULL, false, 'Bosiege', 'Armes de siège', 14),
+('84174659147008', NULL, false, 'Boulan-gégé', 'Boulangère', 15),
+('60732143167747', NULL, false, 'La compagnie excalibur', 'Presentateur / commentateur / animateur', 16),
+('70584918093208', NULL, false, 'Spam Bow', 'Stand de tir à l arc', 17);
 
 
 INSERT INTO activites VALUES

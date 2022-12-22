@@ -215,8 +215,10 @@
               Gestion
             </v-btn>
           </template>
-          <v-list>
+          <v-list class="text-center">
            <v-btn text> <router-link to="/prestataire/home" class="toolbar-item">Gestion Prestataires</router-link></v-btn>
+            <br>
+           <v-btn text> <router-link to="/prestataire/editer" class="toolbar-item">Modifier ma page Prestataire</router-link></v-btn>
           </v-list>
         </v-menu>
 

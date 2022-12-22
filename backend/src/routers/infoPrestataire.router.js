@@ -21,7 +21,7 @@ router.get("/", auth(3), InfoPrestataireController.getAllInfoPrestataires);
  *              description: Bad request
  */
 
-router.get("/:id", auth(2), InfoPrestataireController.getInfoPrestataireById);
+router.get("/:id", InfoPrestataireController.getInfoPrestataireById);
 /**
  * @swagger
  * /api/infoPrestataires/{siret}:

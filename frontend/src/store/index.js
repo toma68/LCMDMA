@@ -132,6 +132,17 @@ export default new Vuex.Store({
                 .then(response => {
                     commit('setPrestataire', response)
                 })
+        },
+        getPrestataireById({commit}, id) {
+            return fetch('http://localhost:3000/api/infoPrestataires/' + id, {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+                .then(response => response.json())
+                .then(response => {
+                    commit('setPrestataire', response)
+                })
         }
         ,togglePageMasque({state, commit}) {
             return fetch('http://localhost:3000/api/infoPrestataires/' + state.user.userId, {

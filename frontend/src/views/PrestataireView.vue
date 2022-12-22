@@ -5,11 +5,10 @@
 </template>
 
 <script>
-
-import PrestataireComponent from "@/components/prestataire/PrestataireComponent";
+import PrestataireComponent from "@/components/prestataire/PrestataireComponent.vue";
 
 export default {
-  name: "PrestatairesView",
+  name: "PrestataireView",
   components: {PrestataireComponent}
 }
 </script>
