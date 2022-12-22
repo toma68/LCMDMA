@@ -7,7 +7,7 @@ const infoPrestataire = sequelize.define('infoPrestataire', {
         primaryKey: true
     },
     contenuPage: {
-        type: DataTypes.STRING,
+        type: DataTypes.JSON,
         allowNull: true
     },
     pageMasque: {

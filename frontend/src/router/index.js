@@ -51,7 +51,17 @@ const routes = [
   {
     path: '/prestataire/home',
     name: 'prestataires',
-    component: () => import(/* webpackChunkName: "prestataires" */ '../views/PrestatairesView.vue'),
+    component: () => import(/* webpackChunkName: "prestataires" */ '../views/PrestatairesHomeView.vue'),
+  },
+  {
+    path: '/prestataire/editer',
+    name: 'prestatairesEditer',
+    component: () => import(/* webpackChunkName: "prestatairesEditer" */ '../views/PrestatairesEditerView.vue'),
+  },
+  {
+    path: '/prestataire/:id',
+    name: 'PrestatairePage',
+    component: () => import(/* webpackChunkName: "prestatairesEditer" */ '../views/PrestataireView.vue'),
   }
 ]
 
