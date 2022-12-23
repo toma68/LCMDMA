@@ -1,17 +1,13 @@
 <template>
   <main>
-    <div class="container">
-      <ElementPersonalisable v-for="element in prestataire.contenuPage" :contenu="element.contenu" :type="element.type" v-bind:key="element.id" />
-    </div>
+    <div class="container" v-html="prestataire.contenuPage"></div>
   </main>
 </template>
 
 <script>
-import ElementPersonalisable from "@/components/composantsPagePersonalisee/ElementPersonalisable.vue";
 
 export default {
   name: "PrestataireComponent",
-  components: {ElementPersonalisable},
   methods: {
   },
   mounted() {
@@ -29,5 +25,6 @@ export default {
 main {
   height: 100vh;
   margin-top: 150px;
+  font-family: Roboto,-apple-system,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 </style>

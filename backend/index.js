@@ -26,8 +26,12 @@ const swaggerUi = require('swagger-ui-express');
 //Création de l'application
 const app = express();
 const port = process.env.PORT ||3000;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+
+
 //cors
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

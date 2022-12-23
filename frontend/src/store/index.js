@@ -158,6 +158,21 @@ export default new Vuex.Store({
                         pageMasque: !state.prestataire.pageMasque
                     })
                 });
+        },
+        updateContenuPage({state, commit},contenu) {
+            return fetch('http://localhost:3000/api/infoPrestataires/' + state.user.userId, {
+                method: 'PUT', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }, body: JSON.stringify({
+                    contenuPage: contenu
+                })
+            }).then(response => response.json())
+                .then(() => {
+                    commit('setPrestataire', {
+                        ...state.prestataire,
+                        contenuPage: contenu
+                    })
+                });
         }
     },
     getters: {
