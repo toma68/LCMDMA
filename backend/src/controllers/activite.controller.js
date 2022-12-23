@@ -49,10 +49,19 @@ const updateActivite = (req, res) => {
     });
 }
 
+const getActiviteStand = (req, res) => {
+    ActiviteService.activiteStand().then((activites) => {
+        res.status(200).json(activites);
+    }).catch((err) => {
+        res.status(500).json(err);
+    });
+}
+
 module.exports = {
     getAllActivites,
     getActiviteById,
     deleteActiviteById,
     createActivite,
-    updateActivite
+    updateActivite,
+    getActiviteStand
 }
