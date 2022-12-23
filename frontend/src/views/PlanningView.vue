@@ -8,7 +8,7 @@
       <div class="text-center">
         <button v-on:click="showComponent = !showComponent" class="button">Changer de jour</button>
       </div>
-      <PlanningSamediComponent v-if="showComponent"></PlanningSamediComponent>
+      <PlanningSamediComponent v-if="showComponent" :activite="{name: 'Lancer de nain', stand: 'Engin de sièges', heureDebut: '20230708 14:00:00', heureFin: '20230708 14:30:00'}"></PlanningSamediComponent>
       <PlanningDimancheComponent v-else></PlanningDimancheComponent>
     </v-container>
   </main>
@@ -24,7 +24,8 @@ export default {
     return {
       showComponent: true
     }
-  }
+  },
+
 }
 </script>
 
