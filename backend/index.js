@@ -16,6 +16,8 @@ const InfoPrestataireRoutes = require('./src/routers/infoPrestataire.router');
 const StandRoutes = require('./src/routers/stand.router');
 const TarifRoutes = require('./src/routers/tarif.router');
 const TypeActiviteRoutes = require('./src/routers/typeActivite.router');
+const LivreDOrRoutes = require('./src/routers/livre-d-or.router');
+const ServicesRoutes = require('./src/routers/services.router');
 
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -80,6 +82,8 @@ app.use('/api/infoPrestataires', InfoPrestataireRoutes);
 app.use('/api/stands', StandRoutes);
 app.use('/api/tarifs', TarifRoutes);
 app.use('/api/typeActivites', TypeActiviteRoutes);
+app.use('/api/livre-d-or', LivreDOrRoutes);
+app.use('/api/services', ServicesRoutes);
 
 //lancement de l'application
 app.listen(port,()=>{

@@ -17,6 +17,10 @@
           <v-btn @click="editerPagePrestataire" color="primary">Modifier ma page prestataire</v-btn>
 
         </div>
+        <div class="col-md-6">
+          <h2>Vos services</h2>
+          <v-switch v-for="service in services" :key="service.id" :label="service.libelle" v-model="service.checked" @change="toggleService(service.id)"></v-switch>
+        </div>
       </div>
     </div>
   </main>
@@ -35,10 +39,14 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getPrestataire");
+    this.$store.dispatch("getServices");
   },
   computed: {
     user() {
       return this.$store.getters.prestataire;
+    },
+    services() {
+      return this.$store.getters.services;
     }
   }
 }
@@ -51,20 +59,8 @@ main {
   margin-top: 150px;
 }
 
-.card-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 50px;
-}
-
 v-form {
   margin: 50px;
 }
 
-.login-title {
-  font-size: 30px;
-  font-family: 'Secular One', sans-serif;
-}
 </style>

@@ -1,6 +1,5 @@
 const sequelize = require('../db.js');
 
-const insertData = require('./insertData.js');
 
 
 const Achat = require('../src/models/achat.model');
@@ -12,6 +11,8 @@ const Tarif = require('../src/models/tarif.model');
 const Token = require('../src/models/token.model');
 const TypeActivite = require('../src/models/typeActivite.model');
 const User = require('../src/models/user.model');
+const LivreDOr = require('../src/models/livre-d-or.model');
+const Services = require('../src/models/services.model');
 
 // One-to-Many Join
 
@@ -21,6 +22,8 @@ Token.belongsTo(User, {foreignKey: 'userId'});
 
 Achat.belongsTo(Tarif, {foreignKey: 'tarifId'});
 
+LivreDOr.belongsTo(User, {foreignKey: 'posterId'});
+LivreDOr.belongsTo(User, {foreignKey: 'recieverId'});
 
 Achat.belongsTo(User, {foreignKey: 'userId'});
 
@@ -39,11 +42,12 @@ Activite.belongsToMany(User, {through: 'reserve'});
 InfoPrestataire.belongsToMany(Activite, {through: 'organise'});
 Activite.belongsToMany(InfoPrestataire, {through: 'organise'});
 
+InfoPrestataire.belongsToMany(Services, {through: 'offre'});
+Services.belongsToMany(InfoPrestataire, {through: 'offre'});
 
 
 
-
-sequelize.sync({alter:true})
+sequelize.sync({alter: true})
     .then(() => {
         console.log("Tables created");
         //insertData();

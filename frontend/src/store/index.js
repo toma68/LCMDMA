@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: null, tarifs: null, achats: null, prestataire: null,
+        user: null, tarifs: null, achats: null, prestataire: null, services:null
     }, mutations: {
         setUser(state, user) {
             state.user = user
@@ -21,6 +21,9 @@ export default new Vuex.Store({
             state.achats.push(achat)
         }, setPrestataire(state, prestataire) {
             state.prestataire = prestataire
+        },
+        setServices(state, services) {
+            state.services = services
         }
     },
     actions: {
@@ -122,7 +125,8 @@ export default new Vuex.Store({
                     return response
                 })
                 .catch(error => console.error('Error:', error))
-        }, getPrestataire({state, commit}) {
+        },
+        getPrestataire({state, commit}) {
             return fetch('http://localhost:3000/api/infoPrestataires/' + state.user.userId, {
                 method: 'GET', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -173,12 +177,27 @@ export default new Vuex.Store({
                         contenuPage: contenu
                     })
                 });
+        },
+        getServices({commit}) {
+            return fetch('http://localhost:3000/api/services', {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
+            }).then(
+                response => response.json()
+            ).then(
+                response => {
+                    commit('setServices', response)
+                }
+            )
+    }
+
     },
     getters: {
         user: state => state.user,
         tarifs: state => state.tarifs,
         achats: state => state.achats,
         prestataire: state => state.prestataire,
+        services: state => state.services
     }
 })

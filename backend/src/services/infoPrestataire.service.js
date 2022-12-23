@@ -29,7 +29,6 @@ const create = (infoPrestataire) => {
 };
 
 const update = (id, infoPrestataire) => {
-    //remove script tags
     infoPrestataire.contenuPage = infoPrestataire.contenuPage.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
     return InfoPrestataire.update(infoPrestataire, {where: {userId: id}});
 }
