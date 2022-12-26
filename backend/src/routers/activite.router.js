@@ -20,6 +20,24 @@ router.get("/", Activitecontroller.getAllActivites);
  *              description: Bad request
  */
 
+router.get("/stand", Activitecontroller.getActiviteStand);
+/**
+ * @swagger
+ * /api/activites/stand:
+ *  get:
+ *      description: Utilisée pour récupérer les activités d'un stand
+ *      tags:
+ *          - activités
+ *      responses:
+ *          '200':
+ *              description: Resource receive successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ *
+ */
+
 router.get("/:id", Activitecontroller.getActiviteById);
 /**
  * @swagger
@@ -152,22 +170,5 @@ router.put("/:id", Activitecontroller.updateActivite);
  *              description: Bad request
  */
 
-router.get("/stand", Activitecontroller.getActiviteStand);
-/**
- * @swagger
- * /api/activites/stand:
- *  get:
- *      description: Utilisée pour récupérer les activités d'un stand
- *      tags:
- *          - activités
- *      responses:
- *          '200':
- *              description: Resource receive successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- *
- */
 
 module.exports = router;

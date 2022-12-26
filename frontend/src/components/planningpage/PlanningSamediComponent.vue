@@ -9,16 +9,24 @@
 import Timetable from 'timetable.js'
 export default {
   name: "PlanningSamediComponent",
-  props: {
-    activite: Object
-  },
-  mounted() {
+  props: ["tab"],
+  async mounted() {
     const timetableSamedi = new Timetable();
-    timetableSamedi.setScope(10, 20);
-      this.activite.forEach((result) => {
-      timetableSamedi.addLocations([result.stand]);
-      timetableSamedi.addEvent(result.name, result.stand, new Date(result.heureDebut), new Date(result.heureFin));
-    })
+    timetableSamedi.setScope(10, 18);
+    const location = [];
+    await this.tab.forEach(element => {
+      if (!location.includes(element['infoPrestataire'].description)) {
+        location.push(element['infoPrestataire'].description);
+      }
+    });
+    timetableSamedi.addLocations(location);
+    await this.tab.forEach(element => {
+      const dateDebut = new Date(element.heureDebut);
+      dateDebut.setHours(dateDebut.getHours()-2);
+      const dateFin = new Date(element.heureFin);
+      dateFin.setHours(dateFin.getHours()-2);
+      timetableSamedi.addEvent(element.nom, element['infoPrestataire'].description, dateDebut, dateFin);
+    });
     const renderer = new Timetable.Renderer(timetableSamedi);
     renderer.draw('.timetableSamedi');
   }

@@ -8,8 +8,8 @@
       <div class="text-center">
         <button v-on:click="showComponent = !showComponent" class="button">Changer de jour</button>
       </div>
-      <PlanningSamediComponent v-if="showComponent" :activite="{name: 'Lancer de nain', stand: 'Engin de sièges', heureDebut: '20230708 14:00:00', heureFin: '20230708 14:30:00'}"></PlanningSamediComponent>
-      <PlanningDimancheComponent v-else></PlanningDimancheComponent>
+      <PlanningSamediComponent v-if="showComponent" v-bind:tab="samedi"></PlanningSamediComponent>
+      <PlanningDimancheComponent v-else v-bind:tab="dimanche"></PlanningDimancheComponent>
     </v-container>
   </main>
 </template>
@@ -17,16 +17,41 @@
 <script>
 import PlanningSamediComponent from "@/components/planningpage/PlanningSamediComponent";
 import PlanningDimancheComponent from "@/components/planningpage/PlanningDimancheComponent";
+import axios from 'axios';
 export default {
   name: 'PlanningView',
   components: { PlanningSamediComponent, PlanningDimancheComponent },
   data() {
     return {
-      showComponent: true
-    }
+      showComponent: true,
+      data: [],
+      samedi: [],
+      dimanche: []
+    };
   },
-
-}
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      axios.get('http://localhost:3000/api/activites/stand')
+        .then(response => {
+          this.data = response.data;
+          this.data.forEach(element => {
+            const filterDate = element.heureDebut.split('T')[0];
+            if (filterDate === '2023-07-08') {
+              this.samedi.push(element);
+            } else {
+              this.dimanche.push(element);
+            }
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    }
+  }
 </script>
 
 <style scoped>
