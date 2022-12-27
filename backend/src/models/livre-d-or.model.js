@@ -1,6 +1,12 @@
-const {DataTypes} = require('sequelize');
+const {DataTypes, INTEGER} = require('sequelize');
 const sequelize = require('../../db.js');
 const LivreDOr = sequelize.define('livreDOr', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
     contenuMessage: {
         type: DataTypes.STRING,
         allowNull: false
@@ -14,7 +20,7 @@ const LivreDOr = sequelize.define('livreDOr', {
         allowNull: false
     },
     noteMessage: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
     }
 }, {

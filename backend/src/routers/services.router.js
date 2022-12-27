@@ -6,7 +6,7 @@ const router = Router();
 
 router.get("/",auth(2), ServicesController.getAllServices);
 
-router.put("/:id",auth(3), ServicesController.updateServices);
+router.put("/:id",auth(2), ServicesController.updateServices);
 
 router.get("/:id",auth(3), ServicesController.getServicesById);
 

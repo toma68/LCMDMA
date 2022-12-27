@@ -1,6 +1,7 @@
 const InfoPrestataire = require('../models/infoPrestataire.model');
 const User = require("../models/user.model");
 const Activite = require("../models/activite.model");
+const Services = require("../models/services.model");
 
 
 
@@ -16,6 +17,9 @@ const findById = (id) => InfoPrestataire.findOne({
         {
             model: Activite,
 
+        },
+        {
+            model: Services,
         }
     ]
 });

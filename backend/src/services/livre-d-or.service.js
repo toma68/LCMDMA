@@ -1,29 +1,30 @@
 const LivreDOrMessages = require('../models/livre-d-or.model');
+const User = require("../models/user.model");
+const {INTEGER} = require("sequelize");
 
 const findAll = () => LivreDOrMessages.findAll();
 
-const findById = (posterid, receiverid) => LivreDOrMessages.findOne({
-    where: {
-        posterId: posterid, receiverId: receiverid
-    }
+const findById = (receiverSiret) => LivreDOrMessages.findAll({
+    where: {receiverSiret: receiverSiret},
+    order: [
+        ['dateCreation', 'DESC']
+    ],
+    include: [{
+        model: User,
+        attributes: ['id', 'nom', 'prenom', 'roleId']
+
+    }]
 });
 
 const deleteByid = (posterid, receiverid) => LivreDOrMessages.destroy({
     where: {
         posterId: posterid, receiverId: receiverid
-}
-    });
+    }
+});
 
-const create = (id, livreDOrMessage) => {
+const create = (livreDOrMessage) => {
     livreDOrMessage.contenuMessage = livreDOrMessage.contenuMessage.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
-    let newLivreDOrMessage = new LivreDOrMessages({
-        contenuMessage: livreDOrMessage.contenuMessage,
-        noteMessage: livreDOrMessage.noteMessage,
-        posterId: id,
-        receiverId: livreDOrMessage.receiverId,
-        dateCreation: new Date(),
-        dateModification: new Date()
-    });
+    let newLivreDOrMessage = new LivreDOrMessages(livreDOrMessage);
     return newLivreDOrMessage.save();
 }
 

@@ -8,7 +8,7 @@ router.post("/",auth(1), LivreDOrController.createLivreDOrMessage);
 
 router.get("/",auth(3), LivreDOrController.getAllLivreDOrMessages);
 
-router.get("/:id", auth(1), LivreDOrController.getLivreDOrMessageById);
+router.get("/:id", LivreDOrController.getLivreDOrMessageById);
 
 router.delete("/:id", auth(1), LivreDOrController.deleteLivreDOrMessageById);
 

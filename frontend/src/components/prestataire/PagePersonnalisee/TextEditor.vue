@@ -1,10 +1,9 @@
 <template>
   <main>
-    <vue-editor :editorOptions="editorSettings" v-model="content"> </vue-editor>
-
-    <v-btn color="success mt-10" @click="validerUpdate">
-      Valider
-    </v-btn>
+      <vue-editor :editorOptions="editorSettings" v-model="content"> </vue-editor>
+      <v-btn color="success mt-10" @click="validerUpdate">
+        Valider
+      </v-btn>
   </main>
 
 </template>
@@ -35,7 +34,7 @@ export default {
   props: {
     contenu: {
       type: String,
-      required: true
+      required: false
     }
   },
   methods: {

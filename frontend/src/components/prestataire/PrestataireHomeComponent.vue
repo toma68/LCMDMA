@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-6">
           <h2>Vos services</h2>
-          <v-switch v-for="service in services" :key="service.id" :label="service.libelle" v-model="service.checked" @change="toggleService(service.id)"></v-switch>
+          <v-switch v-for="service in services" :key="service.id" :label="service.libelle" v-model="service.checked" @change="toggleService(service.id, service.checked)"></v-switch>
         </div>
       </div>
     </div>
@@ -35,6 +35,9 @@ export default {
     },
     editerPagePrestataire() {
       this.$router.push("/prestataire/editer");
+    },
+    toggleService(id,bool) {
+      this.$store.dispatch("toggleService", {id: id, bool:bool});
     }
   },
   mounted() {

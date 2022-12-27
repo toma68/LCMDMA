@@ -1,7 +1,7 @@
 const sequelize = require('../db.js');
 
 
-
+const Offre = require('../src/models/offre.model.js');
 const Achat = require('../src/models/achat.model');
 const Activite = require('../src/models/activite.model');
 const InfoPrestataire = require('../src/models/infoPrestataire.model');
@@ -23,7 +23,7 @@ Token.belongsTo(User, {foreignKey: 'userId'});
 Achat.belongsTo(Tarif, {foreignKey: 'tarifId'});
 
 LivreDOr.belongsTo(User, {foreignKey: 'posterId'});
-LivreDOr.belongsTo(User, {foreignKey: 'recieverId'});
+LivreDOr.belongsTo(InfoPrestataire, {foreignKey: 'receiverSiret'});
 
 Achat.belongsTo(User, {foreignKey: 'userId'});
 

@@ -1,18 +1,27 @@
 const Services = require('../models/services.model');
-
+const Offre = require('../models/offre.model');
 
 const findAll = () => Services.findAll();
 
 const findById = (id) => Services.findByPk(id);
 
 
-const update = (id, service) => {
-    var updateService = {
-        id: service.id,
-        libelle: service.libelle,
-        prix: service.prix
+const update = (numeroSiret, service,bool) => {
+    //ajout d'une ligne dans la table de jointure entre services et prestataires
+    if (bool) {
+        return Offre.create({
+            infoPrestataireNumeroSiret: numeroSiret,
+            serviceId: service
+        })}
+    //suppression d'une ligne dans la table de jointure entre services et prestataires
+    else {
+        return Offre.destroy({
+            where: {
+                infoPrestataireNumeroSiret: numeroSiret,
+                serviceId: service
+            }
+        })
     }
-    return Services.update(updateService, {where: {id: id}});
 }
 
 module.exports = {

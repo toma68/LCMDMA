@@ -10,9 +10,8 @@ const getAllLivreDOrMessages = (req, res) => {
 }
 
 const getLivreDOrMessageById = (req, res) => {
-    let posterid = getUserByToken(req.headers.authorization.split(' ')[1]).id;
-    let receiverid = req.body.receiverid;
-    LivreDOrService.findById(posterid, receiverid).then((livreDOrMessage) => {
+    let receiverid = req.params.id;
+    LivreDOrService.findById(receiverid).then((livreDOrMessage) => {
         res.status(200).json(livreDOrMessage);
     }
     ).catch((err) => {
@@ -31,9 +30,18 @@ const deleteLivreDOrMessageById = (req, res) => {
     });
 }
 
-const createLivreDOrMessage = (req, res) => {
+const createLivreDOrMessage = async (req, res) => {
     let livreDOrMessage = req.body;
-    LivreDOrService.create(livreDOrMessage,req.headers.authorization.split(' ')[1], req.ip).then((livreDOrMessage) => {
+    livreDOrMessage.posterId = await getUserByToken(req.headers.authorization.split(' ')[1])
+    livreDOrMessage = {
+        contenuMessage: livreDOrMessage.contenuMessage,
+        noteMessage: livreDOrMessage.noteMessage,
+        posterId: livreDOrMessage.posterId.userId,
+        receiverSiret: parseInt(livreDOrMessage.prestataire),
+        dateCreation: new Date(),
+        dateModification: new Date()
+    }
+    LivreDOrService.create(livreDOrMessage).then((livreDOrMessage) => {
         res.status(200).json(livreDOrMessage);
     }
     ).catch((err) => {
