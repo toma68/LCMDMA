@@ -9,20 +9,31 @@
 import Timetable from 'timetable.js'
 export default {
   name: "PlanningDimancheComponent",
-  mounted() {
+  props: ["tab"],
+  async mounted() {
     const timetableDimanche = new Timetable();
     timetableDimanche.setScope(10, 18);
-    timetableDimanche.addLocations(["Stand de tir", "Voyante", "Combat de joûtes", "Ecurie", "Menuisier Ebeniste", "Scène 2"]);
-    timetableDimanche.addEvent('Concours de la plus belle armure', 'Scène 2', new Date(2023, 7, 9, 17), new Date(2023, 7, 9, 18));
-    timetableDimanche.addEvent('Création d une statue en bois', 'Menuisier Ebeniste', new Date(2023, 7, 9, 13), new Date(2023, 7, 9, 15));
-    timetableDimanche.addEvent('Tir à l arc', 'Stand de tir', new Date(2023, 7, 9, 14), new Date(2023, 7, 9, 14, 30));
-    timetableDimanche.addEvent('Tir à l arc', 'Stand de tir', new Date(2023, 7, 9, 12), new Date(2023, 7, 9, 12, 30));
-    timetableDimanche.addEvent('Voyance', 'Voyante', new Date(2023, 7, 9, 10), new Date(2023, 7, 9, 18));
-    timetableDimanche.addEvent('Balade en Poney / Cheval', 'Ecurie', new Date(2023, 7, 9, 11), new Date(2023, 7, 9, 11, 30));
-    timetableDimanche.addEvent('Balade en Poney / Cheval', 'Ecurie', new Date(2023, 7, 9, 16), new Date(2023, 7, 9, 16, 30));
-    timetableDimanche.addEvent('Combat de joûtes', 'Combat de joûtes', new Date(2023, 7, 9, 15), new Date(2023, 7, 9, 16));
+    const location = [];
+    await this.tab.forEach(element => {
+      if (!location.includes(element['infoPrestataire'].description)) {
+        location.push(element['infoPrestataire'].description);
+      }
+    });
+    location.push("Scène 1");
+    timetableDimanche.addLocations(location);
+    await this.tab.forEach(element => {
+      const dateDebut = new Date(element.heureDebut);
+      dateDebut.setHours(dateDebut.getHours()-2);
+      const dateFin = new Date(element.heureFin);
+      dateFin.setHours(dateFin.getHours()-2);
+      if (element.nom === "Concours de la plus belle armure") {
+        timetableDimanche.addEvent(element.nom, "Scène 1", dateDebut, dateFin);
+      } else {
+        timetableDimanche.addEvent(element.nom, element['infoPrestataire'].description, dateDebut, dateFin);
+      }
+    });
     const renderer = new Timetable.Renderer(timetableDimanche);
-    renderer.draw('.timetableDimanche'); // any css selector
+    renderer.draw('.timetableDimanche');
   }
 }
 </script>

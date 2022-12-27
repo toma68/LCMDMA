@@ -1,4 +1,5 @@
 const Activite = require('../models/activite.model');
+const infoPrestataire = require('../models/infoPrestataire.model');
 
 const findAll = () => Activite.findAll();
 
@@ -22,11 +23,22 @@ const update = (id, activite) => {
     return Activite.update(updateActivite, {where: {id: id}});
 }
 
+const activiteStand = () => {
+    return Activite.findAll({
+        attributes: ['nom', 'heureDebut', 'heureFin'],
+        include: [{
+            model: infoPrestataire,
+            attributes: ['description'],
+        }]
+    });
+}
+
 module.exports = {
     findAll,
     findById,
     deleteByid,
     create,
-    update
+    update,
+    activiteStand
 };
 

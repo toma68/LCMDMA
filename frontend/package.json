@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@daypilot/daypilot-lite-vue": "^3.11.0",
+    "axios": "^1.2.1",
     "core-js": "^3.8.3",
     "quill": "^1.3.7",
     "quill-image-drop-module": "^1.0.3",
