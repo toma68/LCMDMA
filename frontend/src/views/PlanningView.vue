@@ -17,7 +17,6 @@
 <script>
 import PlanningSamediComponent from "@/components/planningpage/PlanningSamediComponent";
 import PlanningDimancheComponent from "@/components/planningpage/PlanningDimancheComponent";
-import axios from 'axios';
 export default {
   name: 'PlanningView',
   components: { PlanningSamediComponent, PlanningDimancheComponent },
@@ -34,16 +33,18 @@ export default {
   },
   methods: {
     fetchData() {
-      axios.get('http://localhost:3000/api/activites/stand')
-        .then(response => {
-          this.data = response.data;
-          this.data.forEach(element => {
-            const filterDate = element.heureDebut.split('T')[0];
-            if (filterDate === '2023-07-08') {
-              this.samedi.push(element);
-            } else {
-              this.dimanche.push(element);
-            }
+      fetch('http://localhost:3000/api/activites/stand')
+          .then(response => response.json())
+          .then(data => {
+            this.data = data;
+            this.data.forEach(element => {
+              const filterDate = element.heureDebut.split('T')[0];
+              if (filterDate === '2023-07-08') {
+                this.samedi.push(element);
+              }
+              else {
+                this.dimanche.push(element);
+              }
           });
         })
         .catch(error => {
