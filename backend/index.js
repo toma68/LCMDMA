@@ -62,6 +62,11 @@ const swaggerOption = {
             },
             servers: ["http://localhost:3000/"],
         },
+        securityDefinitions: {
+            Auth: {
+                type: "apiKey",
+            }
+        }
     }),
     apis: ["index.js", "./src/routers/*.js"],
 };
