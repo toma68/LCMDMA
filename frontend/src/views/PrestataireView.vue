@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PrestataireComponent from "@/components/prestataire/PrestataireComponent.vue";
+import PrestataireComponent from "@/components/prestataire/PagePersonnalisee/PrestataireComponent.vue";
 
 export default {
   name: "PrestataireView",

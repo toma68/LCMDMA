@@ -16,6 +16,8 @@ const InfoPrestataireRoutes = require('./src/routers/infoPrestataire.router');
 const StandRoutes = require('./src/routers/stand.router');
 const TarifRoutes = require('./src/routers/tarif.router');
 const TypeActiviteRoutes = require('./src/routers/typeActivite.router');
+const LivreDOrRoutes = require('./src/routers/livre-d-or.router');
+const ServicesRoutes = require('./src/routers/services.router');
 
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -26,8 +28,12 @@ const swaggerUi = require('swagger-ui-express');
 //Création de l'application
 const app = express();
 const port = process.env.PORT ||3000;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+
+
 //cors
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -76,6 +82,8 @@ app.use('/api/infoPrestataires', InfoPrestataireRoutes);
 app.use('/api/stands', StandRoutes);
 app.use('/api/tarifs', TarifRoutes);
 app.use('/api/typeActivites', TypeActiviteRoutes);
+app.use('/api/livre-d-or', LivreDOrRoutes);
+app.use('/api/services', ServicesRoutes);
 
 //lancement de l'application
 app.listen(port,()=>{

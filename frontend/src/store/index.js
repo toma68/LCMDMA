@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: null, tarifs: null, achats: null, prestataire: null,
+        user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null
     }, mutations: {
         setUser(state, user) {
             state.user = user
@@ -21,9 +21,19 @@ export default new Vuex.Store({
             state.achats.push(achat)
         }, setPrestataire(state, prestataire) {
             state.prestataire = prestataire
+        }, setServices(state, services) {
+            state.services = services
+        },
+        setMessages(state, messages) {
+            state.messages = messages
+        },
+        addMessage(state, message){
+            state.messages.push(message)
+        },
+        trashCommit() {
+
         }
-    },
-    actions: {
+    }, actions: {
         registerPrestataire({commit}, prestataire) {
             return fetch('http://localhost:3000/api/auth/register', {
 
@@ -37,8 +47,7 @@ export default new Vuex.Store({
                     return response
                 })
                 .catch(error => console.error('Error:', error))
-        }
-        ,registerUser({commit}, user) {
+        }, registerUser({commit}, user) {
             return fetch('http://localhost:3000/api/auth/register', {
 
                 method: 'POST', headers: {
@@ -60,8 +69,7 @@ export default new Vuex.Store({
                     return response
                 })
                 .catch(error => console.error('Error:', error))
-        }
-        ,connexionUser({commit}, user) {
+        }, connexionUser({commit}, user) {
             return fetch('http://localhost:3000/api/auth/login', {
 
                 method: 'POST', headers: {
@@ -87,16 +95,14 @@ export default new Vuex.Store({
                     return response
                 })
                 .catch(error => console.error('Error:', error))
-        }
-        ,deconnexionUser({commit}) {
+        }, deconnexionUser({commit}) {
             commit('clearUser')
             localStorage.removeItem('token')
             localStorage.removeItem('role')
             router.push({name: 'login'})
                 .then(r => console.log(r))
 
-        }
-        ,getTarifs({commit}) {
+        }, getTarifs({commit}) {
             return fetch('http://localhost:3000/api/tarifs', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -107,8 +113,7 @@ export default new Vuex.Store({
                     commit('setTarifs', response)
                 })
                 .catch(error => console.error('Error:', error))
-        }
-        ,validerPanier({commit}, panier) {
+        }, validerPanier({commit}, panier) {
             return fetch('http://localhost:3000/api/achats/', {
                 method: 'POST', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -132,8 +137,7 @@ export default new Vuex.Store({
                 .then(response => {
                     commit('setPrestataire', response)
                 })
-        },
-        getPrestataireById({commit}, id) {
+        }, getPrestataireById({commit}, id) {
             return fetch('http://localhost:3000/api/infoPrestataires/' + id, {
                 method: 'GET', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -143,8 +147,7 @@ export default new Vuex.Store({
                 .then(response => {
                     commit('setPrestataire', response)
                 })
-        }
-        ,togglePageMasque({state, commit}) {
+        }, togglePageMasque({state, commit}) {
             return fetch('http://localhost:3000/api/infoPrestataires/' + state.user.userId, {
                 method: 'PUT', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -154,16 +157,79 @@ export default new Vuex.Store({
             }).then(response => response.json())
                 .then(() => {
                     commit('setPrestataire', {
-                        ...state.prestataire,
-                        pageMasque: !state.prestataire.pageMasque
+                        ...state.prestataire, pageMasque: !state.prestataire.pageMasque
                     })
                 });
+        }, updateContenuPage({state, commit}, contenu) {
+            return fetch('http://localhost:3000/api/infoPrestataires/' + state.user.userId, {
+                method: 'PUT', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }, body: JSON.stringify({
+                    contenuPage: contenu
+                })
+            }).then(response => response.json())
+                .then(() => {
+                    commit('setPrestataire', {
+                        ...state.prestataire, contenuPage: contenu
+                    })
+                });
+        }, getServices({state, commit}) {
+            return fetch('http://localhost:3000/api/services', {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then(response => response.json()).then(response => {
+                response.forEach(service => {
+                    state.prestataire.services.forEach(servicePrestataire => {
+                        if (servicePrestataire.id === service.id) {
+                            service.checked = true;
+                        }
+                    });
+                })
+                commit('setServices', response)
+            })
+        }, toggleService({state}, service) {
+            return fetch('http://localhost:3000/api/services/' + state.user.userId, {
+                method: 'PUT', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }, body: JSON.stringify({
+                    services: service.id, numeroSiret: state.prestataire.numeroSiret, bool: service.bool
+                })
+            })
+        },
+        getMessagesFromLivreDOr({commit}, siret) {
+            return fetch('http://localhost:3000/api/livre-d-or/' + siret, {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((response) => {
+                    return response.json()
+                })
+                .then(
+                    (messages) => commit('setMessages', messages)
+                )
+        },
+        addMessageOnLivreDOr({commit}, message) {
+            return fetch('http://localhost:3000/api/livre-d-or/', {
+                method: 'POST', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }, body: JSON.stringify(
+                    message
+                )
+            }).then((response) => {
+                return response.json()
+            }).then((message) => {
+                commit('addMessage', message)
+                }
+            )
         }
-    },
-    getters: {
+    }, getters: {
         user: state => state.user,
         tarifs: state => state.tarifs,
         achats: state => state.achats,
         prestataire: state => state.prestataire,
+        services: state => state.services,
+        messages: state => state.messages
     }
 })

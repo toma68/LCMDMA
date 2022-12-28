@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import EditerPrestataire from "@/components/prestataire/EditerPrestataire.vue";
+import EditerPrestataire from "@/components/prestataire/PagePersonnalisee/EditerPrestataire.vue";
 
 export default {
   name: "EditerPagePrestataireView",
