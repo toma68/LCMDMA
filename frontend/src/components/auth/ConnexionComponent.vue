@@ -1,5 +1,5 @@
 <template>
-  <main class="bg">
+  <main>
     <v-card elevation="5" style="margin-top: 150px;">
       <div class="card-body">
         <svg id="icon-chateau" viewBox="192.34797516321805 108.36917018890381 127.30404804810678 199.09403228759766"
@@ -253,20 +253,15 @@ export default {
 </script>
 
 <style scoped>
-.bg {
-  width: 100vw;
-  height: 49.95vw;
-  position: absolute;
-  background: url( '../../assets/baroque_foncé.jpg') no-repeat center;
-  background-size: cover;
-  transform: scale(1.1);
-}
-
 main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 100vh;
+  background-image: url( '../../assets/baroque_foncé.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .card-body {

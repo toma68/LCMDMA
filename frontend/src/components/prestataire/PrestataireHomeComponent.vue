@@ -1,5 +1,5 @@
 <template>
-  <main class="bg">
+  <main>
     <div>
       <v-card elevation="5" style="margin-top: 150px;">
         <div class="card-body">
@@ -79,20 +79,15 @@ export default {
 </script>
 
 <style scoped>
-.bg {
-  width: 100vw;
-  height: 49.95vw;
-  position: absolute;
-  background: url( '../../assets/baroque_foncé.jpg') no-repeat center;
-  background-size: cover;
-  transform: scale(1.1);
-}
-
 main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 100vh;
+  background-image: url( '../../assets/baroque_foncé.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .card-body {

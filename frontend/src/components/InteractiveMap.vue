@@ -1,9 +1,10 @@
 <template>
-  <v-row>
-    <v-col class="map-image" cols="10">
-      <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  <v-row class="mx-auto">
+    <v-col cols="8">
+      <v-card elevation="5">
+        <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
            x="0px" y="0px"
-           viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;" xml:space="preserve">
+           viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080; margin-bottom: -7px" xml:space="preserve">
         <g id="_x3C_Group_x3E_">
 	<g id="foret">
 		<path class="st0" d="M409,1080c-136.3,0-272.7,0-409,0C0,720,0,360,0,0c385,0,770,0,1155,0c-0.4,1.8-0.7,3.6-1.2,5.3
@@ -541,54 +542,75 @@
 	</g>
 </g>
 </svg>
+      </v-card>
     </v-col>
-    <v-col cols="2" class="map-list">
+    <v-col cols="4">
       <ul>
-        <li id="Luther-text">Luthier
+        <li id="Luther-text"><h1>Luthier</h1>
           <img src="../assets/carte/luthier.jpg" alt="luthier">
         </li>
-        <li id="Vitrailliste-text">Vitrailliste
+        <li id="Vitrailliste-text"><h1>Vitrailliste</h1>
           <img src="../assets/carte/vitrailliste.jpg" alt="vitrailliste">
         </li>
-        <li id="forgeron_armes-text">Forgeron d'armes
+        <li id="forgeron_armes-text"><h1>Forgeron d'armes</h1>
           <img src="../assets/carte/forgeron_armes.jpg" alt="forgeron_armes">
         </li>
-        <li id="forgeron_marechal_ferrant-text">Forgeron marechal ferrant</li>
-        <li id="forgeron_outils-text">Forgeron d'outils
-          <img src="../assets/carte/forgeron_outils.jpeg" alt="forgeron_outils">
+        <li id="forgeron_marechal_ferrant-text"><h1>Forgeron maréchal-ferrant</h1>
+          <img src="../assets/carte/forgeron_marechal_ferrant.jpg" alt="forgeron_marechal_ferrant">
         </li>
-        <li id="cordonnier-text">Cordonnier</li>
-        <li id="ebeniste-text">Ebeniste</li>
-        <li id="scene1-text">Scene 1</li>
-        <li id="joute-text">Joute
+        <li id="forgeron_outils-text"><h1>Forgeron d'outils</h1>
+          <img src="../assets/carte/forgeron_outils.jpg" alt="forgeron_outils">
+        </li>
+        <li id="cordonnier-text"><h1>Cordonnier</h1>
+          <img src="../assets/carte/cordonnier.jpg" alt="cordonnier">
+        </li>
+        <li id="ebeniste-text"><h1>Ebéniste</h1>
+          <img src="../assets/carte/ebeniste.jpg" alt="ebeniste">
+        </li>
+        <li id="scene1-text"><h1>Scène 1</h1>
+          <img src="../assets/carte/scene1.jpg" alt="scene1">
+        </li>
+        <li id="joute-text"><h1>Joute</h1>
           <img src="../assets/carte/joute.jpg" alt="joute">
         </li>
-        <li id="chateau-text">Chateau
+        <li id="chateau-text"><h1>Château</h1>
           <img src="../assets/carte/chateau.jpg" alt="chateau"></li>
-        <li id="ecurie-text">Ecurie</li>
-        <li id="torture-text">Torture</li>
-        <li id="secours-text">Secours</li>
-        <li id="stand_de_tir-text">Stand de tir
+        <li id="ecurie-text"><h1>Ecurie</h1>
+          <img src="../assets/carte/ecurie.jpg" alt="ecurie">
+        </li>
+        <li id="torture-text"><h1>Torture</h1>
+          <img src="../assets/carte/torture.jpg" alt="torture">
+        </li>
+        <li id="secours-text"><h1>Secours</h1>
+          <img src="../assets/carte/secours.jpg" alt="secours">
+        </li>
+        <li id="stand_de_tir-text"><h1>Stand de tir</h1>
           <img src="../assets/carte/stand_de_tir.jpg" alt="stand de tir">
         </li>
-        <li id="voyante-text">Voyante</li>
-        <li id="remedes_et_plantes-text">Remedes et plantes</li>
-        <li id="boulanger-text">Boulanger
+        <li id="voyante-text"><h1>Voyante</h1>
+          <img src="../assets/carte/voyante.jpg" alt="voyante">
+        </li>
+        <li id="remedes_et_plantes-text"><h1>Remèdes et plantes</h1>
+          <img src="../assets/carte/herboriste.jpg" alt="herboriste">
+        </li>
+        <li id="boulanger-text"><h1>Boulanger</h1>
           <img src="../assets/carte/boulanger.jpg" alt="boulanger">
         </li>
-        <li id="wc-text">Wc
-          <img src="https://www.toilettes-ziya.com/55-thickbox_default/cabine-toilette-ziya-pmr.jpg" alt="">
+        <li id="wc-text"><h1>WC</h1>
+          <img src="../assets/carte/wc.jpg" alt="wc">
         </li>
-        <li id="scene2-text">Scene 2</li>
-        <li id="poterie-text">Poterie
+        <li id="scene2-text"><h1>Scène 2</h1>
+          <img src="../assets/carte/scene2.jpg" alt="scene2">
+        </li>
+        <li id="poterie-text"><h1>Poterie</h1>
           <img src="../assets/carte/potier.jpg" alt="poterie">
         </li>
-        <li id="zone_de_tir-text">Zone de tir
+        <li id="zone_de_tir-text"><h1>Zone de tir</h1>
         </li>
-        <li id="armes_de_siege-text">Armes de siege
+        <li id="armes_de_siege-text"><h1>Armes de siège</h1>
           <img src="../assets/carte/trebuchet.jpg" alt="trebuchet">
         </li>
-        <li id="taverne-text">Taverne
+        <li id="taverne-text"><h1>Taverne</h1>
           <img src="../assets/carte/taverne.jpg" alt="taverne">
         </li>
       </ul>
@@ -814,22 +836,8 @@ scene1.addEventListener("mouseout", () => {
 </script>
 
 <style scoped>
-.map-image {
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
-.map-list {
-  padding: 0;
-  list-style: none;
-  text-align: left;
-  font-size: 0.8rem;
-  font-weight: 300;
-  color: #000;
+.v-card {
+  border-radius: 10px;
 }
 
 g:hover > path:not(.st0, .st1 ,.st2, .st3, .st4, .st6) {
@@ -840,7 +848,7 @@ li {
   font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   font-weight: 300;
-  color: #000;
+  color: white;
   margin: 0;
   display: none;
 }

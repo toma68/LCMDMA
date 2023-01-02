@@ -1,6 +1,6 @@
 <template>
   <main>
-    <v-card elevation="5">
+    <v-card elevation="5" style="margin-top: 75px;">
       <div class="card-body">
         <svg id="icon-chateau" viewBox="192.34797516321805 108.36917018890381 127.30404804810678 199.09403228759766"
              height="100"
@@ -435,7 +435,11 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 110vh;
+  background-image: url( '../../assets/baroque_foncé.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .card-body {
