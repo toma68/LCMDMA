@@ -16,7 +16,7 @@ const findById = (id) => InfoPrestataire.findOne({
         },
         {
             model: Activite,
-
+            attributes: ['id', 'nom', 'heureDebut', 'heureFin', 'description']
         },
         {
             model: Services,

@@ -65,23 +65,23 @@ INSERT INTO users VALUES
 
 
 INSERT INTO "infoPrestataires" VALUES
-('87080662337635', NULL, false, 'Nidavallir', 'Forgeron', 1),
-('95048096745763', NULL, false, 'Forgeciel', 'Forgeron', 2),
-('97080662337635', NULL, false, 'Gaston Deffere', 'Forgeron', 3),
-('62059248221134', NULL, false, 'Wodan&Cie', 'Menuisier', 4),
-('27522326133922', NULL, false, 'Scie-Physis', 'Luttière', 5),
-('82059704500021', NULL, false, 'ABII', 'Tavernier', 6),
-('70192293194212', NULL, false, 'Claudus Vitrail', 'Vitrailliste', 7),
-('32121568188127', NULL, false, 'Pot ofeu', 'Poterie', 8),
-('28233418929499', NULL, false, 'Chaussures au moines', 'Cordonnier', 9),
-('17277788681573', NULL, false, 'Ecurie Addada', 'Ecurie', 10),
-('50335216387331', NULL, false, 'Aux petits plaisirs', 'Torture', 11),
-('39628881709477', NULL, false, 'Dubiff', 'Voyante', 12),
-('33733448737176', NULL, false, 'Aux herbes du seigneur', 'Remede et plante', 13),
-('40727170487273', NULL, false, 'Bosiege', 'Armes de siège', 14),
-('84174659147008', NULL, false, 'Boulan-gégé', 'Boulangère', 15),
-('60732143167747', NULL, false, 'La compagnie excalibur', 'Presentateur et chevaliers', 16),
-('70584918093208', NULL, false, 'Spam Bow', 'Stand de tir à l arc', 17);
+('87080662337635', NULL, false, 'Nidavallir', 'Forgeron', 6),
+('95048096745763', NULL, false, 'Forgeciel', 'Forgeron', 7),
+('97080662337635', NULL, false, 'Gaston Deffere', 'Forgeron', 8),
+('62059248221134', NULL, false, 'Wodan&Cie', 'Menuisier', 9),
+('27522326133922', NULL, false, 'Scie-Physis', 'Luttière', 10),
+('82059704500021', NULL, false, 'ABII', 'Tavernier', 11),
+('70192293194212', NULL, false, 'Claudus Vitrail', 'Vitrailliste', 12),
+('32121568188127', NULL, false, 'Pot ofeu', 'Poterie', 13),
+('28233418929499', NULL, false, 'Chaussures au moines', 'Cordonnier', 14),
+('17277788681573', NULL, false, 'Ecurie Addada', 'Ecurie', 15),
+('50335216387331', NULL, false, 'Aux petits plaisirs', 'Torture', 16),
+('39628881709477', NULL, false, 'Dubiff', 'Voyante', 17),
+('33733448737176', NULL, false, 'Aux herbes du seigneur', 'Remede et plante', 18),
+('40727170487273', NULL, false, 'Bosiege', 'Armes de siège', 19),
+('84174659147008', NULL, false, 'Boulan-gégé', 'Boulangère', 20),
+('60732143167747', NULL, false, 'La compagnie excalibur', 'Presentateur et chevaliers', 21),
+('70584918093208', NULL, false, 'Spam Bow', 'Stand de tir à l arc', 22);
 
 
 INSERT INTO activites VALUES

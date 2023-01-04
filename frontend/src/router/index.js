@@ -44,6 +44,11 @@ const routes = [
       component: () => import(/* webpackChunkName: "adminPrestataires" */ '../views/AdminPrestatairesView.vue')
     },
   {
+    path: '/admin/prestataires/id',
+    name: 'adminPrestataireId',
+    component: () => import(/* webpackChunkName: "adminPrestataireId" */ '../views/AdminPrestataireIdView.vue')
+  },
+  {
     path: '/billeterie',
     name: 'billeterie',
     component: () => import(/* webpackChunkName: "billeterie" */ '../views/BilleterieView.vue'),
@@ -62,6 +67,11 @@ const routes = [
     path: '/prestataire/:id',
     name: 'PrestatairePage',
     component: () => import(/* webpackChunkName: "prestatairesEditer" */ '../views/PrestataireView.vue'),
+  },
+  {
+    path: '/user/prestataire',
+    name: 'userPrestataire',
+    component: () => import(/* webpackChunkName: "userPrestataires" */ '../views/UserPrestataireView.vue')
   }
 ]
 

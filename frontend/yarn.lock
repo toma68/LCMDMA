@@ -2681,6 +2681,22 @@
   "resolved" "https://registry.npmjs.org/babylon/-/babylon-6.16.1.tgz"
   "version" "6.16.1"
 
+"backend@file:../backend":
+  "resolved" "file:../backend"
+  "version" "1.0.0"
+  dependencies:
+    "bcrypt" "^5.1.0"
+    "bcryptjs" "^2.4.3"
+    "body-parser" "^1.20.1"
+    "dotenv" "^16.0.3"
+    "express" "^4.18.2"
+    "nodemon" "^2.0.20"
+    "pg" "^8.8.0"
+    "sequelize" "^6.25.5"
+    "swagger-jsdoc" "^6.2.5"
+    "swagger-ui-express" "^4.6.0"
+    "vue-multiple-image-upload" "^1.0.0"
+
 "balanced-match@^0.4.1":
   "integrity" "sha1-yz8+PHMtwPAe5wtAPzAuYddwmDg="
   "resolved" "https://registry.npmjs.org/balanced-match/-/balanced-match-0.4.2.tgz"
