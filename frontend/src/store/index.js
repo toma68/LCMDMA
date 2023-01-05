@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null
+        user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets :null
     }, mutations: {
         setUser(state, user) {
             state.user = user
@@ -29,6 +29,9 @@ export default new Vuex.Store({
         },
         addMessage(state, message){
             state.messages.push(message)
+        },
+        setBillets(state, billets) {
+            state.billets = billets
         },
         trashCommit() {
 
@@ -113,7 +116,23 @@ export default new Vuex.Store({
                     commit('setTarifs', response)
                 })
                 .catch(error => console.error('Error:', error))
-        }, validerPanier({commit}, panier) {
+        },
+
+        getBillets({commit,state}) {
+            console.log("CALLING GET BILLETS")
+            return fetch('http://localhost:3000/api/achats/user/' + state.user.userId, {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((response) => {
+                    return response.json()
+                })
+                .then(
+                    (billets) => commit('setBillets', billets)
+                )
+        }
+        ,validerPanier({dispatch}, panier) {
             return fetch('http://localhost:3000/api/achats/', {
                 method: 'POST', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -121,8 +140,8 @@ export default new Vuex.Store({
             })
                 .then(response => response.json())
                 .then(response => {
-                    response.forEach(achat => {
-                        commit('addAchat', achat)
+                    response.forEach(()  => {
+                        dispatch('getBillets')
                     });
                     return response
                 })
@@ -147,7 +166,8 @@ export default new Vuex.Store({
                 .then(response => {
                     commit('setPrestataire', response)
                 })
-        }, togglePageMasque({state, commit}) {
+        },
+        togglePageMasque({state, commit}) {
             return fetch('http://localhost:3000/api/infoPrestataires/' + state.user.userId, {
                 method: 'PUT', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -223,7 +243,7 @@ export default new Vuex.Store({
                 commit('addMessage', message)
                 }
             )
-        }
+        },
     }, getters: {
         user: state => state.user,
         tarifs: state => state.tarifs,

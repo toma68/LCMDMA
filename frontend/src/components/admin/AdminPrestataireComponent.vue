@@ -181,7 +181,6 @@ import infoPrestataire from '../../../../backend/src/models/infoPrestataire.mode
         <v-card-title class="login-title">
           Prestataires
         </v-card-title>
-        <v-btn text><router-link to="/admin/prestataires/id" class="toolbar-item">Id prestataires</router-link></v-btn>
         <!--div>
           {{prestataires}}
         </div-->

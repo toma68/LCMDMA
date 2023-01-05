@@ -36,10 +36,13 @@ const update = (id, achat) => {
     return Achat.update(updateAchat, {where: {id: id}});
 }
 
+const findByUserId = (id) => Achat.findAll({where: {userId: id}, include: ['tarif']});
+
 module.exports = {
     findAll,
     findById,
     deleteByid,
     create,
-    update
+    update,
+    findByUserId
 }
