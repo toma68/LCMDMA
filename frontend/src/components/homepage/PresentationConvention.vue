@@ -80,13 +80,13 @@ export default {
         },
         {
           image: "images/joutes.jpg",
-          title: "Activité 4",
-          description: "Découvrez l'art de la joute, selon les traditions du moyen-âge. De nombreux chevaux et cavaliers vous attendent pour vous faire découvrir cette discipline !"
+          title: "Spectacles",
+          description: "Assistez à des spectacles grandioses tels qu'une compétition de lancer de nain encadrée, des chansons de troubadours ainsi que des scènes de théâtre !"
         },
         {
           image: "images/joutes.jpg",
-          title: "Activité 5",
-          description: "Découvrez l'art de la joute, selon les traditions du moyen-âge. De nombreux chevaux et cavaliers vous attendent pour vous faire découvrir cette discipline !"
+          title: "Forgerons",
+          description: "Découvrez le processus de fabrication d'armes et d'outils métalliques présenté par nos forgerons et tout leur savoir-faire !"
         }
       ]
     }
