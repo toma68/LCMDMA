@@ -114,8 +114,6 @@ router.put("/:id", Achatcontroller.updateAchat);
  *            description: Remplir uniquement les champs à modifier (supprimer les lignes des champs non modifiés)
  *            schema:
  *              type: object
- *              required:
- *                  - nom
  *              properties:
  *                  tarifId:
  *                      type: integer

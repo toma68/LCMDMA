@@ -58,7 +58,9 @@ const swaggerOption = {
             title: "LCMDMA app",
             description: "Documentation de l'API LCMDMA. Pour toutes les requêtes avec un cadenas sur la droite," +
                 " il faut un token valide pour se connecter, vous pouvez vous connecter avec le compte admin dans la catégorie" +
-                " Login, avec le login : thomas et le mot de passe : testtest",
+                " Login, avec le login : thomas et le mot de passe : testtest. Il faut ensuite récupérer le token et le mettre dans" +
+                " l'onglet Authorize de Swagger, en mettant Bearer devant le token. Pour les requêtes sans cadenas, vous pouvez" +
+                " les tester sans vous connecter.",
             contact: {
                 name: "Raphael",
             },
