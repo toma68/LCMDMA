@@ -8,10 +8,11 @@ const router = Router();
 
 
 
-router.post("/",auth(3), Achatcontroller.createAchat);
+router.post("/",auth(1), Achatcontroller.createAchat);
 router.get("/:id", Achatcontroller.getAchatById);
 router.delete("/:id", Achatcontroller.deleteAchatById);
 router.put("/:id", Achatcontroller.updateAchat);
 router.get("/", Achatcontroller.getAllAchats);
+router.get("/user/:id", Achatcontroller.getAchatsByUserId);
 
 module.exports = router;
