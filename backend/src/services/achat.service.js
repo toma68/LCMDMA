@@ -18,7 +18,7 @@ const create = async (achat, token,ip) => {
             tarifId: achat[i].id,
             dateAchat: new Date(),
             qrCode: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
-            quantite: achat[i].quantite,
+            available: achat[i].quantite,
             userId:  userId
         });
     }
@@ -36,10 +36,13 @@ const update = (id, achat) => {
     return Achat.update(updateAchat, {where: {id: id}});
 }
 
+const findByUserId = (id) => Achat.findAll({where: {userId: id}, include: ['tarif']});
+
 module.exports = {
     findAll,
     findById,
     deleteByid,
     create,
-    update
+    update,
+    findByUserId
 }

@@ -2,7 +2,7 @@
   <main>
     <div class="container text-center">
       <div class="row">
-        <div class="mx-auto">
+        <div class="mx-auto col-md-6">
           <h1 class="text-center">Billeterie</h1>
             <table class="table-tarifaire">
               <tr>
@@ -25,6 +25,11 @@
               </tr>
             </table>
         </div>
+        <div class="col-md-6">
+          <h1 class="text-center">Vos billets</h1>
+          <ShowBilletComponent  :billet="billets[0]" />
+          ici les billets : {{ billets }}
+        </div>
       </div>
     </div>
     <achat-billet-component/>
@@ -35,10 +40,11 @@
 <script>
 
 import AchatBilletComponent from "@/components/billeterie/achatBilletComponent.vue";
+import ShowBilletComponent from "@/components/billeterie/ShowBilletComponent.vue";
 
 export default {
   name: "BilleterieComponent",
-  components: {AchatBilletComponent},
+  components: {AchatBilletComponent,ShowBilletComponent},
   data() {
     return {
       tarifs: null,
@@ -46,8 +52,13 @@ export default {
   },
   methods: {},
   created() {
-    this.$store.dispatch("getTarifs");
-  }
+    this.$store.dispatch("getBillets");
+  },
+  computed: {
+    billets() {
+      return this.$store.state.billets;
+    },
+  },
 
 }
 </script>

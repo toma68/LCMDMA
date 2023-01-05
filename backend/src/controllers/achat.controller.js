@@ -49,10 +49,21 @@ const updateAchat = (req, res) => {
     });
 }
 
+const getAchatsByUserId = (req, res) => {
+    let id = req.params.id;
+    AchatService.findByUserId(id).then((achat) => {
+        res.status(200).json(achat);
+    }
+    ).catch((err) => {
+        res.status(500).json(err);
+    });
+}
+
 module.exports = {
     getAllAchats,
     getAchatById,
     deleteAchatById,
     createAchat,
-    updateAchat
+    updateAchat,
+    getAchatsByUserId
 }

@@ -19,7 +19,7 @@ const Achat = sequelize.define('achat', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    quantite: {
+    available: {
         type: DataTypes.INTEGER,
         allowNull: false
     }
