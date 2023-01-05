@@ -56,24 +56,33 @@ const swaggerOption = {
     swaggerDefinition: (swaggerJsDoc.Options = {
         info: {
             title: "LCMDMA app",
-            description: "API documentation",
+            description: "Documentation de l'API LCMDMA. Pour toutes les requêtes avec un cadenas sur la droite," +
+                " il faut un token valide pour se connecter, vous pouvez vous connecter avec le compte admin dans la catégorie" +
+                " Login, avec le login : thomas et le mot de passe : testtest",
             contact: {
                 name: "Raphael",
             },
             servers: ["http://localhost:3000/"],
         },
+        schemes: {
+            http: "http",
+            https: "https",
+        },
         securityDefinitions: {
-            Auth: {
+            "Bearer": {
                 type: "apiKey",
+                scheme: "bearer",
+                name: "Authorization",
+                in: "header",
+                description: "Bearer {token}",
             }
-        }
+        },
+        //security : [ { Bearer: [] } ],
     }),
     apis: ["index.js", "./src/routers/*.js"],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOption);
-
-
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
