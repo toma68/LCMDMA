@@ -18,7 +18,7 @@ const create = async (achat, token,ip) => {
             tarifId: achat[i].id,
             dateAchat: new Date(),
             qrCode: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
-            available: achat[i].quantite,
+            quantite: achat[i].quantite,
             userId:  userId
         });
     }
