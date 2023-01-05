@@ -24,15 +24,17 @@
                 <td>20 €</td>
               </tr>
             </table>
+          <achat-billet-component/>
         </div>
         <div class="col-md-6">
-          <h1 class="text-center">Vos billets</h1>
-          <ShowBilletComponent  :billet="billets[0]" />
-          ici les billets : {{ billets }}
+          <h1 class="text-center mb-5">Vos billets</h1>
+          <v-row>
+            <ShowBilletComponent v-for="billet in billets" :key="billet.id" :billet="billet"></ShowBilletComponent>
+          </v-row>
         </div>
       </div>
     </div>
-    <achat-billet-component/>
+
   </main>
 
 </template>
