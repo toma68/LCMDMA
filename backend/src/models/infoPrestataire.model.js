@@ -22,6 +22,10 @@ const infoPrestataire = sequelize.define('infoPrestataire', {
     description:{
         type: DataTypes.STRING,
         allowNull: false
+    },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 }, {
     timestamps: false
