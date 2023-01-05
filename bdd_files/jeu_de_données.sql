@@ -65,23 +65,24 @@ INSERT INTO users VALUES
 
 
 INSERT INTO "infoPrestataires" VALUES
-('87080662337635', NULL, false, 'Nidavallir', 'Forgeron', 6),
-('95048096745763', NULL, false, 'Forgeciel', 'Forgeron', 7),
-('97080662337635', NULL, false, 'Gaston Deffere', 'Forgeron', 8),
-('62059248221134', NULL, false, 'Wodan&Cie', 'Menuisier', 9),
-('27522326133922', NULL, false, 'Scie-Physis', 'Luttière', 10),
-('82059704500021', NULL, false, 'ABII', 'Tavernier', 11),
-('70192293194212', NULL, false, 'Claudus Vitrail', 'Vitrailliste', 12),
-('32121568188127', NULL, false, 'Pot ofeu', 'Poterie', 13),
-('28233418929499', NULL, false, 'Chaussures au moines', 'Cordonnier', 14),
-('17277788681573', NULL, false, 'Ecurie Addada', 'Ecurie', 15),
-('50335216387331', NULL, false, 'Aux petits plaisirs', 'Torture', 16),
-('39628881709477', NULL, false, 'Dubiff', 'Voyante', 17),
-('33733448737176', NULL, false, 'Aux herbes du seigneur', 'Remede et plante', 18),
-('40727170487273', NULL, false, 'Bosiege', 'Armes de siège', 19),
-('84174659147008', NULL, false, 'Boulan-gégé', 'Boulangère', 20),
-('60732143167747', NULL, false, 'La compagnie excalibur', 'Presentateur et chevaliers', 21),
-('70584918093208', NULL, false, 'Spam Bow', 'Stand de tir à l arc', 22);
+('87080662337635', NULL, false, 'Nidavallir', 'Forgeron', 'forgeron_armes.jpg', 6),
+('95048096745763', NULL, false, 'Forgeciel', 'Forgeron', 'forgeron_outils.jpg', 7),
+('97080662337635', NULL, false, 'Gaston Deffere', 'Forgeron', 'forgeron_marechal_ferrant.jpg', 8),
+('62059248221134', NULL, false, 'Wodan&Cie', 'Menuisier', 'ebeniste.jpg', 9),
+('27522326133922', NULL, false, 'Scie-Physis', 'Luttière', 'luthier.jpg', 10),
+('82059704500021', NULL, false, 'ABII', 'Tavernier', 'taverne.jpg', 11),
+('70192293194212', NULL, false, 'Claudus Vitrail', 'Vitrailliste', 'vitrailliste.jpg', 12),
+('32121568188127', NULL, false, 'Pot ofeu', 'Poterie', 'potier.jpg', 13),
+('28233418929499', NULL, false, 'Chaussures au moines', 'Cordonnier', 'cordonnier.jpg', 14),
+('17277788681573', NULL, false, 'Ecurie Addada', 'Ecurie', 'ecurie.jpg', 15),
+('50335216387331', NULL, false, 'Aux petits plaisirs', 'Torture', 'torture.jpg', 16),
+('39628881709477', NULL, false, 'Dubiff', 'Voyante', 'voyante.jpg', 17),
+('33733448737176', NULL, false, 'Aux herbes du seigneur', 'Remede et plante', 'herboriste.jpg', 18),
+('40727170487273', NULL, false, 'Bosiege', 'Armes de siège', 'trebuchet.jpg', 19),
+('84174659147008', NULL, false, 'Boulan-gégé', 'Boulangère', 'boulanger.jpg', 20),
+('70584918093208', NULL, false, 'Spam Bow', 'Stand de tir à l arc', 'stand_de_tir.jpg', 22);
+
+INSERT INTO "infoPrestataires" VALUES ('60732143167747', NULL, false, 'La compagnie excalibur', 'Presentateur et chevaliers', NULL, 21);
 
 
 INSERT INTO activites VALUES
