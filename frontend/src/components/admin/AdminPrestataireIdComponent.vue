@@ -1,11 +1,9 @@
+
 import store from '../../store'
-import infoPrestataire from '../../../../backend/src/models/infoPrestataire.model.js'
 
 <template>
   <main class="bg">
-    <v-col cols="8">
     <v-card elevation="5" style="margin-top: 150px;">
-
       <div class="card-body">
         <svg id="icon-chateau" viewBox="192.34797516321805 108.36917018890381 127.30404804810678 199.09403228759766"
              height="100"
@@ -181,108 +179,23 @@ import infoPrestataire from '../../../../backend/src/models/infoPrestataire.mode
         <v-card-title class="login-title">
           Prestataires
         </v-card-title>
-        <!--div>
+        <div>
           {{prestataires}}
-        </div-->
-      </div>
-
-
-        <div class="row">
-
-          <!-- Affichage des prestataires non validés -->
-          <div v-for="prestataire in prestatairesNonValides" :key="prestataire.id">
-            <v-card class="card">
-            <h3>{{ prestataire.nom }}</h3>
-            <p>{{ prestataire.description }}</p>
-            <p>numéro siret: {{ prestataire.numeroSiret }}</p>
-            <button class="toolbar-item" @click="validerPrestataire(prestataire.id)">Valider</button>
-            <button class="toolbar-item" @click="supprimerPrestataire(prestataire.id)">Refuser</button>
-            </v-card>
-          </div>
-
-          <!-- Affichage des prestataires validés -->
-          <div v-for="prestataire in prestatairesValides" :key="prestataire.id">
-            <v-card class="card">
-            <h3>{{ prestataire.nom }}</h3>
-            <p>{{ prestataire.description }}</p>
-            <button class="toolbar-item" @click="supprimerPrestataire(prestataire.id)">Supprimer</button>
-            <button class="toolbar-item" @click="afficherPrestataire(prestataire.id)">Détails</button>
-            </v-card>
-          </div>
         </div>
+      </div>
     </v-card>
-    </v-col>
   </main>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      prestataires: [
-        {
-          id: 1,
-          nom: 'Prestataire 1',
-          description: "Description du prestataire 1",
-          numeroSiret: "123 456 789",
-          userRole: 2
-        },
-        {
-          id: 2,
-          nom: "Prestataire 2",
-          description: "Description du prestataire 2",
-          numeroSiret: "987 654 321",
-          userRole: 1
-        },
-        {
-          id: 3,
-          nom: "Prestataire 3",
-          description: "Description du prestataire 3",
-          numeroSiret: "148 323 789",
-          userRole: 2
-        },
-        {
-          id: 4,
-          nom: "Prestataire 4",
-          description: "Description du prestataire 4",
-          numeroSiret: "456 121 783",
-          userRole: 2
-        },
-        {
-          id: 5,
-          nom: "Prestataire 5",
-          description: "Description du prestataire 5",
-          numeroSiret: "789 721 456",
-          userRole: 1
-        },
-        {
-          id: 6,
-          nom: "Prestataire 6",
-          description: "Description du prestataire 6",
-          numeroSiret: "123 241 456",
-          userRole: 1
-        },
-      ]
-    };
-  },
-  computed: {
-    prestatairesNonValides() {
-      return this.prestataires.filter(p => p.userRole === 1);
-    },
-    prestatairesValides() {
-      return this.prestataires.filter(p => p.userRole === 2);
-    }
+  name: 'fetchPrestataires',
+  created() {
+    this.$store.dispatch("fetchPrestataires", {self: this})
   },
   methods: {
-    validerPrestataire(id) {
-      const prestataire = this.prestataires.find(p => p.id === id);
-      prestataire.userRole = 2;
-    },
-    supprimerPrestataire(id) {
-      this.prestataires = this.prestataires.filter(p => p.id !== id);
-    },
-    afficherPrestataire(id) {
-      this.$router.push(`/admin/prestataires/${id}`);
+    filterPrestataires() {
+      console.log("Prestataires: ", this.$store.state.prestataires)
     }
   }
 }
@@ -314,29 +227,6 @@ v-form {
   font-family: 'Secular One', sans-serif;
 }
 
-.toolbar-item {
-  text-decoration: none;
-  text-transform: none;
-  color: #1b2239;
-  font-size: 1.2rem;
-  font-family: 'Pirata One', cursive;
-  margin: 10px;
-}
-
-.card {
-  margin : 20px;
-  padding: 5px;
-  font-family: "Pirata One", cursive;
-  font-size: 1.2rem;
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  padding: 10px;
-}
 
 
 </style>
