@@ -5,37 +5,25 @@ const auth = require("../../utils/auth");
 const router = Router();
 
 
-router.post("/",auth(3), Achatcontroller.createAchat);
+router.post("/",auth(1), Achatcontroller.createAchat);
 /**
  * @swagger
- * /api/achats/: //TODO ajouter un moyen de s'authentifier (definir dans l'index) je comprends pas l'auth
+ * /api/achats/:
  *  post:
+ *      security :
+ *          - Bearer: []
  *      description: Utilisée pour ajouter un achat
  *      tags:
  *          - Achats
  *      parameters:
- *          - in: headers.authorization
- *            name: AuthorizationId
  *          - in: body
  *            name: Body Achat
- *            description: Achat à ajouter
+ *            description: id est l'id du tarif et quantite est la quantité achetée, on peut effectuer plusieurs achats en même temps, il faut ajouter plusieurs objets dans le tableau
  *            schema:
- *              type: object
- *              required:
- *                  - nom
- *              properties:
- *                 tarifId:
- *                      type: integer
- *                 dateAchat:
- *                      type: string
- *                      format: date-time
- *                      example: 2020-01-01T00:00:00.000Z
- *                 qrCode:
- *                      type: string
- *                 quantite:
- *                      type: integer
- *                 userId:
- *                      type: integer
+ *              type: array
+ *              items:
+ *                  type: object
+ *                  example: {id : 1, quantite : 2}
  *      responses:
  *          '200':
  *              description: activity added successfully
@@ -43,6 +31,8 @@ router.post("/",auth(3), Achatcontroller.createAchat);
  *              description: Internal server error
  *          '400':
  *              description: Bad request
+ *          '401':
+ *              description: Unauthorized, token is missing or invalid
  */
 
 router.get("/", Achatcontroller.getAllAchats);
@@ -127,17 +117,17 @@ router.put("/:id", Achatcontroller.updateAchat);
  *              required:
  *                  - nom
  *              properties:
- *                tarifId:
+ *                  tarifId:
  *                      type: integer
- *                 dateAchat:
+ *                  dateAchat:
  *                      type: string
  *                      format: date-time
  *                      example: 2020-01-01T00:00:00.000Z
- *                 qrCode:
+ *                  qrCode:
  *                      type: string
- *                 quantite:
+ *                  quantite:
  *                      type: integer
- *                 userId:
+ *                  userId:
  *                      type: integer
  *      responses:
  *          '200':
