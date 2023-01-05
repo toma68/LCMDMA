@@ -177,7 +177,7 @@ import store from '../../store'
           </g>
         </svg>
         <v-card-title class="login-title">
-          Prestataires
+          Détails prestataires {{id}}
         </v-card-title>
         <div>
           {{prestataires}}
@@ -189,16 +189,13 @@ import store from '../../store'
 
 <script>
 export default {
-  name: 'fetchPrestataires',
-  created() {
-    this.$store.dispatch("fetchPrestataires", {self: this})
-  },
-  methods: {
-    filterPrestataires() {
-      console.log("Prestataires: ", this.$store.state.prestataires)
-    }
+  data() {
+    return {
+      id: this.$route.params.id
+    };
   }
 }
+
 </script>
 
 <style scoped>
