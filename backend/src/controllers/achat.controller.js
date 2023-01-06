@@ -59,11 +59,22 @@ const getAchatsByUserId = (req, res) => {
     });
 }
 
+const getAchatByQrCode = (req, res) => {
+    let code = req.params.code;
+    AchatService.findAchatByQrCode(code).then((achat) => {
+        res.status(200).json(achat);
+    }
+    ).catch((err) => {
+        res.status(500).json(err);
+    });
+}
+
 module.exports = {
     getAllAchats,
     getAchatById,
     deleteAchatById,
     createAchat,
     updateAchat,
-    getAchatsByUserId
+    getAchatsByUserId,
+    getAchatByQrCode
 }

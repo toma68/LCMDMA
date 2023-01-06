@@ -38,11 +38,13 @@ const update = (id, achat) => {
 
 const findByUserId = (id) => Achat.findAll({where: {userId: id}, include: ['tarif']});
 
+const findAchatByQrCode = (qrCode) => Achat.findOne({where: {qrCode: qrCode}, include: ['user','tarif']});
+
 module.exports = {
     findAll,
     findById,
     deleteByid,
     create,
     update,
-    findByUserId
-}
+    findByUserId,
+    findAchatByQrCode}

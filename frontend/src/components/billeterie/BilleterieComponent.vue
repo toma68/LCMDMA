@@ -41,6 +41,8 @@
 
 <script>
 
+//todo: Si un user non connecté arriver, adapater l'affichage
+
 import AchatBilletComponent from "@/components/billeterie/achatBilletComponent.vue";
 import ShowBilletComponent from "@/components/billeterie/ShowBilletComponent.vue";
 

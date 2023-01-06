@@ -14,5 +14,6 @@ router.delete("/:id", Achatcontroller.deleteAchatById);
 router.put("/:id", Achatcontroller.updateAchat);
 router.get("/", Achatcontroller.getAllAchats);
 router.get("/user/:id", Achatcontroller.getAchatsByUserId);
+router.get("/qrCode/:code", auth(3), Achatcontroller.getAchatByQrCode);
 
 module.exports = router;

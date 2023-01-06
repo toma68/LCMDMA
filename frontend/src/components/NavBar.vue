@@ -201,7 +201,11 @@
             </v-btn>
           </template>
           <v-list>
+           <v-btn text> <router-link to="/admin/" class="toolbar-item">Accueil Administrateur</router-link></v-btn>
+            <br>
            <v-btn text> <router-link to="/admin/prestataires" class="toolbar-item">Gestion Prestataires</router-link></v-btn>
+            <br>
+           <v-btn text> <router-link to="/admin/scan" class="toolbar-item">Scan des billets</router-link></v-btn>
           </v-list>
         </v-menu>
         <v-menu offset-y v-if="$store.state.user.userRole == 2">

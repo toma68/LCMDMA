@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
     console.log('#######')
     console.log('Requête reçue à ' + new Date().toLocaleString() + ' : ' + req.method + ' ' + req.url + ' ' + JSON.stringify(req.body));
-
+    console.log('Authorization : ' + req.headers.authorization);
     next();
 });
 
