@@ -8,7 +8,7 @@ const Services = require("../models/services.model");
 const findAll = () => InfoPrestataire.findAll();
 
 const findById = (id) => InfoPrestataire.findOne({
-    where: {numeroSiret: id},
+    where: {userId: id},
     include: [
         {
             model: User,

@@ -5,16 +5,16 @@
     <br>
     <br>
     <v-row>
-      <v-col v-for="prestataires in prestataires" :key="prestataires.numeroSiret" cols="12" md="6" lg="4">
+      <v-col v-for="prestataires in prestataires" :key="prestataires.userId" cols="12" md="6" lg="4">
         <v-card>
           <v-img
               height="200px"
-              :src="prestataires.image" alt="prestataire.image"></v-img>
+              :src="`${prestataires.image}`" alt=""></v-img>
           <v-card-title class="headline">{{prestataires.nomEntreprise}}</v-card-title>
           <v-card-text>
             {{prestataires.description}}
           </v-card-text>
-          <button @click="showPrestatairesDetails(prestataires.numeroSiret)">Plus de détails</button>
+          <button @click="showPrestatairesDetails(prestataires.userId)">Plus de détails</button>
         </v-card>
       </v-col>
     </v-row>

@@ -9,7 +9,7 @@
         <v-card>
           <v-img
               height="200px"
-              :src="prestataire.image" alt=""></v-img>
+              :src="`${prestataire.image}`" alt=""></v-img>
           <v-card-title class="headline"> {{prestataire.nomEntreprise}} </v-card-title>
           <v-card-text>
             <v-card-text>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: "ListPrestataireComponent",
+  name: "SelectPrestataireComponent",
   data() {
     return {
       prestataire: []
