@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 
 
@@ -87,7 +88,9 @@ const swaggerOption = {
 const swaggerDocs = swaggerJsDoc(swaggerOption);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
-
+//définition du dossier des images en static
+const imgFolder = path.join(__dirname, 'images_presta')
+app.use('/frontend/public/', express.static(imgFolder));
 //mise en place des routes
 app.use('/api/auth', AuthRoutes);
 app.use('/api/users', UserRoutes);

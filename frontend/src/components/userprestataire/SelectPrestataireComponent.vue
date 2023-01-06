@@ -9,11 +9,12 @@
         <v-card>
           <v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-          ></v-img>
-          <v-card-title class="headline">TITRE</v-card-title>
+              :src="prestataire.image" alt=""></v-img>
+          <v-card-title class="headline"> {{prestataire.nomEntreprise}} </v-card-title>
           <v-card-text>
-            DESCRIPTION
+            <v-card-text>
+              {{prestataire.description}}
+            </v-card-text>
           </v-card-text>
         </v-card>
       </v-col>
@@ -27,23 +28,23 @@ export default {
   name: "ListPrestataireComponent",
   data() {
     return {
-      prestataires: [],
+      prestataire: []
     };
   },
   created() {
     this.fetchData();
   },
+  computed: {
+    id() {
+      return this.$route.params.id;
+    }
+  },
   methods: {
-    fetchData() {
-      console.log(this.$route.params.id);
-      fetch("http://localhost:3000/api/infoPrestataires/" + this.$route.params.id)
-          .then(response => {
-            response = response.json();
-            console.log(response);
-          })
+    async fetchData() {
+      await fetch(`http://localhost:3000/api/infoPrestataires/${this.id}`)
+          .then(response => response.json())
           .then(data => {
-            console.log(data);
-            this.prestataires = data;
+            this.prestataire = data;
           })
           .catch(error => {
             console.log(error);
