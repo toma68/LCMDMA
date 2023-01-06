@@ -18,7 +18,7 @@ const findById = (receiverSiret) => LivreDOrMessages.findAll({
 
 const deleteByid = (posterid, receiverid) => LivreDOrMessages.destroy({
     where: {
-        posterId: posterid, receiverId: receiverid
+        posterId: posterid, receiverSiret: receiverid
     }
 });
 
@@ -30,7 +30,7 @@ const create = (livreDOrMessage) => {
 
 const update = (posterid, receiverid, livreDOrMessage) => {
     livreDOrMessage.contenuMessage = livreDOrMessage.contenuMessage.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
-    return LivreDOrMessages.update(livreDOrMessage, {where: {posterId: posterid, receiverId: receiverid}});
+    return LivreDOrMessages.update(livreDOrMessage, {where: {posterId: posterid, receiverSiret: receiverid}});
 }
 
 module.exports = {

@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
     console.log('#######')
     console.log('Requête reçue à ' + new Date().toLocaleString() + ' : ' + req.method + ' ' + req.url + ' ' + JSON.stringify(req.body));
-
+    console.log('Authorization : ' + req.headers.authorization);
     next();
 });
 
@@ -56,19 +56,35 @@ const swaggerOption = {
     swaggerDefinition: (swaggerJsDoc.Options = {
         info: {
             title: "LCMDMA app",
-            description: "API documentation",
+            description: "Documentation de l'API LCMDMA. Pour toutes les requêtes avec un cadenas sur la droite," +
+                " il faut un token valide pour se connecter, vous pouvez vous connecter avec le compte admin dans la catégorie" +
+                " Login, avec le login : thomas et le mot de passe : testtest. Il faut ensuite récupérer le token et le mettre dans" +
+                " l'onglet Authorize de Swagger, en mettant Bearer devant le token. Pour les requêtes sans cadenas, vous pouvez" +
+                " les tester sans vous connecter.",
             contact: {
                 name: "Raphael",
             },
             servers: ["http://localhost:3000/"],
         },
+        schemes: {
+            http: "http",
+            https: "https",
+        },
+        securityDefinitions: {
+            "Bearer": {
+                type: "apiKey",
+                scheme: "bearer",
+                name: "Authorization",
+                in: "header",
+                description: "Bearer {token}",
+            }
+        },
+        //security : [ { Bearer: [] } ],
     }),
     apis: ["index.js", "./src/routers/*.js"],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOption);
-
-
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 

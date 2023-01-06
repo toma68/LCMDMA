@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets :null
+        user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets :null, billetScanned:null
     }, mutations: {
         setUser(state, user) {
             state.user = user
@@ -32,6 +32,9 @@ export default new Vuex.Store({
         },
         setBillets(state, billets) {
             state.billets = billets
+        },
+        setBilletScanned(state,billet){
+            state.billetScanned = billet
         },
         trashCommit() {
 
@@ -119,7 +122,6 @@ export default new Vuex.Store({
         },
 
         getBillets({commit,state}) {
-            console.log("CALLING GET BILLETS")
             return fetch('http://localhost:3000/api/achats/user/' + state.user.userId, {
                 method: 'GET', headers: {
                     'Content-Type': 'application/json'
@@ -131,6 +133,32 @@ export default new Vuex.Store({
                 .then(
                     (billets) => commit('setBillets', billets)
                 )
+        },
+        getBilletAfterScan({commit},qrCode) {
+            return fetch('http://localhost:3000/api/achats/qrCode/' + qrCode, {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+                .then((response) => {
+                    return response.json()
+                })
+                .then(
+                    (billet) => commit('setBilletScanned', billet)
+                )
+        },
+        composterBillet({commit},billet) {
+            return fetch('http://localhost:3000/api/achats/' + billet.id, {
+                method: 'PUT', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                }, body: JSON.stringify({
+                    "quantite": billet.quantite-1,
+                })
+             })
+                .then((response) => {
+                    return response.json()
+                })
+
         }
         ,validerPanier({dispatch}, panier) {
             return fetch('http://localhost:3000/api/achats/', {
@@ -250,6 +278,7 @@ export default new Vuex.Store({
         achats: state => state.achats,
         prestataire: state => state.prestataire,
         services: state => state.services,
-        messages: state => state.messages
+        messages: state => state.messages,
+        billetScanned: state => state.billetScanned
     }
 })

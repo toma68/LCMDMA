@@ -4,7 +4,7 @@ const auth = require("../../utils/auth");
 
 const router = InfoPrestataireRouter();
 
-router.get("/", auth(3), InfoPrestataireController.getAllInfoPrestataires);
+router.get("/", InfoPrestataireController.getAllInfoPrestataires);
 /**
  * @swagger
  * /api/infoPrestataires:

@@ -1,20 +1,16 @@
 <template>
   <main>
-    <ListPrestataireComponent />
-    <SelectedPrestataireComponent />
+    <ListPrestataireComponent/>
   </main>
 </template>
 
 <script>
 import ListPrestataireComponent from '@/components/userprestataire/ListPrestataireComponent.vue'
-import SelectedPrestataireComponent from '@/components/userprestataire/SelectedPrestataireComponent.vue'
 export default {
   name: "UserPrestataireView",
   components: {
     ListPrestataireComponent,
-    SelectedPrestataireComponent
   }
-
 }
 </script>
 

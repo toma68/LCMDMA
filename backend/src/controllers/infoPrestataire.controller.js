@@ -2,7 +2,6 @@ const InfoPrestataireController = require('../services/infoPrestataire.service')
 
 const getAllInfoPrestataires = (req, res) => {
     InfoPrestataireController.findAll().then((infoPrestataires) => {
-        console.log(infoPrestataires);
         res.status(200).json(infoPrestataires);
     }).catch((err) => {
         res.status(500).json(err);
