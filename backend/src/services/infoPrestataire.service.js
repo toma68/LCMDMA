@@ -8,11 +8,11 @@ const Services = require("../models/services.model");
 const findAll = () => InfoPrestataire.findAll();
 
 const findById = (id) => InfoPrestataire.findOne({
-    where: {userId: id},
+    where: {numeroSiret: id},
     include: [
         {
             model: User,
-            attributes: ['id', 'nom', 'prenom', 'roleId']
+            attributes: ['id', 'nom', 'prenom']
         },
         {
             model: Activite,
@@ -23,6 +23,7 @@ const findById = (id) => InfoPrestataire.findOne({
         }
     ]
 });
+
 
 const deleteByid = (id) => InfoPrestataire.destroy({where: {numeroSiret: id}});
 
