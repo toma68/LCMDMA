@@ -1,5 +1,5 @@
 <template>
-  <main class="degrade-bg">
+  <main class="bg">
     <TitlePresentation title="Carte"/>
     <br><br>
     <InteractiveMap style="z-index: 100"/>
@@ -19,10 +19,14 @@ export default {
 <style scoped>
 main {
   height: 100vh;
-  padding: 100px 50px 50px 50px;
+  padding: 50px 50px 50px 50px;
 }
 
-.degrade-bg {
-  background: linear-gradient(#293457, #000000);
+.bg {
+  background-image: url("../../assets/LANDSCAPE-BG.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
 }
 </style>

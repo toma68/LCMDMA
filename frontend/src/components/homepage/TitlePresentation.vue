@@ -26,6 +26,6 @@ export default {
   font-weight: bold;
   text-align: center;
   font-family: 'Pirata One', cursive;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 </style>
