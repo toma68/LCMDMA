@@ -158,6 +158,9 @@ export default new Vuex.Store({
                 .then((response) => {
                     return response.json()
                 })
+                .then(
+                    () => commit('trashCommit')
+)
 
         }
         ,validerPanier({dispatch}, panier) {
