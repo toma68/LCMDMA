@@ -67,6 +67,11 @@ const routes = [
     path: '/user/prestataire',
     name: 'userPrestataire',
     component: () => import(/* webpackChunkName: "userPrestataires" */ '../views/UserPrestataireView.vue')
+  },
+  {
+    path: '/user/prestataire/:id',
+    name: 'userPrestatairePage',
+    component: () => import(/* webpackChunkName: "userPrestataires" */ '../components/userprestataire/SelectPrestataireComponent.vue')
   }
 ]
 

@@ -7,14 +7,15 @@
     <v-row>
       <v-col v-for="prestataires in prestataires" :key="prestataires.numeroSiret" cols="12" md="6" lg="4">
         <v-card>
-          <v-img
+          <!--<v-img
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-          ></v-img>
+              src="/frontend/src/assets/carte/" {{prestataires.image}}
+          ></v-img>-->
           <v-card-title class="headline">{{prestataires.nomEntreprise}}</v-card-title>
           <v-card-text>
             {{prestataires.description}}
           </v-card-text>
+          <button @click="showPrestatairesDetails(prestataires.numeroSiret)">Plus de détails</button>
         </v-card>
       </v-col>
     </v-row>
@@ -27,7 +28,7 @@ export default {
   name: "ListPrestataireComponent",
   data() {
     return {
-      prestataires: []
+      prestataires: [],
     };
   },
   created() {
@@ -36,10 +37,7 @@ export default {
   methods: {
     fetchData() {
       fetch("http://localhost:3000/api/infoPrestataires")
-          .then(response => {
-            response = response.json();
-            console.log(response);
-          })
+          .then(response => response.json())
           .then(data => {
             console.log(data);
             this.prestataires = data;
@@ -47,6 +45,12 @@ export default {
           .catch(error => {
             console.log(error);
           });
+    },
+    showPrestatairesDetails(id) {
+      this.$router.push({ name: "userPrestatairePage", params: { id: id } });
+    },
+    showComponent() {
+      return false;
     }
   }
 }
