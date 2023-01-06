@@ -21,7 +21,7 @@ User.belongsTo(Role, {foreignKey: 'roleId'});
 Token.belongsTo(User, {foreignKey: 'userId'});
 
 Achat.belongsTo(Tarif, {foreignKey: 'tarifId'});
-//Achat.belongsTo(User, {foreignKey: 'userId'});
+Achat.belongsTo(User, {foreignKey: 'userId'});
 
 LivreDOr.belongsTo(User, {foreignKey: 'posterId'});
 LivreDOr.belongsTo(InfoPrestataire, {foreignKey: 'receiverSiret'});

@@ -146,6 +146,19 @@ export default new Vuex.Store({
                 .then(
                     (billet) => commit('setBilletScanned', billet)
                 )
+        },
+        composterBillet({commit},billet) {
+            return fetch('http://localhost:3000/api/achats/' + billet.id, {
+                method: 'PUT', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                }, body: JSON.stringify({
+                    "quantite": billet.quantite-1,
+                })
+             })
+                .then((response) => {
+                    return response.json()
+                })
+
         }
         ,validerPanier({dispatch}, panier) {
             return fetch('http://localhost:3000/api/achats/', {

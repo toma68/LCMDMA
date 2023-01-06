@@ -27,13 +27,7 @@ const create = async (achat, token,ip) => {
 }
 
 const update = (id, achat) => {
-    var updateAchat = {
-        id: achat.id,
-        tarifId: achat.tarifId,
-        dateAchat: achat.dateAchat,
-        qrCode: achat.qrCode
-    }
-    return Achat.update(updateAchat, {where: {id: id}});
+    return Achat.update(achat, {where: {id: id}});
 }
 
 const findByUserId = (id) => Achat.findAll({where: {userId: id}, include: ['tarif']});

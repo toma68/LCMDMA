@@ -61,6 +61,7 @@ const getAchatsByUserId = (req, res) => {
 
 const getAchatByQrCode = (req, res) => {
     let code = req.params.code;
+    console.log("1")
     AchatService.findAchatByQrCode(code).then((achat) => {
         res.status(200).json(achat);
     }
