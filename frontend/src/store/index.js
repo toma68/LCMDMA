@@ -305,7 +305,7 @@ export default new Vuex.Store({
         },
         updateActivite({dispatch}, activite) {
             return fetch('http://localhost:3000/api/activites/' + activite.id, {
-                method: 'GET', headers: {
+                method: 'PUT', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
                 },
                 body: JSON.stringify(
@@ -316,7 +316,8 @@ export default new Vuex.Store({
                 .then(
                     dispatch('getActivitesByPrestataire', activite.siret))
 
-        }
+        },
+
     }, getters: {
         user: state => state.user,
         tarifs: state => state.tarifs,
