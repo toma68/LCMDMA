@@ -71,7 +71,7 @@ const routes = [
   {
     path: '/user/prestataire/:id',
     name: 'userPrestatairePage',
-    component: () => import(/* webpackChunkName: "userPrestataires" */ '../components/userprestataire/SelectPrestataireComponent.vue')
+    component: () => import(/* webpackChunkName: "prestatairesEditer" */ '../views/PrestataireView.vue'),
   },
     {
         path: '/admin/scan',

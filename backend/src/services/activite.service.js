@@ -40,7 +40,6 @@ const activiteStand = () => {
 
 const activiteByPrestataire = (id) => {
     return Activite.findAll({
-        attributes: ['nom', 'heureDebut', 'heureFin'],
         include: [{
             model: infoPrestataire,
             where: {userId: id},

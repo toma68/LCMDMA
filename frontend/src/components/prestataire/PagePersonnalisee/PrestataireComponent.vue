@@ -8,6 +8,8 @@
 </template>
 
 <script>
+
+//todo : gerer le refus d'affichage si il n'y  pas de page ou si elle est masquée
 import LivreDOr from "./LivreDOr.vue";
 export default {
   name: "PrestataireComponent",
