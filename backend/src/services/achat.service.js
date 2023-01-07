@@ -1,7 +1,7 @@
 const Achat = require('../models/achat.model');
 const Token = require('../controllers/token.controller');
 
-const findAll = () => Achat.findAll();
+const findAll = () => Achat.findAll({include: [{all:true}]});
 
 const findById = (id) => Achat.findByPk(id);
 
