@@ -21,7 +21,7 @@ export default new Vuex.Store({
             state.messages = null;
             state.billets = null;
             state.billetScanned = null;
-            state.setActivites = null
+            state.setActivites = null;
 
         }, setTarifs(state, tarifs) {
             state.tarifs = tarifs
@@ -135,17 +135,21 @@ export default new Vuex.Store({
         },
 
         getBillets({commit, state}) {
-            return fetch('http://localhost:3000/api/achats/user/' + state.user.userId, {
-                method: 'GET', headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then((response) => {
-                    return response.json()
+            if (state.user !== null) {
+                return fetch('http://localhost:3000/api/achats/user/' + state.user.userId, {
+                    method: 'GET', headers: {
+                        'Content-Type': 'application/json'
+                    }
                 })
-                .then(
-                    (billets) => commit('setBillets', billets)
-                )
+                    .then((response) => {
+                        return response.json()
+                    })
+                    .then(
+                        (billets) => commit('setBillets', billets)
+                    )
+            } else {
+                return null
+            }
         },
         getBilletAfterScan({commit}, qrCode) {
             return fetch('http://localhost:3000/api/achats/qrCode/' + qrCode, {
@@ -303,7 +307,7 @@ export default new Vuex.Store({
                     }
                 )
         },
-        updateActivite({dispatch,state}, activite) {
+        updateActivite({dispatch, state}, activite) {
             return fetch('http://localhost:3000/api/activites/' + activite.id, {
                 method: 'PUT', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -317,7 +321,7 @@ export default new Vuex.Store({
                     dispatch('getActivitesByPrestataire', state.user.userId))
 
         },
-        deleteActivite({dispatch,state}, activite) {
+        deleteActivite({dispatch, state}, activite) {
             return fetch('http://localhost:3000/api/activites/' + activite.id, {
                 method: 'DELETE', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -327,6 +331,21 @@ export default new Vuex.Store({
                     dispatch('getActivitesByPrestataire', state.user.userId))
 
         },
+        getAchats({commit}) {
+            return fetch('http://localhost:3000/api/achats/', {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+                .then(
+                    (response) => {
+                        return response.json()
+                    })
+                .then(
+                    (achats) => {
+                        commit('setAchats', achats)
+                    })
+        }
 
     }, getters: {
         user: state => state.user,
