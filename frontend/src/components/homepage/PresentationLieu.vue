@@ -1,5 +1,5 @@
 <template>
-  <main class="bg">
+  <main>
     <TitlePresentation title="Carte"/>
     <br><br>
     <InteractiveMap style="z-index: 100"/>
@@ -20,13 +20,9 @@ export default {
 main {
   height: 100vh;
   padding: 50px 50px 50px 50px;
-}
-
-.bg {
   background-image: url("../../assets/LANDSCAPE-BG.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-
 }
 </style>

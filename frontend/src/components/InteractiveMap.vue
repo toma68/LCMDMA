@@ -155,10 +155,10 @@
           <br>
           Encouragez votre chevalier préféré lors de joutes sanglantes.
         </li>
-        <li id="chateau-text"><h1>Château</h1>
+        <li id="chateau-text"><h1>Château de Montby</h1>
           <img src="../assets/carte/chateau.jpg" alt="chateau">
           <br><br>
-          Visitez le château de MontBy et découvrez son histoire.
+          Visitez le château de Montby et découvrez son histoire.
         </li>
         <li id="ecurie-text"><h1>Ecurie</h1>
           <img src="../assets/carte/ecurie.jpg" alt="ecurie">
