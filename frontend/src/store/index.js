@@ -303,7 +303,7 @@ export default new Vuex.Store({
                     }
                 )
         },
-        updateActivite({dispatch}, activite) {
+        updateActivite({dispatch,state}, activite) {
             return fetch('http://localhost:3000/api/activites/' + activite.id, {
                 method: 'PUT', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -314,7 +314,17 @@ export default new Vuex.Store({
 
             })
                 .then(
-                    dispatch('getActivitesByPrestataire', activite.siret))
+                    dispatch('getActivitesByPrestataire', state.user.userId))
+
+        },
+        deleteActivite({dispatch,state}, activite) {
+            return fetch('http://localhost:3000/api/activites/' + activite.id, {
+                method: 'DELETE', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+                .then(
+                    dispatch('getActivitesByPrestataire', state.user.userId))
 
         },
 
