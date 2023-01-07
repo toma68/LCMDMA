@@ -57,11 +57,21 @@ const getActiviteStand = (req, res) => {
     });
 };
 
+const getActiviteByPrestataire = (req, res) => {
+    let id = req.params.id;
+    ActiviteService.activiteByPrestataire(id).then((activites) => {
+        res.status(200).json(activites);
+    }).catch((err) => {
+        res.status(500).json(err);
+    });
+}
+
 module.exports = {
     getAllActivites,
     getActiviteById,
     deleteActiviteById,
     createActivite,
     updateActivite,
-    getActiviteStand
+    getActiviteStand,
+    getActiviteByPrestataire
 }

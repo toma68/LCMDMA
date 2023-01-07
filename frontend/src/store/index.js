@@ -7,7 +7,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets :null, billetScanned:null
+        user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets :null,
+        billetScanned:null, setActivites:null
     }, mutations: {
         setUser(state, user) {
             state.user = user
@@ -35,6 +36,9 @@ export default new Vuex.Store({
         },
         setBilletScanned(state,billet){
             state.billetScanned = billet
+        },
+        setActivites(state, activites) {
+            state.activites = activites
         },
         trashCommit() {
 
@@ -275,6 +279,22 @@ export default new Vuex.Store({
                 }
             )
         },
+        getActivitesByPrestataire({commit},siret) {
+            console.log("Je m'execute correctement" )
+            return fetch('http://localhost:3000/api/activites/prestataire/' + siret, {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((response) => {
+                    return response.json()
+                })
+                .then(
+                    (activites) => {
+                        commit('setActivites', activites)
+                    }
+                )
+        }
     }, getters: {
         user: state => state.user,
         tarifs: state => state.tarifs,
@@ -282,6 +302,7 @@ export default new Vuex.Store({
         prestataire: state => state.prestataire,
         services: state => state.services,
         messages: state => state.messages,
-        billetScanned: state => state.billetScanned
+        billetScanned: state => state.billetScanned,
+        activites: state => state.activites
     }
 })

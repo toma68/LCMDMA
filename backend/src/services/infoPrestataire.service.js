@@ -16,7 +16,8 @@ const findById = (id) => InfoPrestataire.findOne({
         },
         {
             model: Activite,
-            attributes: ['id', 'nom', 'heureDebut', 'heureFin', 'description']
+            attributes: ['id', 'nom', 'heureDebut', 'heureFin', 'description'],
+
         },
         {
             model: Services,
@@ -34,7 +35,9 @@ const create = (infoPrestataire) => {
 };
 
 const update = (id, infoPrestataire) => {
-    infoPrestataire.contenuPage = infoPrestataire.contenuPage.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+    if  (infoPrestataire.contenuPage) {
+        infoPrestataire.contenuPage = infoPrestataire.contenuPage.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+    }
     return InfoPrestataire.update(infoPrestataire, {where: {userId: id}});
 }
 

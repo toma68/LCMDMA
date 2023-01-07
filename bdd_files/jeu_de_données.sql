@@ -100,6 +100,8 @@ INSERT INTO activites VALUES
 (default, 'Tir à l arc', '20230709 14:00:00', '20230709 14:30:00', 'Initiation au tir à l arc pour tous', 16, 2, '70584918093208'),
 (default, 'Voyante Irma', '20230709 10:00:00', '20230709 18:00:00', 'Madame Irma vous lis votre avenir', 9, 2, '39628881709477'),
 (default, 'Balade en poney ou cheval', '20230709 11:00:00', '20230709 11:30:00', 'Balade en poney ou cheval', 7, 2, '17277788681573'),
-(default, 'Balade en poney ou cheval', '20230709 16:00:00', '20230709 16:30:00', 'Balade en poney ou cheval', 7, 2, '17277788681573'),
-(default, 'Combat de joûte', '20230709 15:00:00', '20230709 16:00:00', 'Combat entre 2 chevalier', 15, 1, '60732143167747'),
+(default, 'Balade en poney ou cheval', '20230709 16:00:00', '20230709 16:30:00', 'Balade en poney ou cheval', 7, 2, '82059704500021'),
+(default, 'Combat de joûte', '20230709 15:00:00', '20230709 16:00:00', 'Combat entre 2 chevalier', 15, 1, '82059704500021'),
 (default, 'Creation d une statue en bois', '20230709 13:00:00', '20230709 15:00:00', 'Venez apprendre a créer une statue en bois dans le respect des traditions médiévales', 4, 3, '62059248221134');
+
+INSERT INTO "services" VALUES

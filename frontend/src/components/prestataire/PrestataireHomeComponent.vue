@@ -10,19 +10,19 @@
             <br>
             Vous êtes connecté en tant que prestataire :
             <br>
-            {{user.user.prenom}} {{user.user.nom}}
+            {{ user.user.prenom }} {{ user.user.nom }}
             <br><br>
             <v-icon class="mdi-account-search">mdi-account-search</v-icon>
-            Numero de Siret : {{user.numeroSiret}}
+            Numero de Siret : {{ user.numeroSiret }}
             <v-divider></v-divider>
             <br>
             <v-icon class="mdi-account-group">mdi-account-group</v-icon>
-            Entreprise : {{user.nomEntreprise}}
+            Entreprise : {{ user.nomEntreprise }}
             <v-divider></v-divider>
             <br>
             <v-icon class="mdi-application-edit-outline">mdi-application-edit-outline</v-icon>
             Description :
-            <br>{{user.description}}
+            <br>{{ user.description }}
             <v-divider></v-divider>
             <br>
             <span v-if="user.pageMasque">
@@ -41,17 +41,54 @@
             <br>
             Vos services :
             <br>
-            <v-switch v-for="service in services" :key="service.id" :label="service.libelle" v-model="service.checked" @change="toggleService(service.id, service.checked)"></v-switch>
+            <v-switch v-for="service in services" :key="service.id" :label="service.libelle" v-model="service.checked"
+                      @change="toggleService(service.id, service.checked)"></v-switch>
+
           </v-form>
         </div>
+        <div class="card-body">
+          <h1>Vos activites</h1>
+          <v-data-table
+              :headers="headers"
+              :items="activites"
+              :items-per-page="5"
+              class="elevation-1"
+          ></v-data-table>
+
+          <v-btn @click="ajouterActivite" color="primary">Ajouter une activite</v-btn>
+
+
+        </div>
+
       </v-card>
+
+
     </div>
+
   </main>
 </template>
 
 <script>
+
 export default {
   name: "PrestataireHomeComponent",
+  data() {
+    return {
+      headers: [
+        {
+          text: 'Nom',
+          align: 'start',
+          value: 'nom',
+        },
+        { text: 'Heure de debut', value: 'heureDebut' },
+        { text: 'Heure de fin', value: 'heureFin' },
+        { text: 'Description', value: 'description' },
+        { text: 'Type', value: 'typeActivite.libelle' },
+
+
+      ],
+    }
+  },
   methods: {
     togglePageMasque() {
       this.$store.dispatch("togglePageMasque");
@@ -59,12 +96,13 @@ export default {
     editerPagePrestataire() {
       this.$router.push("/prestataire/editer");
     },
-    toggleService(id,bool) {
-      this.$store.dispatch("toggleService", {id: id, bool:bool});
+    toggleService(id, bool) {
+      this.$store.dispatch("toggleService", {id: id, bool: bool});
     }
   },
   mounted() {
-    this.$store.dispatch("getPrestataire");
+    this.$store.dispatch("getActivitesByPrestataire", this.$store.state.user.userId);
+    this.$store.dispatch("getPrestataire")
     this.$store.dispatch("getServices");
   },
   computed: {
@@ -73,6 +111,9 @@ export default {
     },
     services() {
       return this.$store.getters.services;
+    },
+    activites() {  // change this line
+      return this.$store.getters.activites;
     }
   }
 }
@@ -83,8 +124,8 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url( '../../assets/baroque_foncé.jpg');
+  min-height: 100vh;
+  background-image: url('../../assets/baroque_foncé.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
