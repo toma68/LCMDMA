@@ -135,17 +135,20 @@ export default new Vuex.Store({
         },
 
         getBillets({commit, state}) {
-            return fetch('http://localhost:3000/api/achats/user/' + state.user.userId, {
-                method: 'GET', headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then((response) => {
-                    return response.json()
-                })
-                .then(
-                    (billets) => commit('setBillets', billets)
-                )
+           if (state.user !== null) {
+               return fetch('http://localhost:3000/api/achats/user/' + state.user.userId, {
+                   method: 'GET', headers: {
+                       'Content-Type': 'application/json'
+                   }
+               })
+                   .then((response) => {
+                       return response.json()
+                   })
+                   .then(
+                       (billets) => commit('setBillets', billets)
+                   )
+           }
+           else {return null}
         },
         getBilletAfterScan({commit}, qrCode) {
             return fetch('http://localhost:3000/api/achats/qrCode/' + qrCode, {

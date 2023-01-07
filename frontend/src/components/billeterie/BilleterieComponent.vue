@@ -24,9 +24,9 @@
                 <td>20 €</td>
               </tr>
             </table>
-          <achat-billet-component/>
+          <achat-billet-component v-if="user != undefined"/>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" v-if="user != undefined">
           <h1 class="text-center mb-5">Vos billets</h1>
           <v-row>
             <ShowBilletComponent v-for="billet in billets" :key="billet.id" :billet="billet"></ShowBilletComponent>
@@ -41,7 +41,6 @@
 
 <script>
 
-//todo: Si un user non connecté arriver, adapater l'affichage
 
 import AchatBilletComponent from "@/components/billeterie/achatBilletComponent.vue";
 import ShowBilletComponent from "@/components/billeterie/ShowBilletComponent.vue";
@@ -61,6 +60,9 @@ export default {
   computed: {
     billets() {
       return this.$store.state.billets;
+    },
+    user() {
+      return this.$store.state.user;
     },
   },
 

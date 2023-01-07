@@ -77,6 +77,11 @@ const routes = [
         path: '/admin/scan',
         name: 'adminScan',
         component: () => import(/* webpackChunkName: "adminScan" */ '../views/AdminScanView.vue')
+    },
+    {
+        path: '/carte',
+        name: 'carte',
+        component: () => import(/* webpackChunkName: "carte" */ '../views/CarteView.vue')
     }
 ]
 

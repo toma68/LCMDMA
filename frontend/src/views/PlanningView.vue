@@ -25,7 +25,8 @@ export default {
       showComponent: true,
       data: [],
       samedi: [],
-      dimanche: []
+      dimanche: [],
+      syncscroll: false,
     };
   },
   created() {

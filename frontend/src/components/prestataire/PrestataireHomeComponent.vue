@@ -55,7 +55,7 @@
               class="elevation-1"
           ></v-data-table>
 
-          <v-btn @click="ajouterActivite" color="primary">Ajouter une activite</v-btn>
+          <v-btn  color="primary">Ajouter une activite</v-btn>
 
 
         </div>
@@ -100,8 +100,10 @@ export default {
       this.$store.dispatch("toggleService", {id: id, bool: bool});
     }
   },
-  mounted() {
-    this.$store.dispatch("getActivitesByPrestataire", this.$store.state.user.userId);
+  created() {
+    if (this.user && this.user.userId) {
+      this.$store.dispatch("getActivitesByPrestataire", this.user.userId);
+    }
     this.$store.dispatch("getPrestataire")
     this.$store.dispatch("getServices");
   },

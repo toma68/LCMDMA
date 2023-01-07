@@ -275,7 +275,7 @@
         </v-form>
         <div>
           <br>
-          Vous êtes déjà connecté? <router-link to="/login">Connectez-vous</router-link>
+          Vous êtes déjà inscrit ? <router-link to="/login">Connectez-vous</router-link>
         </div>
       </div>
     </v-card>
@@ -305,6 +305,8 @@ export default {
   name: "InscriptionComponent",
   data() {
     return {
+
+      invalid: null,
       login: "",
       loginRules: [
         v => !!v || "Un pseudo est requis",
