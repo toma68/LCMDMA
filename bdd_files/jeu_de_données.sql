@@ -104,4 +104,3 @@ INSERT INTO activites VALUES
 (default, 'Combat de joûte', '20230709 15:00:00', '20230709 16:00:00', 'Combat entre 2 chevalier', 15, 1, '82059704500021'),
 (default, 'Creation d une statue en bois', '20230709 13:00:00', '20230709 15:00:00', 'Venez apprendre a créer une statue en bois dans le respect des traditions médiévales', 4, 3, '62059248221134');
 
-INSERT INTO "services" VALUES
