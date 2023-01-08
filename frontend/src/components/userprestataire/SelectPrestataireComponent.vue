@@ -6,16 +6,17 @@
     <br>
     <v-row>
       <v-col>
+        <v-img
+            height="200px"
+            :src="`${prestataire.image}`" alt=""></v-img>
         <v-card>
-          <v-img
-              height="200px"
-              :src="`${prestataire.image}`" alt=""></v-img>
           <v-card-title class="headline"> {{prestataire.nomEntreprise}} </v-card-title>
           <v-card-text>
             <v-card-text>
               {{prestataire.description}}
             </v-card-text>
           </v-card-text>
+          <PrestataireComponent :prestataire="prestataire"/>
         </v-card>
       </v-col>
     </v-row>
@@ -24,8 +25,10 @@
 </template>
 
 <script>
+import PrestataireComponent from "@/components/prestataire/PagePersonnalisee/PrestataireComponent.vue";
 export default {
   name: "SelectPrestataireComponent",
+  components: {PrestataireComponent},
   data() {
     return {
       prestataire: []
@@ -45,6 +48,7 @@ export default {
           .then(response => response.json())
           .then(data => {
             this.prestataire = data;
+            console.log(this.prestataire)
           })
           .catch(error => {
             console.log(error);
