@@ -8,7 +8,7 @@
     <v-row>
       <v-col class="col-6">
         <v-img
-            width="700px"
+            width="auto"
             :src="`${prestataire.image}`" alt="" class="rounded"></v-img>
         <br>
       </v-col>
