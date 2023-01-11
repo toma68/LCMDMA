@@ -4,8 +4,11 @@ const Activite = require("../models/activite.model");
 const Services = require("../models/services.model");
 
 
-
-const findAll = () => InfoPrestataire.findAll();
+const findAll = () => InfoPrestataire.findAll({
+    order: [
+        ['userId']
+    ],
+});
 
 const findById = (id) => InfoPrestataire.findOne({
     where: {userId: id},

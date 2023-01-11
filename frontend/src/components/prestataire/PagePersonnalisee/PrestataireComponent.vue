@@ -36,7 +36,6 @@ export default {
 <style scoped>
 main {
   height: auto;
-  margin-top: 150px;
   font-family: Roboto, -apple-system, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 </style>
