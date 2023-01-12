@@ -1,6 +1,6 @@
 <template>
   <main>
-    <TitlePresentation title="Présentation"/> <!--activitéq-->
+    <TitlePresentation title="Présentation"/><!--activitéq-->
     <br><br>
     <v-row class="mx-auto">
       <v-col cols="5">

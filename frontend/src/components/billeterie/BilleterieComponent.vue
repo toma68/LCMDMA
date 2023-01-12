@@ -1,9 +1,9 @@
 <template>
-  <main>
+  <main class="bg">
     <div class="container text-center">
       <div class="row">
         <div class="mx-auto col-md-6">
-          <h1 class="text-center">Billeterie</h1>
+          <h1 class="text-center" style="color: white;">Billeterie</h1>
             <table class="table-tarifaire">
               <tr>
                 <td></td>
@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-6" v-if="user != undefined">
           <div v-if="billets.length !=0">
-          <h1 class="text-center mb-5">Vos billets</h1>
+          <h1 class="text-center mb-5" style="color: white;">Vos billets</h1>
           <v-row>
             <ShowBilletComponent v-for="billet in billets" :key="billet.id" :billet="billet"></ShowBilletComponent>
           </v-row>
@@ -79,6 +79,7 @@ export default {
 
 .table-tarifaire {
   margin-top: 30px;
+  background-color: #f2f2f2;
 }
 
 .table-tarifaire td {
@@ -87,8 +88,16 @@ export default {
   padding: 10px;
 }
 
-
 .table-tarifaire tr:hover {
   background-color: #ddd;
+}
+
+.bg {
+  height: 100vh;
+  padding: 50px 50px 50px 50px;
+  background-image: url("../../assets/LANDSCAPE-BG.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 </style>

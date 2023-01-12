@@ -1,27 +1,28 @@
 <template>
-  <v-container>
-    <br>
-    <br>
-    <br>
-    <br>
-    <v-row>
-      <v-col v-for="prestataires in prestataires" :key="prestataires.userId" cols="12" md="6" lg="4">
-        <v-card>
-          <v-img
-              height="200px"
-              :src="`${prestataires.image}`" alt="">
-          </v-img>
-          <v-card-title class="headline">{{prestataires.nomEntreprise}}</v-card-title>
-          <v-card-text> {{prestataires.description}} </v-card-text>
-          <div class="text-center">
-            <v-btn class="button" v-bind:to="{ name: 'userPrestatairePage', params: { id: prestataires.userId }}">Plus de détails</v-btn>
-          </div>
-          <br>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
-
+  <main class="bg">
+    <v-container>
+      <br>
+      <br>
+      <br>
+      <br>
+      <v-row>
+        <v-col v-for="prestataires in prestataires" :key="prestataires.userId" cols="12" md="6" lg="4">
+          <v-card>
+            <v-img
+                height="200px"
+                :src="`${prestataires.image}`" alt="">
+            </v-img>
+            <v-card-title class="headline">{{prestataires.nomEntreprise}}</v-card-title>
+            <v-card-text> {{prestataires.description}} </v-card-text>
+            <div class="text-center">
+              <v-btn class="button" v-bind:to="{ name: 'userPrestatairePage', params: { id: prestataires.userId }}">Plus de détails</v-btn>
+            </div>
+            <br>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </main>
 </template>
 
 <script>
@@ -78,5 +79,12 @@ export default {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+}
+.bg {
+  padding: 50px 50px 50px 50px;
+  background-image: url("../../assets/LANDSCAPE-BG.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 </style>

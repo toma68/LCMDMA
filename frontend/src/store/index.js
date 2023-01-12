@@ -4,7 +4,6 @@ import router from "@/router";
 
 Vue.use(Vuex)
 
-
 export default new Vuex.Store({
     state: {
         user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets: null,
@@ -312,6 +311,10 @@ export default new Vuex.Store({
                 })
                 .then(
                     (activites) => {
+                        activites.forEach(activite => {
+                            activite.heureDebut = activite.heureDebut.split('T')[0] + " " + activite.heureDebut.split('T')[1].split('.')[0];
+                            activite.heureFin = activite.heureFin.split('T')[0] + " " + activite.heureFin.split('T')[1].split('.')[0];
+                        })
                         commit('setActivites', activites)
                     }
                 )
@@ -399,6 +402,17 @@ export default new Vuex.Store({
                     (activites) => {
                         commit('setActivites', activites)
                     })
+        },
+        addActivite({dispatch, state}, activite) {
+            return fetch('http://localhost:3000/api/activites/', {
+                method: 'POST', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
+                body: JSON.stringify(
+                    activite)
+            })
+                .then(
+                    dispatch('getActivitesByPrestataire', state.user.userId))
         }
 
     }, getters: {
