@@ -40,7 +40,10 @@
               <v-divider></v-divider>
               <br>
               <v-btn @click="editerPagePrestataire" color="primary">Modifier ma page prestataire</v-btn>
-              <br>
+              <br><br>
+              <v-switch v-for="service in services" :key="service.id" :label="service.libelle" v-model="service.checked"
+                        @change="toggleService(service.id, service.checked)">
+              </v-switch>
             </v-form>
           </div>
         </v-card>
@@ -48,9 +51,6 @@
 
       <!--      erreur de v-slot-->
       <v-col cols="7">
-        <v-switch v-for="service in services" :key="service.id" :label="service.libelle" v-model="service.checked"
-                  @change="toggleService(service.id, service.checked)">
-        </v-switch>
         <template>
           <v-data-table style="margin-top: 50px;"
                         :headers="headers"
