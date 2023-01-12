@@ -92,6 +92,11 @@ const routes = [
         path: '/admin/achats',
         name: 'adminAchats',
         component: () => import(/* webpackChunkName: "adminAchats" */ '../views/AdminAchatsView.vue')
+    },
+    {
+        path: '/admin/prestataire/:id',
+        name: 'adminPrestataire',
+        component: () => import(/* webpackChunkName: "adminPrestataire" */ '../views/AdminPrestataireView.vue')
     }
 ]
 

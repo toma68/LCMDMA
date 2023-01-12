@@ -20,6 +20,24 @@
           </v-card>
         </v-col>
       </v-row>
+      <v-snackbar
+          v-model="snackbar"
+          :timeout="-1"
+          :value="true"
+          absolute
+          bottom
+          :color="snackbarColor"
+          outlined
+          right
+      >
+        {{ snackbarText }}
+        <v-btn
+            text
+            @click="snackbar = false"
+        >
+          Fermer
+        </v-btn>
+      </v-snackbar>
 
 
     </v-container>
@@ -37,6 +55,9 @@ export default {
   components: {TextEditor},
   data() {
     return {
+      snackbar: false,
+      snackbarText: "",
+      snackbarColor: "",
     };
   },
   computed: {
@@ -46,7 +67,16 @@ export default {
   },
   methods: {
     validerUpdate(contenu) {
-      this.$store.dispatch("updateContenuPage", contenu);
+      this.$store.dispatch("updateContenuPage", contenu).then(
+        () => {
+          this.affichageMessage("success", "Votre page a bien été mise à jour");
+        }
+      )
+    },
+    affichageMessage(type, message) {
+      this.snackbar = true;
+      this.snackbarColor = "success";
+      this.snackbarText = message;
     }
   }
 }
