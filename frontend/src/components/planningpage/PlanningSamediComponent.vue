@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Planning Samedi</h1>
+    <h1 style="color: white;">Planning Samedi</h1>
     <div class="timetable timetableSamedi"></div>
   </v-container>
 </template>

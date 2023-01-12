@@ -1,12 +1,12 @@
 <template>
-  <main>
+  <main class="bg">
     <v-container>
       <br>
       <br>
       <br>
       <br>
       <div class="text-center">
-        <button v-on:click="showComponent = !showComponent">Changer de jour</button>
+        <v-btn color="primary" class="mx-2" v-on:click="showComponent = !showComponent">Changer de jour</v-btn>
       </div>
       <PlanningSamediComponent v-if="showComponent" v-bind:tab="samedi"></PlanningSamediComponent>
       <PlanningDimancheComponent v-else v-bind:tab="dimanche"></PlanningDimancheComponent>
@@ -57,33 +57,12 @@ export default {
 </script>
 
 <style scoped>
-button{
-  height: 36px;
-  min-width: 64px;
-  padding: 0 16px;
-  font-size: .875rem;
-  border: thin solid;
-  align-items: center;
-  border-radius: 4px;
-  display: inline-flex;
-  flex: 0 0 auto;
-  font-weight: 500;
-  letter-spacing: .0892857143em;
-  justify-content: center;
-  outline: 0;
-  position: relative;
-  text-decoration: none;
-  text-indent: 0.0892857143em;
-  text-transform: uppercase;
-  transition-duration: .28s;
-  transition-property: box-shadow,transform,opacity;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
+.bg {
+  height: 100vh;
+  padding: 50px 50px 50px 50px;
+  background-image: url("../assets/LANDSCAPE-BG.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
-
 </style>

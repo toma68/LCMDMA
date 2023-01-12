@@ -34,6 +34,8 @@ InfoPrestataire.belongsTo(User, {foreignKey: 'userId'});
 Activite.belongsTo(Stand, {foreignKey: 'standId'});
 Activite.belongsTo(TypeActivite, {foreignKey: 'typeActiviteId'});
 Activite.belongsTo(InfoPrestataire, {foreignKey: 'infoPrestataireId'});
+
+InfoPrestataire.belongsTo(Stand, {foreignKey: 'standId'});
 //Many-To-Many Join
 
 User.belongsToMany(Activite, {through: 'reserve'});

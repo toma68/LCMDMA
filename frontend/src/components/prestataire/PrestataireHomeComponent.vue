@@ -191,14 +191,7 @@
                 </v-dialog>
               </v-toolbar>
             </template>
-            <template>
-              <v-icon
-                  small
-                  class="mr-2"
-                  @click="editItem(item)"
-              >
-                mdi-pencil
-              </v-icon>
+            <template v-slot:[`item.actions`]="{ item }">
               <v-icon
                   small
                   @click="deleteItem(item)"
@@ -248,12 +241,11 @@ export default {
         {text: 'Type', value: 'typeActivite.libelle'},
         {text: 'Actions', value: 'actions', sortable: false},
       ],
-      tables: [],
       editedIndex: -1,
       editedItem: {
         nom: '',
-        heureDebut: '',
-        heureFin: '',
+        heureDebut: '2023-07-07 00:00:00',
+        heureFin: '2023-07-07 00:00:00',
         description: '',
         typeActivite: {
           libelle: ''
@@ -261,8 +253,8 @@ export default {
       },
       defaultItem: {
         nom: '',
-        heureDebut: '',
-        heureFin: '',
+        heureDebut: '2023-07-07 00:00:00',
+        heureFin: '2023-07-07 00:00:00',
         description: '',
         typeActivite: {
           libelle: ''
@@ -280,7 +272,7 @@ export default {
     services() {
       return this.$store.getters.services;
     },
-    activites() {  // change this line
+    tables() {  // change this line
       return this.$store.getters.activites;
     }
   },
@@ -297,62 +289,8 @@ export default {
   },
   methods: {
     initialize() {
-      this.tables = [
-        {
-          nom: 'Activité test',
-          heureDebut: '08:00',
-          heureFin: '12:00',
-          description: 'Description de l\'activité 1',
-          typeActivite: {
-            libelle: 'Activité 1'
-          },
-        },
-        {
-          nom: 'Activité test 2',
-          heureDebut: '14:00',
-          heureFin: '18:00',
-          description: 'Description de l\'activité 2',
-          typeActivite: {
-            libelle: 'Activité 2'
-          },
-        },
-        {
-          nom: 'Activité test 3',
-          heureDebut: '08:00',
-          heureFin: '12:00',
-          description: 'Description de l\'activité 3',
-          typeActivite: {
-            libelle: 'Activité 3'
-          },
-        },
-        {
-          nom: 'Activité test 4',
-          heureDebut: '14:00',
-          heureFin: '18:00',
-          description: 'Description de l\'activité 4',
-          typeActivite: {
-            libelle: 'Activité 4'
-          },
-        },
-        {
-          nom: 'Activité test 5',
-          heureDebut: '08:00',
-          heureFin: '12:00',
-          description: 'Description de l\'activité 5',
-          typeActivite: {
-            libelle: 'Activité 5'
-          },
-        },
-        {
-          nom: 'Activité test 6',
-          heureDebut: '14:00',
-          heureFin: '18:00',
-          description: 'Description de l\'activité 6',
-          typeActivite: {
-            libelle: 'Activité 6'
-          },
-        },
-      ];
+      this.$store.dispatch("getActivitesByPrestataire", this.$store.state.user.userId)
+
     },
     editItem(item) {
       this.editedIndex = this.tables.indexOf(item);
@@ -365,7 +303,7 @@ export default {
       this.dialogDelete = true;
     },
     deleteItemConfirm() {
-      this.tables.splice(this.editedIndex, 1);
+      this.$store.dispatch("deleteActivite", this.editedItem)
       this.closeDelete();
     },
     close() {
@@ -383,11 +321,18 @@ export default {
       });
     },
     save() {
-      if (this.editedIndex > -1) {
-        Object.assign(this.tables[this.editedIndex], this.editedItem);
-      } else {
-        this.tables.push(this.editedItem);
+      this.editedItem.heureDebut = this.editedItem.heureDebut.toISOString()
+      this.editedItem.heureFin = this.editedItem.heureFin.toISOString()
+      this.editedItem = {
+          "nom": this.editedItem.nom,
+          "heureDebut": this.editedItem.heureDebut,
+          "heureFin": this.editedItem.heureFin,
+          "description": this.editedItem.description,
+          "typeActiviteId": 2,
+          "standId": this.user.standId,
+          "infoPrestataireId": this.user.numeroSiret
       }
+      this.$store.dispatch("addActivite", this.editedItem)
       this.close();
     },
 
