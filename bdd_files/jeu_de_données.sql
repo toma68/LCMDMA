@@ -68,21 +68,21 @@ INSERT INTO users VALUES
 
 INSERT INTO "infoPrestataires" VALUES
 ('87080662337635', 'Forgeron d armes de père en fils depuis 5 génération', false, 'Nidavallir', 'Forgeron', '/image_presta/forgeron_armes.jpg', 6,1),
-('95048096745763', NULL, false, 'Forgeciel', 'Forgeron', '/image_presta/forgeron_outils.jpg', 7,1),
-('97080662337635', NULL, false, 'Gaston Deffere', 'Forgeron', '/image_presta/forgeron_marechal_ferrant.jpg', 8,1),
+('95048096745763', 'Je suis un forgeron expérimenté qui produit des outils de qualité supérieure pour les artisans et les agriculteurs.', false, 'Forgeciel', 'Forgeron', '/image_presta/forgeron_outils.jpg', 7,1),
+('97080662337635', 'Je travaille en étroite collaboration avec les propriétaires de chevaux et les vétérinaires pour assurer le bien-être des animaux', false, 'Gaston Deffere', 'Forgeron', '/image_presta/forgeron_marechal_ferrant.jpg', 8,1),
 ('62059248221134', 'Travailleur du bois, je créer vos demandes', false, 'Wodan&Cie', 'Menuisier', '/image_presta/ebeniste.jpg', 9,2),
-('27522326133922', NULL, false, 'Scie-Physis', 'Luttière', '/image_presta/luthier.jpg', 10,2),
-('82059704500021', NULL, false, 'ABII', 'Tavernier', '/image_presta/taverne.jpg', 11,3),
-('70192293194212', NULL, false, 'Claudus Vitrail', 'Vitrailliste', '/image_presta/vitrailliste.jpg', 12,4),
-('32121568188127', NULL, false, 'Pot ofeu', 'Poterie', '/image_presta/potier.jpg', 13,5),
-('28233418929499', NULL, false, 'Chaussures au moines', 'Cordonnier', '/image_presta/cordonnier.jpg', 14,6),
-('17277788681573', NULL, false, 'Ecurie Addada', 'Ecurie', '/image_presta/ecurie.jpg', 15,7),
+('27522326133922', 'Je suis spécialisée dans la fabrication, la réparation et la restauration d instruments à cordes', false, 'Scie-Physis', 'Luttière', '/image_presta/luthier.jpg', 10,2),
+('82059704500021', 'Membre de l ABII, j offre une large sélection de boissons, allant des bières artisanales aux vins de qualité supérieure', false, 'ABII', 'Tavernier', '/image_presta/taverne.jpg', 11,3),
+('70192293194212', 'Vitrailliste de passion, je confectione également les vitraux des églises', false, 'Claudus Vitrail', 'Vitrailliste', '/image_presta/vitrailliste.jpg', 12,4),
+('32121568188127', 'Potier depuis mon plus jeune âge, j ai toujours aimé laisser exprimer ma créativité', false, 'Pot ofeu', 'Poterie', '/image_presta/potier.jpg', 13,5),
+('28233418929499', 'Des chaussures comme vous n en trouverez nulle part ailleurs', false, 'Chaussures au moines', 'Cordonnier', '/image_presta/cordonnier.jpg', 14,6),
+('17277788681573', 'De beaux chevaux bien traités qui vous emmeneront pour une promenade d exception', false, 'Ecurie Addada', 'Ecurie', '/image_presta/ecurie.jpg', 15,7),
 ('50335216387331', 'Vous aimez la torture ? Passez à notre stand, vous pourriez essayer', false, 'Aux petits plaisirs', 'Torture', '/image_presta/torture.jpg', 16,8),
 ('39628881709477', 'Que vous réserve l avenir ? venez le découvrir dans notre stand', false, 'Dubiff', 'Voyante', '/image_presta/voyante.jpg', 17,9),
-('33733448737176', NULL, false, 'Aux herbes du seigneur', 'Remede et plante', '/image_presta/herboriste.jpg', 18,10),
-('40727170487273', NULL, false, 'Bosiege', 'Armes de siège', '/image_presta/trebuchet.jpg', 19,11),
+('33733448737176', 'Vous souffrez d une quelconque maladie ? venez vous soignez grâce aux herbes du seigneur', false, 'Aux herbes du seigneur', 'Remede et plante', '/image_presta/herboriste.jpg', 18,10),
+('40727170487273', 'Les armes médiévale, quoi de mieux ?', false, 'Bosiege', 'Armes de siège', '/image_presta/trebuchet.jpg', 19,11),
 ('84174659147008', 'Artisan Boulanger réputé', false, 'Boulan-gégé', 'Boulangère', '/image_presta/boulanger.jpg', 20, 12),
-('70584918093208', NULL, false, 'Spam Bow', 'Stand de tir à l arc', '/image_presta/stand_de_tir.jpg', 22,16);
+('70584918093208', 'Le tir à l arc, plus qu un sport, une passion', false, 'Spam Bow', 'Stand de tir à l arc', '/image_presta/stand_de_tir.jpg', 22,16);
 
 INSERT INTO "infoPrestataires" VALUES ('60732143167747', 'Messire Domas et Monsigneur Ambert sont heureux de vous présenter les spectacles de cette convention', false, 'La compagnie excalibur', 'Presentateur et chevaliers', '/image_presta/compagnie_excalibur.jpg', 21);
 
@@ -108,7 +108,7 @@ INSERT INTO activites VALUES
 
 
 INSERT INTO "services" VALUES
-                           (1, 'Livre d''or','Le plus beau livre service de la terre')
+                           (1, 'Livre d''or','Le plus beau livre service de la terre');
 
 INSERT INTO "livreDOrs" VALUES
                             (default, 'Le meilleur des stands !', NOW(), NOW(), 5, 23, 82059704500021)
