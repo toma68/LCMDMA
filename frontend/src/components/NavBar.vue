@@ -5,6 +5,7 @@
         height="80px"
     >
       <v-app-bar-nav-icon>
+        <router-link to="/">
         <svg viewBox="192.34797516321805 108.36917018890381 127.30404804810678 199.09403228759766" height="50"
              class="logo-img">
           <g xmlns="http://www.w3.org/2000/svg"
@@ -175,9 +176,10 @@
                   transform="matrix(1, 0, 0, 1, 0, 0)"></path>
           </g>
         </svg>
+        </router-link>
       </v-app-bar-nav-icon>
 
-      <v-toolbar-title class="navbar-title">LCMDMA</v-toolbar-title>
+      <v-toolbar-title class="navbar-title"> <router-link to="/" class="navbar-item">LCMDMA</router-link></v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -260,6 +262,13 @@ export default {
 .navbar-title{
   font-family: 'Pirata One', cursive;
   font-size: 2rem !important;
+}
+
+.navbar-item{
+  text-decoration: none;
+  text-transform: none;
+  color: #1b2239;
+  font-family: 'Pirata One', cursive;
 }
 
 .logo-img{
