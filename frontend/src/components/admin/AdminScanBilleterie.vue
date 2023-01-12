@@ -15,7 +15,10 @@
         <h2>
           Informations sur le billet :
         </h2>
-        <div v-if="billetScanned!=undefined">
+        <div v-if="billetScanned=='vide'">
+          <h3>Billet invalide !</h3>
+        </div>
+        <div v-else-if="billetScanned!=undefined && billetScanned!=null">
           <v-card>
             <v-card-title>
               <h3 class="headline mb-0">{{ billetScanned.tarif.libelle }}</h3>
@@ -43,6 +46,9 @@
             </v-card-text>
           </v-card>
 
+        </div>
+        <div v-else>
+          <h3>Scannez un billet</h3>
         </div>
       </div>
     </v-row>
