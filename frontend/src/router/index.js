@@ -64,7 +64,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "prestatairesEditer" */ '../views/PrestataireView.vue'),
   },
   {
-    path: '/user/prestataire',
+    path: '/user/prestataires',
     name: 'userPrestataire',
     component: () => import(/* webpackChunkName: "userPrestataires" */ '../views/UserPrestataireView.vue')
   },

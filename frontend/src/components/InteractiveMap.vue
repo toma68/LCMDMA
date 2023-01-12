@@ -456,7 +456,7 @@ export default {
   },
   methods: {
     goToPrestataire() {
-      this.$router.push("/user/prestataire");
+      this.$router.push("/user/prestataires");
     },
   }
 }
