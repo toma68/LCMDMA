@@ -1,8 +1,10 @@
 <template>
-  <v-container>
-    <br>
-    <br>
-    <br>
+  <main class="bg">
+    <v-container>
+      <br>
+      <br>
+      <br>
+      <h1 class="titre">Prestataire sélectionné</h1>
     <h1 class="text-center">{{ prestataire.nomEntreprise }}</h1>
     <br>
     <v-row>
@@ -32,7 +34,7 @@
       </v-col>
     </v-row>
   </v-container>
-
+  </main>
 </template>
 
 <script>
@@ -63,5 +65,18 @@ export default {
 </script>
 
 <style scoped>
-
+.bg {
+  min-height: 100vh;
+  padding: 50px 50px 50px 50px;
+  background-image: url("../../assets/baroque_foncé.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.titre{
+  color: white;
+  font-family: 'Secular One', sans-serif;
+  font-size: 5rem;
+  text-align: center;
+}
 </style>

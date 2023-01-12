@@ -1,11 +1,18 @@
 <template>
- <main>
-   <v-data-table
-     :headers="headers"
-     :items="achats"
-     :items-per-page="5"
-     class="elevation-1"
-   ></v-data-table>
+  <main class="bg">
+    <v-container>
+      <br>
+      <br>
+      <br>
+      <h1 class="titre">Liste des achats</h1>
+      <br>
+     <v-data-table
+       :headers="headers"
+       :items="achats"
+       :items-per-page="5"
+       class="elevation-1"
+     ></v-data-table>
+    </v-container>
  </main>
 </template>
 
@@ -37,8 +44,18 @@ export default {
 </script>
 
 <style scoped>
-main {
-  margin-top :100px
+.bg {
+  min-height: 100vh;
+  padding: 50px 50px 50px 50px;
+  background-image: url("../../assets/baroque_foncé.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
-
+.titre{
+  color: white;
+  font-family: 'Secular One', sans-serif;
+  font-size: 5rem;
+  text-align: center;
+}
 </style>

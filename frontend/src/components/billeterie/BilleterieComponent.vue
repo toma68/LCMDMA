@@ -3,7 +3,7 @@
     <div class="container text-center">
       <div class="row">
         <div class="mx-auto col-md-6">
-          <h1 class="text-center" style="color: white;">Billeterie</h1>
+          <h1 class="text-center" style="color: white;">Billetterie</h1>
             <table class="table-tarifaire">
               <tr>
                 <td></td>
@@ -36,9 +36,7 @@
         </div>
       </div>
     </div>
-
   </main>
-
 </template>
 
 <script>
@@ -93,7 +91,7 @@ export default {
 }
 
 .bg {
-  height: 100vh;
+  min-height: 100vh;
   padding: 50px 50px 50px 50px;
   background-image: url("../../assets/LANDSCAPE-BG.png");
   background-repeat: no-repeat;

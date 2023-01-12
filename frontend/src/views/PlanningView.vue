@@ -4,6 +4,7 @@
       <br>
       <br>
       <br>
+      <h1 class="titre">Programme</h1>
       <br>
       <div class="text-center">
         <v-btn color="primary" class="mx-2" v-on:click="showComponent = !showComponent">Changer de jour</v-btn>
@@ -64,5 +65,11 @@ export default {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+}
+.titre{
+  color: white;
+  font-family: 'Secular One', sans-serif;
+  font-size: 5rem;
+  text-align: center;
 }
 </style>

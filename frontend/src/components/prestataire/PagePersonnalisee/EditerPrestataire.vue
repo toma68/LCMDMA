@@ -1,10 +1,10 @@
 <template>
   <main class="bg">
-
     <v-container>
       <br>
       <br>
       <br>
+      <h1 class="titre">Modifier votre page</h1>
       <h1 class="text-center" style="color: white;">{{ prestataire.nomEntreprise }}</h1>
       <br>
       <v-row>
@@ -54,11 +54,17 @@ export default {
 
 <style scoped>
 .bg {
-  height: 100vh;
+  min-height: 100vh;
   padding: 50px 50px 50px 50px;
   background-image: url("../../../assets/baroque_foncé.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+}
+.titre{
+  color: white;
+  font-family: 'Secular One', sans-serif;
+  font-size: 5rem;
+  text-align: center;
 }
 </style>

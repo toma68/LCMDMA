@@ -1,9 +1,11 @@
 <template>
   <main>
     <div class="container">
+      <br>
       <h1 class="text-center" style="color: white;">Achat de billets</h1>
+      <br>
       <div class="row">
-        <div class="col-8">
+        <div class="col-6">
           <v-select
               :items="$store.state.tarifs"
               v-model="selectedBillet"
@@ -11,15 +13,17 @@
               item-value="id"
               filled
               dense
+              solo
               label="Choisissez un billet"
           ></v-select>
         </div>
-        <div class="col-4">
+        <div class="col-6">
           <v-btn color="primary" class="mx-2" @click="ajouterAuPanier">Ajouter au panier</v-btn>
         </div>
 
         <div class="panier" v-if="this.panier.length>0">
           <h1 style="color: white;">Panier</h1>
+          <br>
           <v-list>
             <v-list-item v-for="(item, i) in panier" :key="i" style="width: 100%">
               <v-list-item-content>
@@ -96,7 +100,6 @@ export default {
   created() {
     this.$store.dispatch("getTarifs");
   }
-
 }
 </script>
 

@@ -5,7 +5,6 @@
         Valider
       </v-btn>
   </main>
-
 </template>
 
 <script>
