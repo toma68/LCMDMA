@@ -1,48 +1,60 @@
 <template>
+
   <main class="bg">
+
     <v-container>
       <br>
       <br>
       <br>
-      <h1 class="titre">Prestataire sélectionné</h1>
-    <h1 class="text-center">{{ prestataire.nomEntreprise }}</h1>
-    <br>
-    <v-row>
-      <v-col class="col-lg-6 col-12">
-        <v-img
-            width="auto"
-            :src="`${prestataire.image}`" alt="" class="rounded"></v-img>
-        <br>
-      </v-col>
-      <v-col class="col-lg-6 col-12">
-        <v-card>
-          <v-card-title> {{ prestataire.description }}</v-card-title>
-          <br>
-          <h3 class="mx-3">Le mot du prestataire : </h3>
-          <PrestataireComponent :prestataire="prestataire"/>
-          <br>
-          <h3 class="mx-3">Mes activités : </h3>
-          <div v-for="activite in activites" :key="activite.id">
-            <v-card-title v-if="showInfos">{{ activite.nom }}</v-card-title>
-            <v-card-subtitle>{{ activite.description }}</v-card-subtitle>
-            <v-card-text v-if="showInfos">
-              <p>L'activité commence à {{ activite.heureDebut }} et se termine à {{ activite.heureFin }}</p>
-            </v-card-text>
-          </div>
-          <hr>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+      <h1 class="text-center" style="color: white;">{{ prestataire.nomEntreprise }}</h1>
+      <br>
+      <v-row>
+        <v-col class="col-lg-6 col-12 mx-auto">
+          <v-card>
+            <br>
+            <text-editor :contenu="prestataire.contenuPage" @validerUpdate="validerUpdate" />
+
+            <br>
+            <h3 class="mx-3">Mes activités : </h3>
+            <h4 class="ms-10">Ici apparaitront vos activités</h4>
+            <hr>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-snackbar
+          v-model="snackbar"
+          :timeout="-1"
+          :value="true"
+          absolute
+          bottom
+          :color="snackbarColor"
+          outlined
+          right
+      >
+        {{ snackbarText }}
+        <v-btn
+            text
+            @click="snackbar = false"
+        >
+          Fermer
+        </v-btn>
+      </v-snackbar>
+
+
+    </v-container>
+
+
+
   </main>
+
 </template>
 
 <script>
-import PrestataireComponent from "@/components/prestataire/PagePersonnalisee/PrestataireComponent.vue";
+import TextEditor from "@/components/prestataire/PagePersonnalisee/TextEditor.vue";
 
 export default {
   name: "SelectPrestataireComponent",
-  components: {PrestataireComponent},
+  components: {TextEditor},
   data() {
     return {
       showInfos: true

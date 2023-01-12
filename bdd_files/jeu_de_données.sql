@@ -35,6 +35,7 @@ INSERT INTO stands VALUES
 (default, 2.0, 'Acces eau'); --Toilettes
 
 INSERT INTO "roles" VALUES
+(0, 'Banni'),
 (default, 'User'),
 (default, 'Prestataire'),
 (default, 'Administrateur');
@@ -61,7 +62,8 @@ INSERT INTO users VALUES
 (default, 'Rock', 'Hildebert', 'hildebert', 'hildebert', 'hildebert@gmail.com', 2), --Armes de siège
 (default, 'Blanche', 'Constance', 'constance', 'constance', 'constance@gmail.com', 2), --Boulangère
 (default, 'Domas', 'Stephane', 'stephane', 'stephane', 'stephane@gmail.com', 2), --Presentateur / commentateur / animateur des scènes
-(default, 'De La Tour', 'Aimée', 'aimée', 'aimée', 'aimée@gmail.com', 2); --Gerant de l'association de tir à l'arc
+(default, 'De La Tour', 'Aimée', 'aimée', 'aimée', 'aimée@gmail.com', 2), --Gerant de l'association de tir à l'arc
+(default, 'Maffiolini', 'Paul', 'pmaffiol  ', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'pmaffiol@gmail.com', 1);
 
 
 INSERT INTO "infoPrestataires" VALUES
@@ -107,3 +109,6 @@ INSERT INTO activites VALUES
 
 INSERT INTO "services" VALUES
                            (1, 'Livre d''or','Le plus beau livre service de la terre')
+
+INSERT INTO "livreDOrs" VALUES
+                            (default, 'Le meilleur des stands !', NOW(), NOW(), 5, 23, 82059704500021)
