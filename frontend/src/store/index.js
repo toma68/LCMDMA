@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets: null,
-        billetScanned: null, setActivites: null
+        billetScanned: null, activites: null
     }, mutations: {
         setUser(state, user) {
             state.user = user
@@ -21,7 +21,7 @@ export default new Vuex.Store({
             state.messages = null;
             state.billets = null;
             state.billetScanned = null;
-            state.setActivites = null;
+            state.activites = null;
 
         }, setTarifs(state, tarifs) {
             state.tarifs = tarifs
