@@ -1,4 +1,4 @@
-DROP TABLE reserve, achete, organise, Achat, activite, Token, info_prestataire, users, Role, Stand, Tarif, Type_activite;
+DROP TABLE IF EXISTS reserve, achete, organise, Achat, activite, Token, info_prestataire, users, Role, Stand, Tarif, Type_activite;
 
 CREATE TABLE Type_activite(
    id SERIAL,

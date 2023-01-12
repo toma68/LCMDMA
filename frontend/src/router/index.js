@@ -45,7 +45,7 @@ const routes = [
     },
   {
     path: '/admin/prestataires/:id',
-    name: 'adminPrestataireId',
+    name: 'adminPrestatairePage',
     component: () => import(/* webpackChunkName: "adminPrestataireId" */ '../views/AdminPrestataireIdView.vue')
   },
   {
