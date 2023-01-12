@@ -86,6 +86,7 @@ export default new Vuex.Store({
                 .then(response => response.json())
                 .then(response => {
                     commit('setUser', "toto")
+                    router.push({name: 'billeterie'}).then(r => console.log(r))
                     return response
                 })
                 .catch(error => console.error('Error:', error))
@@ -103,7 +104,7 @@ export default new Vuex.Store({
                     localStorage.setItem('role', response.userRole)
 
                     if (response.userRole === 1) {
-                        router.push({name: 'home'})
+                        router.push({name: 'billeterie'})
                             .then(r => console.log(r))
                     } else if (response.userRole === 2) {
                         router.push({name: 'prestataires'})
