@@ -16,8 +16,8 @@
   - Il se rend sur le site pour voir à quoi ressemble l'événement, apprécie l'ambiance et le lieu
   - Il souhaite donc s'inscrire, et se rend alors sur la page d'inscription, et rempli le formulaire d'inscription destiné au prestataire
   - Il attend alors la réponse de l'organisateur, qui lui confirme son inscription et obtient son stand (attribué par défaut)
-  - Il peut modifier sa page prestataire pour y mettre des informations (photos, textes...) sur lui et ses activités et ajouter des événements sur son planning
-  - Il peut aussi regarder les avis laisser par utilisateurs sur sa prestation, en inspectant son livre d'or
+`  - Il peut modifier sa page prestataire pour y mettre des informations (photos, textes...) sur lui et ses activités et ajouter des événements sur son planning
+`  - Il peut aussi regarder les avis laisser par utilisateurs sur sa prestation, en inspectant son livre d'or
 
 ## Scénario 3 : Un admin s'occupe d'accepter
    - Avant l'événement, l'admin se rend sur le site, se connecte et arrive sur la page d'administration
