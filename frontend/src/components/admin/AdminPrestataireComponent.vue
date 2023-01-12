@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="bg">
     <v-container v-if="users.length>0">
       <h1>Utilisateurs</h1>
       <v-data-table style="margin-top: 50px;"
@@ -117,17 +117,6 @@
           >
             mdi-account-arrow-right
           </v-icon>
-
-
-        </template>
-        <template v-slot:[`item.roleId`]="{ item }">
-          <v-chip
-              :color="getColor(item)"
-          >
-            <p v-if="item.roleId!=3">{{ item.role.libelle }}</p>
-            <p v-else>{{ item.role.libelle }}</p>
-
-          </v-chip>
         </template>
       </v-data-table>
 
@@ -199,7 +188,18 @@ this.$store.dispatch("updateUser", {id: id, roleId: 0});
 </script>
 
 <style scoped>
-main {
-  margin-top: 100px;
+.bg {
+  min-height: 100vh;
+  padding: 50px 50px 50px 50px;
+  background-image: url("../../assets/baroque_foncé.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.titre{
+  color: white;
+  font-family: 'Secular One', sans-serif;
+  font-size: 5rem;
+  text-align: center;
 }
 </style>

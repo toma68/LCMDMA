@@ -1,5 +1,5 @@
 <template>
-<BilleterieComponent />
+<BilleterieComponent/>
 </template>
 
 <script>

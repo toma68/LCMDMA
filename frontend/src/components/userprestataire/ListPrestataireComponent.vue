@@ -4,6 +4,7 @@
       <br>
       <br>
       <br>
+      <h1 class="titre">Liste des prestataires</h1>
       <br>
       <v-row>
         <v-col v-for="prestataires in prestataires" :key="prestataires.userId" cols="12" md="6" lg="4">
@@ -52,6 +53,19 @@ export default {
 </script>
 
 <style scoped>
+.bg {
+  padding: 50px 50px 50px 50px;
+  background-image: url("../../assets/LANDSCAPE-BG.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.titre{
+  color: white;
+  font-family: 'Secular One', sans-serif;
+  font-size: 5rem;
+  text-align: center;
+}
 .button{
   height: 36px;
   min-width: 64px;
@@ -79,12 +93,5 @@ export default {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-}
-.bg {
-  padding: 50px 50px 50px 50px;
-  background-image: url("../../assets/LANDSCAPE-BG.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
 }
 </style>

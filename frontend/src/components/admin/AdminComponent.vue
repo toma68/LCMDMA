@@ -196,7 +196,14 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.bg {
   height: 100vh;
+  padding: 50px 50px 50px 50px;
+  background-image: url("../../assets/baroque_foncé.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .card-body {

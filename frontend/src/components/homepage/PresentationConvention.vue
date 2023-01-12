@@ -1,13 +1,19 @@
 <template>
-  <main>
-    <TitlePresentation title="Présentation"/><!--activitéq-->
-    <br><br>
-    <v-row class="mx-auto">
-      <v-col cols="5">
-        <v-img :src="getImageActivity()" max-height="50vh"></v-img>
+  <main class="bg">
+    <v-container>
+      <br>
+      <h1 class="titre">Présentation</h1>
+      <br>
+      <div class="presentation">La convention vous permettra d'assister à des présentations de métiers médiévaux réalisés par des professionnels du domaine, tel que des forgerons, des vitraillistes, des travailleurs du bois...
+        <br>
+        Il sera également proposé des activités et des animations comme des combats de joutes, des démonstrations avec des engins de siège ou encore un festin royal organisé par la taverne du coin.
+      </div>
+      <br><br>
+    <v-row>
+      <v-col cols="6">
+        <v-img v-if="panel !== undefined" :src="getImageActivity()" max-height="50vh"></v-img>
       </v-col>
-      <v-col cols="2"></v-col>
-      <v-col cols="5">
+      <v-col cols="6">
         <v-expansion-panels v-model="panel">
           <v-expansion-panel
               v-for="(activite, i) in activites"
@@ -16,7 +22,7 @@
             <v-expansion-panel-header><h2>{{ activite.title }}</h2></v-expansion-panel-header>
             <v-expansion-panel-content>
               <v-row>
-                <v-col cols="2">
+                <v-col cols="3">
                   <v-avatar size="100px">
                     <v-img
                         :src="activite.image"
@@ -26,7 +32,7 @@
                     />
                   </v-avatar>
                 </v-col>
-                <v-col cols="10" class="presentation-activite">
+                <v-col cols="9" class="presentation-activite">
                   <p>{{ activite.description }}</p>
                 </v-col>
               </v-row>
@@ -35,15 +41,13 @@
         </v-expansion-panels>
       </v-col>
     </v-row>
+    </v-container>
   </main>
 </template>
 
 <script>
-import TitlePresentation from "@/components/homepage/TitlePresentation.vue";
-
 export default {
   name: "PresentationConvention",
-  components: {TitlePresentation},
   data() {
     return {
       photosActivites: [
@@ -77,7 +81,7 @@ export default {
         {
           image: "images/joutes.jpg",
           title: "Forgerons",
-          description: "Découvrez le processus de fabrication d'armes et d'outils métalliques présenté par nos forgerons et tout leur savoir-faire !"
+          description: "Découvrez le processus de fabrication d'armes et d'outils métalliques présenté par nos talentueux forgerons et tout leur savoir-faire !"
         }
       ],
     }
@@ -85,7 +89,7 @@ export default {
   methods: {
     getImageActivity() {
       if (this.panel === undefined) {
-        return "image_presta/compagnie_excalibur.jpg";
+        return "";
       } else {
         return this.photosActivites[this.panel];
       }
@@ -102,17 +106,28 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+.titre{
+  color: white;
+  font-family: 'Secular One', sans-serif;
+  font-size: 5rem;
+  text-align: center;
+}
 v-expansion-panels {
   width: 100%;
 }
-
 h2 {
   font-size: 30px;
   font-weight: bold;
   font-family: 'Pirata One', cursive;
 }
-
+.presentation {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  text-shadow: 0 1px 5px black;
+}
 .presentation-activite {
   display: flex;
   align-items: center;

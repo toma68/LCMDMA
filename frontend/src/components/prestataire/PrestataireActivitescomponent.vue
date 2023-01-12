@@ -1,6 +1,6 @@
 <template>
   <main>
-Test2
+    Test2
   </main>
 </template>
 

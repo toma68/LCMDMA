@@ -381,10 +381,10 @@ export default {
 
 <style scoped>
 main {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   background-image: url('../../assets/baroque_foncé.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
