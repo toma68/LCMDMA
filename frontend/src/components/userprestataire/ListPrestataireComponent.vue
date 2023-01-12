@@ -42,7 +42,13 @@ export default {
       fetch("http://localhost:3000/api/infoPrestataires")
           .then(response => response.json())
           .then(data => {
-            this.prestataires = data;
+            data.forEach(prestataire => {
+              console.log(prestataire);
+              if (prestataire["pageMasque"] === false) {
+                this.prestataires.push(prestataire);
+              }
+            });
+
           })
           .catch(error => {
             console.log(error);
