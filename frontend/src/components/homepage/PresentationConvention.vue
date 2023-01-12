@@ -58,7 +58,7 @@ export default {
         "/images/spectacle.jpg",
 
       ],
-      panel: undefined,
+      panel: 0,
       activites: [
         {
           image: "images/joutes.jpg",
