@@ -439,7 +439,28 @@ export default new Vuex.Store({
             })
                 .then(
                     dispatch('getActivitesByPrestataire', state.user.userId))
+        },
+        updateUser({commit}, user) {
+            return fetch('http://localhost:3000/api/users/' + user.id, {
+                method: 'PUT', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
+                body: JSON.stringify(
+                    user
+                )
         }
+        )
+            .then(
+                (response) => {
+                    return response.json()
+                }
+            )
+            .then(
+                (user) => {
+                    commit('setUser', user)
+                })
+        },
+
 
     }, getters: {
         user: state => state.user,

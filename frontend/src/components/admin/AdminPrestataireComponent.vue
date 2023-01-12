@@ -11,7 +11,16 @@
                     :items="users"
                     :items-per-page="5"
                     class="elevation-1"
-      ></v-data-table>
+      >
+        <template v-slot:[`item.actions`]="{ item }">
+          <v-icon
+              small
+              @click="validerPrestataire(item)"
+          >
+            mdi-delete
+          </v-icon>
+        </template>
+      </v-data-table>
     </v-container>
   </main>
 </template>
@@ -26,6 +35,7 @@ export default {
         {text: "Prénom", value: "prenom"},
         {text: "Email", value: "email"},
         {text: "Role", value: "roleId"},
+        {text: "Actions", value: "actions", sortable: false},
       ]
     };
   },
@@ -48,8 +58,7 @@ export default {
       this.tables = this.users;
     },
     validerPrestataire(id) {
-      const users = this.users.find(u => u.id === id);
-      users.roleId = 2;
+      this.$store.dispatch("validerPrestataire", {id: id, roleId: 2});
     },
     supprimerPrestataire(id) {
       this.infoPrestataire = this.infoPrestataire.filter(p => p.id !== id);
