@@ -52,8 +52,8 @@ export default {
 }
 </script>
 
-<style scoped>
-main {
+  <style scoped>
+  main {
   margin-top:   50px;
 }
 </style>
