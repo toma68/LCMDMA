@@ -4,7 +4,6 @@ import router from "@/router";
 
 Vue.use(Vuex)
 
-
 export default new Vuex.Store({
     state: {
         user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets: null,

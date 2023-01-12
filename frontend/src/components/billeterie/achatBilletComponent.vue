@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="container">
-      <h1 class="text-center">Achat de billets</h1>
+      <h1 class="text-center" style="color: white;">Achat de billets</h1>
       <div class="row">
         <div class="col-8">
           <v-select
@@ -19,7 +19,7 @@
         </div>
 
         <div class="panier" v-if="this.panier.length>0">
-          <h2>Panier</h2>
+          <h1 style="color: white;">Panier</h1>
           <v-list>
             <v-list-item v-for="(item, i) in panier" :key="i" style="width: 100%">
               <v-list-item-content>
@@ -49,12 +49,9 @@
             </v-list-item>
           </v-list>
           <v-btn color="success" class="mx-2" @click="validerPanier">Valider le panier</v-btn>
-
         </div>
-
       </div>
     </div>
-
   </main>
 </template>
 

@@ -1,11 +1,11 @@
 <template>
-  <main>
+  <main class="bg">
 
     <v-container>
       <br>
       <br>
       <br>
-      <h1 class="text-center">{{ prestataire.nomEntreprise }}</h1>
+      <h1 class="text-center" style="color: white;">{{ prestataire.nomEntreprise }}</h1>
       <br>
       <v-row>
                 <v-col class="col-lg-6 col-12 mx-auto">
@@ -52,8 +52,13 @@ export default {
 }
 </script>
 
-  <style scoped>
-  main {
-  margin-top:   50px;
+<style scoped>
+.bg {
+  height: 100vh;
+  padding: 50px 50px 50px 50px;
+  background-image: url("../../../assets/baroque_foncé.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 </style>
