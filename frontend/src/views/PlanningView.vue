@@ -47,19 +47,19 @@ export default {
               else {
                 this.dimanche.push(element);
               }
+            });
+          })
+          .catch(error => {
+            console.log(error);
           });
-        })
-        .catch(error => {
-          console.log(error);
-        });
     },
-    }
   }
+}
 </script>
 
 <style scoped>
 .bg {
-  height: 100vh;
+  min-height: 100vh;
   padding: 50px 50px 50px 50px;
   background-image: url("../assets/LANDSCAPE-BG.png");
   background-repeat: no-repeat;
