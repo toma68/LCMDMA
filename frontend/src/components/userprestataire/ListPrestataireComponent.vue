@@ -7,16 +7,16 @@
       <h1 class="titre">Liste des prestataires</h1>
       <br>
       <v-row>
-        <v-col v-for="prestataires in prestataires" :key="prestataires.userId" cols="12" md="6" lg="4">
-          <v-card>
+        <v-col v-for="prestataire in prestataires" :key="prestataire.userId" cols="12" md="6" lg="4">
+          <v-card v-if="!prestataire.pageMasque">
             <v-img
                 height="200px"
-                :src="`${prestataires.image}`" alt="">
+                :src="`${prestataire.image}`" alt="">
             </v-img>
-            <v-card-title class="headline">{{prestataires.nomEntreprise}}</v-card-title>
-            <v-card-text> {{prestataires.description}} </v-card-text>
+            <v-card-title class="headline">{{prestataire.nomEntreprise}}</v-card-title>
+            <v-card-text> {{prestataire.description}} </v-card-text>
             <div class="text-center">
-              <v-btn class="button" v-bind:to="{ name: 'userPrestatairePage', params: { id: prestataires.userId }}">Plus de détails</v-btn>
+              <v-btn class="button" v-bind:to="{ name: 'userPrestatairePage', params: { id: prestataire.userId }}">Plus de détails</v-btn>
             </div>
             <br>
           </v-card>
@@ -42,13 +42,7 @@ export default {
       fetch("http://localhost:3000/api/infoPrestataires")
           .then(response => response.json())
           .then(data => {
-            data.forEach(prestataire => {
-              console.log(prestataire);
-              if (prestataire["pageMasque"] === false) {
-                this.prestataires.push(prestataire);
-              }
-            });
-
+            this.prestataires = data;
           })
           .catch(error => {
             console.log(error);
