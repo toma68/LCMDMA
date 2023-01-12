@@ -30,6 +30,7 @@ export default new Vuex.Store({
         }, addAchat(state, achat) {
             state.achats.push(achat)
         }, setPrestataire(state, prestataire) {
+            console.log("ici ca set les prestataires", prestataire)
             state.prestataire = prestataire
         }, setServices(state, services) {
             state.services = services
@@ -161,7 +162,14 @@ export default new Vuex.Store({
                     return response.json()
                 })
                 .then(
-                    (billet) => commit('setBilletScanned', billet)
+                    (billet) => {
+                        if (billet !== null) {
+                            commit('setBilletScanned', billet)
+                        }
+                        else {
+                            commit('setBilletScanned', 'vide')
+                        }
+                    }
                 )
         },
         composterBillet({commit}, billet) {
