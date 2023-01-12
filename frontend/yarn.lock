@@ -2162,9 +2162,9 @@
   "version" "1.6.0"
 
 "axios@^1.2.1":
-  "integrity" "sha512-I88cFiGu9ryt/tfVEi4kX2SITsvDddTajXTOFmt2uK1ZVA8LytjtdeyefdQWEf5PU8w+4SSJDoYnggflB5tW4A=="
-  "resolved" "https://registry.npmjs.org/axios/-/axios-1.2.1.tgz"
-  "version" "1.2.1"
+  "integrity" "sha512-bz/J4gS2S3I7mpN/YZfGFTqhXTYzRho8Ay38w2otuuDR322KzFIWm/4W2K6gIwvWaws5n+mnb7D1lN9uD+QH6Q=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-1.2.2.tgz"
+  "version" "1.2.2"
   dependencies:
     "follow-redirects" "^1.15.0"
     "form-data" "^4.0.0"
@@ -2710,7 +2710,6 @@
     "dotenv" "^16.0.3"
     "express" "^4.18.2"
     "nodemon" "^2.0.20"
-    "path" "^0.12.7"
     "pg" "^8.8.0"
     "sequelize" "^6.25.5"
     "swagger-jsdoc" "^6.2.5"
