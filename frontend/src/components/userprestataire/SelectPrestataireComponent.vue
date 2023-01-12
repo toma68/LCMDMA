@@ -6,17 +6,9 @@
     <h1 class="text-center">{{ prestataire.nomEntreprise }}</h1>
     <br>
     <v-row>
-      <v-col class="col-lg-6 col-12">
-        <v-img
-            width="auto"
-            :src="`${prestataire.image}`" alt="" class="rounded"></v-img>
-        <br>
-      </v-col>
-      <v-col class="col-lg-6 col-12">
+      <v-col class="col-lg-6 col-12 mx-auto">
         <v-card>
-          <v-card-title> {{ prestataire.description }}</v-card-title>
           <br>
-          <h3 class="mx-3">Le mot du prestataire : </h3>
           <PrestataireComponent :prestataire="prestataire"/>
           <br>
           <h3 class="mx-3">Mes activités : </h3>
