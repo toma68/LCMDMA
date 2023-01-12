@@ -4,7 +4,7 @@
      :headers="headers"
      :items="achats"
      :items-per-page="5"
-      class="elevation-1"
+     class="elevation-1"
    ></v-data-table>
  </main>
 </template>
@@ -23,7 +23,6 @@ export default {
         {text: "quantite", value: "quantite"},
         {text: "qrCode", value: "qrCode"},
       ]
-
     }
   },
   created() {

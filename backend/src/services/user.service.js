@@ -1,6 +1,6 @@
 const UserService = require('../models/user.model');
 
-const findAll = () => UserService.findAll();
+const findAll = () => UserService.findAll({include: [{all:true}]});
 
 const findById = (id) => UserService.findByPk(id);
 

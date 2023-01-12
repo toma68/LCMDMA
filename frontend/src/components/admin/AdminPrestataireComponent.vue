@@ -1,48 +1,36 @@
 <template>
-  <v-container>
-    <br>
-    <br>
-    <br>
-    <br>
-    <v-row>
-      <v-col v-for="prestataires in prestataires" :key="prestataires.userId" cols="12" md="6" lg="4">
-        <v-card >
-
-          <v-img
-              height="200px"
-              :src="`${prestataires.image}`" alt="">
-          </v-img>
-          <v-card-title className="headline">{{ prestataires.nomEntreprise }}</v-card-title>
-          <v-card-text> {{ prestataires.description }} </v-card-text>
-          <div className="text-center">
-            <v-btn className="button" v-bind:to="{ name: 'adminPrestatairePage', params: { id: prestataires.userId }}">
-              Plus de détails
-            </v-btn>
-
-            {{ users.roleId }}
-
-          </div>
-          <br>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
-
+  <main>
+    <v-container v-if="users.length>0">
+      <v-data-table style="margin-top: 50px;"
+                    :headers="headers"
+                    :items="users"
+                    :items-per-page="5"
+                    class="elevation-1"
+      ></v-data-table>
+    </v-container>
+  </main>
 </template>
 
 <script>
 export default {
-  name: "ListPrestataireComponent",
+  name: "ListUsersComponent",
   data() {
     return {
-      prestataires: [],
-      users: [],
+      headers: [
+        {text: "Nom", value: "nom"},
+        {text: "Prénom", value: "prenom"},
+        {text: "Email", value: "email"},
+        {text: "Role", value: "roleId"},
+      ]
     };
   },
   created() {
-    this.fetchData();
-    this.userData();
-  },computed: {
+    this.$store.dispatch("getUsers");
+  },
+  computed: {
+    users() {
+      return this.$store.state.users;
+    },
     prestatairesNonValides() {
       return this.users.filter(u => u.roleId === 1);
     },
@@ -51,29 +39,12 @@ export default {
     }
   },
   methods: {
-    fetchData() {
-      fetch("http://localhost:3000/api/infoPrestataires")
-          .then(response => response.json())
-          .then(data => {
-            this.prestataires = data;
-          })
-          .catch(error => {
-            console.log(error);
-          });
-    },
-    userData() {
-      fetch("http://localhost:3000/api/users")
-          .then(response => response.json())
-          .then(data => {
-            this.users = data;
-          })
-          .catch(error => {
-            console.log(error);
-          });
+    initialize() {
+      this.tables = this.users;
     },
     validerPrestataire(id) {
-      const user = this.users.find(u => u.id === id);
-      user.roleId = 2;
+      const users = this.users.find(u => u.id === id);
+      users.roleId = 2;
     },
     supprimerPrestataire(id) {
       this.infoPrestataire = this.infoPrestataire.filter(p => p.id !== id);
@@ -83,33 +54,7 @@ export default {
 </script>
 
 <style scoped>
-.button {
-  height: 36px;
-  min-width: 64px;
-  padding: 0 16px;
-  font-size: .875rem;
-  border: thin solid;
-  align-items: center;
-  border-radius: 4px;
-  display: inline-flex;
-  flex: 0 0 auto;
-  font-weight: 500;
-  letter-spacing: .0892857143em;
-  justify-content: center;
-  outline: 0;
-  position: relative;
-  text-decoration: none;
-  text-indent: 0.0892857143em;
-  text-transform: uppercase;
-  transition-duration: .28s;
-  transition-property: box-shadow, transform, opacity;
-  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
+  main {
+    margin-top: 100px;
+  }
 </style>

@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets: null,
-        billetScanned: null, activites: null
+        billetScanned: null, activites: null, users: null
     }, mutations: {
         setUser(state, user) {
             state.user = user
@@ -21,6 +21,8 @@ export default new Vuex.Store({
             state.billets = null;
             state.billetScanned = null;
             state.activites = null;
+            state.users = null;
+
 
         }, setTarifs(state, tarifs) {
             state.tarifs = tarifs
@@ -48,6 +50,9 @@ export default new Vuex.Store({
         },
         setActivites(state, activites) {
             state.activites = activites
+        },
+        setUsers(state, users) {
+            state.users = users
         },
         trashCommit() {
 
@@ -212,7 +217,28 @@ export default new Vuex.Store({
                 .then(response => {
                     commit('setPrestataire', response)
                 })
-        }, getPrestataireById({commit}, id) {
+        }, getUser({state, commit}) {
+            return fetch('http://localhost:3000/api/users/' + state.user.id, {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+                .then(response => response.json())
+                .then(response => {
+                    commit('setUsers', response)
+                })
+        }, getUsers({commit}) {
+            return fetch('http://localhost:3000/api/users/', {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+                .then(response => response.json())
+                .then(response => {
+                    commit('setUsers', response)
+                })
+        },
+        getPrestataireById({commit}, id) {
             return fetch('http://localhost:3000/api/infoPrestataires/' + id, {
                 method: 'GET', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -423,6 +449,8 @@ export default new Vuex.Store({
         services: state => state.services,
         messages: state => state.messages,
         billetScanned: state => state.billetScanned,
-        activites: state => state.activites
+        activites: state => state.activites,
+        billets: state => state.billets,
+        users: state => state.users,
     }
 })
