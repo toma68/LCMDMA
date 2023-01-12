@@ -8,20 +8,18 @@ const {where} = require("sequelize");
 exports.login = (req, res) => {
     User.findOne({where: {login: req.body.login}})
         .then(user => {
-        if (!user) {
-            return res.status(401).json({error: 'Utilisateur non trouvé !'});
-        }
-        bcrypt.compare(req.body.password, user.password).then(valid => {
-            if (!valid) {
-                return res.status(401).json({error: 'Mot de passe incorrect !'});
-            }
-            res.status(200).json({
-                token: TokenController.createToken(user.id, req.ip),
-                userId: user.id,
-                userRole: user.roleId
-            })
-        }).catch(error => res.status(500).json({error}));
-    });
+            bcrypt.compare(req.body.password, user.password)
+                .then(valid => {
+                    if (!valid) {
+                        return res.status(500).json({error, message: 'Mot de passe invalide !'});
+                    }
+                    res.status(200).json({
+                        token: TokenController.createToken(user.id, req.ip),
+                        userId: user.id,
+                        userRole: user.roleId
+                    })
+                }).catch(error => res.status(500).json({error, message: 'Mot de passe invalide !'}));
+        }).catch(error => res.status(500).json({error, message: 'Utilisateur invalide !'}));
 }
 
 exports.register = (req, res) => {
@@ -53,7 +51,5 @@ exports.register = (req, res) => {
                 }
             }).catch(error => res.status(500).json({error, message: 'Login déjà utilisé !'}));
     }).catch(error => res.status(500).json({error, message: 'Erreur, veuillez reessayer !'}));
-
-
 }
 

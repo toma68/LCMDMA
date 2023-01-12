@@ -350,7 +350,6 @@ export default {
     };
   },
   methods: {
-
     successRequest(message) {
       this.snackbar = true;
       this.snackbarText = message;
@@ -388,8 +387,7 @@ export default {
               } else {
                 this.successRequest(response.message)
               }
-            }
-        )
+            })
             .catch(error => {
               this.errorRequest(error.response)
             });
@@ -409,8 +407,7 @@ export default {
           }
         })
       }
-    }
-    ,
+    },
     reset() {
       this.login = "";
       this.password = "";
@@ -421,9 +418,7 @@ export default {
       this.siret = "";
       this.companyName = "";
       this.companyDescription = "";
-    }
-    ,
-
+    },
   }
 }
 </script>

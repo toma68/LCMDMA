@@ -207,6 +207,24 @@
         </div>
       </div>
     </v-card>
+    <v-snackbar
+        v-model="snackbar"
+        :timeout="-1"
+        :value="true"
+        absolute
+        bottom
+        :color="snackbarColor"
+        outlined
+        right
+    >
+      {{ snackbarText }}
+      <v-btn
+          text
+          @click="snackbar = false"
+      >
+        Fermer
+      </v-btn>
+    </v-snackbar>
   </main>
 </template>
 
@@ -231,16 +249,31 @@ export default {
     };
   },
   methods: {
+    successRequest(message) {
+      this.snackbar = true;
+      this.snackbarText = message;
+      this.snackbarColor = "success";
+    },
+    errorRequest(message) {
+      this.snackbar = true;
+      this.snackbarText = message;
+      this.snackbarColor = "error";
+    },
     submit: function() {
       this.$store.dispatch('connexionUser', {
         login: this.login,
         password: this.password
+      }).then(response => {
+        if (response.error) {
+          this.errorRequest(response.message)
+        } else {
+          this.successRequest(response.message)
+        }
       })
           .catch(error => {
             this.errorRequest(error.response)
           });
     },
-
     reset() {
       this.login = "";
       this.password = "";
