@@ -27,10 +27,12 @@
           <achat-billet-component v-if="user != undefined"/>
         </div>
         <div class="col-md-6" v-if="user != undefined">
+          <div v-if="billets.length !=0">
           <h1 class="text-center mb-5">Vos billets</h1>
           <v-row>
             <ShowBilletComponent v-for="billet in billets" :key="billet.id" :billet="billet"></ShowBilletComponent>
           </v-row>
+          </div>
         </div>
       </div>
     </div>
@@ -59,6 +61,7 @@ export default {
   },
   computed: {
     billets() {
+      console.log(this.$store.state.billets);
       return this.$store.state.billets;
     },
     user() {

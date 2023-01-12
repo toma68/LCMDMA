@@ -41,32 +41,16 @@ export default {
   components: {PrestataireComponent},
   data() {
     return {
-      prestataire: [],
-      showInfos: true
-    };
-  },
-  created() {
-    this.fetchData();
-  },
-  computed: {
-    id() {
-      return this.$route.params.id;
+      showInfos: false
     }
   },
-  methods: {
-    async fetchData() {
-      await fetch(`http://localhost:3000/api/infoPrestataires/${this.id}`)
-          .then(response => response.json())
-          .then(data => {
-            this.prestataire = data;
-            if (this.prestataire.activites.length === 0) {
-              this.prestataire.activites = [{description: "Aucune activité n'est disponible pour le moment"}]
-              this.showInfos = false;
-            }
-          })
-          .catch(error => {
-            console.log(error);
-          });
+  methods: {},
+  mounted() {
+    this.$store.dispatch("getInfoPrestataireById", this.$route.params.id);
+  },
+  computed: {
+    prestataire() {
+      return this.$store.getters.prestataire;
     }
   }
 }

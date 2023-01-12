@@ -354,6 +354,51 @@ export default new Vuex.Store({
                     (achats) => {
                         commit('setAchats', achats)
                     })
+        },
+        getInfoPrestataire({commit}) {
+            return fetch('http://localhost:3000/api/infoPrestataires/' , {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(
+                (response) => {
+                    return response.json()
+                })
+                .then(
+                    (prestataire) => {
+                        commit('setPrestataire', prestataire)
+                    })
+        },
+        getInfoPrestataireById({commit}, id) {
+            return fetch('http://localhost:3000/api/infoPrestataires/' + id, {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(
+                    (response) => {
+                        return response.json()
+                    })
+                .then(
+                    (prestataire) => {
+                        commit('setPrestataire', prestataire)
+                    })
+        },
+        getActivitesByStand({commit}) {
+            return fetch('http://localhost:3000/api/activites/stand/', {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(
+                    (response) => {
+                        return response.json()
+                    })
+                .then(
+                    (activites) => {
+                        commit('setActivites', activites)
+                    })
         }
 
     }, getters: {
