@@ -6,7 +6,7 @@
       <br>
       <br>
       <div class="text-center">
-        <button v-on:click="showComponent = !showComponent" class="button">Changer de jour</button>
+        <button v-on:click="showComponent = !showComponent">Changer de jour</button>
       </div>
       <PlanningSamediComponent v-if="showComponent" v-bind:tab="samedi"></PlanningSamediComponent>
       <PlanningDimancheComponent v-else v-bind:tab="dimanche"></PlanningDimancheComponent>
@@ -25,7 +25,8 @@ export default {
       showComponent: true,
       data: [],
       samedi: [],
-      dimanche: []
+      dimanche: [],
+      syncscroll: false,
     };
   },
   created() {
@@ -56,7 +57,7 @@ export default {
 </script>
 
 <style scoped>
-.button{
+button{
   height: 36px;
   min-width: 64px;
   padding: 0 16px;

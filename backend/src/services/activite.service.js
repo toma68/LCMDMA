@@ -1,7 +1,12 @@
 const Activite = require('../models/activite.model');
 const infoPrestataire = require('../models/infoPrestataire.model');
+const User = require('../models/user.model');
 
-const findAll = () => Activite.findAll();
+const findAll = () => Activite.findAll({
+    include: [{
+        model: infoPrestataire,
+    }]
+});
 
 const findById = (id) => Activite.findByPk(id);
 
@@ -33,12 +38,25 @@ const activiteStand = () => {
     });
 }
 
+const activiteByPrestataire = (id) => {
+    return Activite.findAll({
+        include: [{
+            model: infoPrestataire,
+            where: {userId: id},
+        },
+            {
+                all: true
+            }]
+    });
+}
+
 module.exports = {
     findAll,
     findById,
     deleteByid,
     create,
     update,
-    activiteStand
+    activiteStand,
+    activiteByPrestataire
 };
 

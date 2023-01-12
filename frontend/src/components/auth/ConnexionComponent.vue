@@ -216,6 +216,7 @@ export default {
   data() {
     return {
       login: "",
+      invalid: null,
       loginRules: [
         v => !!v || 'Un pseudo est requis',
       ],
@@ -231,14 +232,10 @@ export default {
   },
   methods: {
     submit: function() {
-      console.log('Submit execute')
       this.$store.dispatch('connexionUser', {
         login: this.login,
         password: this.password
       })
-          .then((reponse) => {
-            console.log(reponse)
-          })
           .catch(error => {
             this.errorRequest(error.response)
           });

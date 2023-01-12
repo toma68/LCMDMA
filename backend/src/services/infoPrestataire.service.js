@@ -4,11 +4,14 @@ const Activite = require("../models/activite.model");
 const Services = require("../models/services.model");
 
 
-
-const findAll = () => InfoPrestataire.findAll();
+const findAll = () => InfoPrestataire.findAll({
+    order: [
+        ['userId']
+    ],
+});
 
 const findById = (id) => InfoPrestataire.findOne({
-    where: {numeroSiret: id},
+    where: {userId: id},
     include: [
         {
             model: User,
@@ -16,7 +19,8 @@ const findById = (id) => InfoPrestataire.findOne({
         },
         {
             model: Activite,
-            attributes: ['id', 'nom', 'heureDebut', 'heureFin', 'description']
+            attributes: ['id', 'nom', 'heureDebut', 'heureFin', 'description'],
+
         },
         {
             model: Services,
@@ -34,7 +38,9 @@ const create = (infoPrestataire) => {
 };
 
 const update = (id, infoPrestataire) => {
-    infoPrestataire.contenuPage = infoPrestataire.contenuPage.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+    if  (infoPrestataire.contenuPage) {
+        infoPrestataire.contenuPage = infoPrestataire.contenuPage.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+    }
     return InfoPrestataire.update(infoPrestataire, {where: {userId: id}});
 }
 

@@ -7,12 +7,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets :null, billetScanned:null
+        user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets: null,
+        billetScanned: null, setActivites: null
     }, mutations: {
         setUser(state, user) {
             state.user = user
-        }, clearUser(state) {
-            state.user = null
+        }, logout(state) {
+            state.user = null;
+            state.tarifs = null;
+            state.achats = null;
+            state.prestataire = null;
+            state.services = null;
+            state.messages = null;
+            state.billets = null;
+            state.billetScanned = null;
+            state.setActivites = null;
+
         }, setTarifs(state, tarifs) {
             state.tarifs = tarifs
         }, setAchats(state, achats) {
@@ -27,14 +37,17 @@ export default new Vuex.Store({
         setMessages(state, messages) {
             state.messages = messages
         },
-        addMessage(state, message){
+        addMessage(state, message) {
             state.messages.push(message)
         },
         setBillets(state, billets) {
             state.billets = billets
         },
-        setBilletScanned(state,billet){
+        setBilletScanned(state, billet) {
             state.billetScanned = billet
+        },
+        setActivites(state, activites) {
+            state.activites = activites
         },
         trashCommit() {
 
@@ -102,7 +115,7 @@ export default new Vuex.Store({
                 })
                 .catch(error => console.error('Error:', error))
         }, deconnexionUser({commit}) {
-            commit('clearUser')
+            commit('logout')
             localStorage.removeItem('token')
             localStorage.removeItem('role')
             router.push({name: 'login'})
@@ -121,20 +134,24 @@ export default new Vuex.Store({
                 .catch(error => console.error('Error:', error))
         },
 
-        getBillets({commit,state}) {
-            return fetch('http://localhost:3000/api/achats/user/' + state.user.userId, {
-                method: 'GET', headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then((response) => {
-                    return response.json()
+        getBillets({commit, state}) {
+            if (state.user !== null) {
+                return fetch('http://localhost:3000/api/achats/user/' + state.user.userId, {
+                    method: 'GET', headers: {
+                        'Content-Type': 'application/json'
+                    }
                 })
-                .then(
-                    (billets) => commit('setBillets', billets)
-                )
+                    .then((response) => {
+                        return response.json()
+                    })
+                    .then(
+                        (billets) => commit('setBillets', billets)
+                    )
+            } else {
+                return null
+            }
         },
-        getBilletAfterScan({commit},qrCode) {
+        getBilletAfterScan({commit}, qrCode) {
             return fetch('http://localhost:3000/api/achats/qrCode/' + qrCode, {
                 method: 'GET', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -147,20 +164,23 @@ export default new Vuex.Store({
                     (billet) => commit('setBilletScanned', billet)
                 )
         },
-        composterBillet({commit},billet) {
+        composterBillet({commit}, billet) {
             return fetch('http://localhost:3000/api/achats/' + billet.id, {
                 method: 'PUT', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token'),
                 }, body: JSON.stringify({
-                    "quantite": billet.quantite-1,
+                    "quantite": billet.quantite - 1,
                 })
-             })
+            })
                 .then((response) => {
                     return response.json()
                 })
+                .then(
+                    () => commit('trashCommit')
+                )
 
         }
-        ,validerPanier({dispatch}, panier) {
+        , validerPanier({dispatch}, panier) {
             return fetch('http://localhost:3000/api/achats/', {
                 method: 'POST', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -168,7 +188,7 @@ export default new Vuex.Store({
             })
                 .then(response => response.json())
                 .then(response => {
-                    response.forEach(()  => {
+                    response.forEach(() => {
                         dispatch('getBillets')
                     });
                     return response
@@ -268,10 +288,65 @@ export default new Vuex.Store({
             }).then((response) => {
                 return response.json()
             }).then((message) => {
-                commit('addMessage', message)
+                    commit('addMessage', message)
                 }
             )
         },
+        getActivitesByPrestataire({commit}, siret) {
+            return fetch('http://localhost:3000/api/activites/prestataire/' + siret, {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((response) => {
+                    return response.json()
+                })
+                .then(
+                    (activites) => {
+                        commit('setActivites', activites)
+                    }
+                )
+        },
+        updateActivite({dispatch, state}, activite) {
+            return fetch('http://localhost:3000/api/activites/' + activite.id, {
+                method: 'PUT', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
+                body: JSON.stringify(
+                    activite
+                )
+
+            })
+                .then(
+                    dispatch('getActivitesByPrestataire', state.user.userId))
+
+        },
+        deleteActivite({dispatch, state}, activite) {
+            return fetch('http://localhost:3000/api/activites/' + activite.id, {
+                method: 'DELETE', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+                .then(
+                    dispatch('getActivitesByPrestataire', state.user.userId))
+
+        },
+        getAchats({commit}) {
+            return fetch('http://localhost:3000/api/achats/', {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+                .then(
+                    (response) => {
+                        return response.json()
+                    })
+                .then(
+                    (achats) => {
+                        commit('setAchats', achats)
+                    })
+        }
+
     }, getters: {
         user: state => state.user,
         tarifs: state => state.tarifs,
@@ -279,6 +354,7 @@ export default new Vuex.Store({
         prestataire: state => state.prestataire,
         services: state => state.services,
         messages: state => state.messages,
-        billetScanned: state => state.billetScanned
+        billetScanned: state => state.billetScanned,
+        activites: state => state.activites
     }
 })

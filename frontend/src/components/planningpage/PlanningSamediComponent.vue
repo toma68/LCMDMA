@@ -10,6 +10,11 @@ import Timetable from 'timetable.js'
 export default {
   name: "PlanningSamediComponent",
   props: ["tab"],
+  data() {
+    return {
+      syncscroll: false,
+    };
+  },
   async mounted() {
     const timetableSamedi = new Timetable();
     timetableSamedi.setScope(10, 18);

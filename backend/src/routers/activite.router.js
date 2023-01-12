@@ -170,5 +170,7 @@ router.put("/:id", Activitecontroller.updateActivite);
  *              description: Bad request
  */
 
+router.get("/prestataire/:id", Activitecontroller.getActiviteByPrestataire);
+
 
 module.exports = router;

@@ -177,9 +177,8 @@
           Admin
         </v-card-title>
         <v-btn text><router-link to="/admin/prestataires" class="toolbar-item">Prestataires</router-link></v-btn>
-        <v-btn text><router-link to="/prestataire/11" class="toolbar-item">bouton 2</router-link></v-btn>
-        <v-btn text><router-link to="#" class="toolbar-item">bouton 3</router-link></v-btn>
-        <v-btn text><router-link to="#" class="toolbar-item">bouton 4</router-link></v-btn>
+        <v-btn text><router-link to="/admin/scan" class="toolbar-item">Scan</router-link></v-btn>
+        <v-btn text><router-link to="/admin/achats" class="toolbar-item">Achats</router-link></v-btn>
       </div>
     </v-card>
   </main>

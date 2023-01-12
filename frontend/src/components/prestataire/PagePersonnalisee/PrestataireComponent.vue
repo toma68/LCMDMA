@@ -8,6 +8,8 @@
 </template>
 
 <script>
+
+//todo : gerer le refus d'affichage si il n'y  pas de page ou si elle est masquée
 import LivreDOr from "./LivreDOr.vue";
 export default {
   name: "PrestataireComponent",
@@ -34,7 +36,6 @@ export default {
 <style scoped>
 main {
   height: auto;
-  margin-top: 150px;
   font-family: Roboto, -apple-system, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 </style>

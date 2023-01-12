@@ -69,19 +69,29 @@ const routes = [
     component: () => import(/* webpackChunkName: "prestatairesEditer" */ '../views/PrestataireView.vue'),
   },
   {
-    path: '/user/prestataire',
+    path: '/user/prestataires',
     name: 'userPrestataire',
     component: () => import(/* webpackChunkName: "userPrestataires" */ '../views/UserPrestataireView.vue')
   },
   {
     path: '/user/prestataire/:id',
     name: 'userPrestatairePage',
-    component: () => import(/* webpackChunkName: "userPrestataires" */ '../components/userprestataire/SelectPrestataireComponent.vue')
+    component: () => import(/* webpackChunkName: "userPrestataireSelected" */ '../components/userprestataire/SelectPrestataireComponent.vue'),
   },
     {
         path: '/admin/scan',
         name: 'adminScan',
         component: () => import(/* webpackChunkName: "adminScan" */ '../views/AdminScanView.vue')
+    },
+    {
+        path: '/carte',
+        name: 'carte',
+        component: () => import(/* webpackChunkName: "carte" */ '../views/CarteView.vue')
+    },
+    {
+        path: '/admin/achats',
+        name: 'adminAchats',
+        component: () => import(/* webpackChunkName: "adminAchats" */ '../views/AdminAchatsView.vue')
     }
 ]
 
