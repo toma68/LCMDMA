@@ -262,7 +262,20 @@ export default new Vuex.Store({
                         ...state.prestataire, pageMasque: !state.prestataire.pageMasque
                     })
                 });
-        }, updateContenuPage({state, commit}, contenu) {
+        },
+        updatePrestataire({dispatch}, prestataire) {
+            return fetch('http://localhost:3000/api/infoPrestataires/' + prestataire.id.id, {
+                method: 'PUT', headers: {
+                    'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }, body: JSON.stringify({
+                    prestataire
+                })
+            }).then(response => response.json())
+                .then(() => {
+                    dispatch('getPrestataire')
+                });
+        },
+        updateContenuPage({state, commit}, contenu) {
             return fetch('http://localhost:3000/api/infoPrestataires/' + state.user.userId, {
                 method: 'PUT', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -312,17 +325,37 @@ export default new Vuex.Store({
                     (messages) => commit('setMessages', messages)
                 )
         },
-        addMessageOnLivreDOr({commit}, message) {
+
+        getMessagesFromLivreDOrById({commit,dispatch}, id) {
+            return dispatch('getPrestataireById',id)
+                .then(
+                    (result) => result.json()
+                )
+                .then((result) => {
+                        console.log("allez stp")
+                    return fetch('http://localhost:3000/api/livre-d-or/' + result.numeroSiret, {
+                        method: 'GET', headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then((response) => {
+                            return response.json()
+                        })
+                        .then(
+                            (messages) => commit('setMessages', messages)
+                        )
+                }
+                )
+        },
+        addMessageOnLivreDOr({dispatch}, message) {
             return fetch('http://localhost:3000/api/livre-d-or/', {
                 method: 'POST', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }, body: JSON.stringify(
                     message
                 )
-            }).then((response) => {
-                return response.json()
-            }).then((message) => {
-                    commit('addMessage', message)
+            }).then(()=> {
+                dispatch('getMessagesFromLivreDOr', message.prestataire)
                 }
             )
         },
@@ -440,25 +473,20 @@ export default new Vuex.Store({
                 .then(
                     dispatch('getActivitesByPrestataire', state.user.userId))
         },
-        updateUser({commit}, user) {
-            return fetch('http://localhost:3000/api/users/' + user.id, {
+        updateUser({dispatch}, user) {
+            return fetch('http://localhost:3000/api/users/' + user.id.id, {
                 method: 'PUT', headers: {
                     'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
                 },
-                body: JSON.stringify(
-                    user
-                )
+                body: JSON.stringify({roleId: user.roleId})
         }
         )
             .then(
-                (response) => {
-                    return response.json()
+                () => {
+                    dispatch('getUsers')
                 }
             )
-            .then(
-                (user) => {
-                    commit('setUser', user)
-                })
+
         },
 
 

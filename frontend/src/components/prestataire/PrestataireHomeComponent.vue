@@ -199,16 +199,27 @@
                 mdi-delete
               </v-icon>
             </template>
+
             <template v-slot:no-data>
-              <v-btn
-                  color="primary"
-                  @click="initialize"
-              >
-                Reset
-              </v-btn>
+              <h3>Aucune activité !</h3>
             </template>
           </v-data-table>
         </template>
+        <br>
+        <v-data-table
+            v-if="LivreDor"
+            :headers="headerLivreDor"
+            :items="LivreDor"
+            :items-per-page="5"
+            class="elevation-1">
+          <template  v-slot:[`item.utilisateur`]="{ item }">
+            {{item.user.prenom}} {{item.user.nom}}
+          </template>
+
+        </v-data-table>
+        <v-btn  v-else @click="refreshLO()">
+          Rafraichir
+        </v-btn>
       </v-col>
       <v-col col="1"></v-col>
     </v-row>
@@ -241,6 +252,12 @@ export default {
         {text: 'Type', value: 'typeActivite.libelle'},
         {text: 'Actions', value: 'actions', sortable: false},
       ],
+      headerLivreDor: [
+        {text: 'Utilisateur', value: 'utilisateur'},
+        {text: 'Message', value: 'contenuMessage'},
+        {text: 'Date', value: 'dateCreation'},
+
+      ],
       editedIndex: -1,
       editedItem: {
         nom: '',
@@ -261,6 +278,7 @@ export default {
         },
       },
     };
+
   },
   computed: {
     formTitle() {
@@ -274,7 +292,10 @@ export default {
     },
     tables() {  // change this line
       return this.$store.getters.activites;
-    }
+    },
+    LivreDor() {
+      return this.$store.getters.messages;
+    },
   },
   watch: {
     dialog(val) {
@@ -285,12 +306,12 @@ export default {
     },
   },
   created() {
-    this.initialize();
+    this.$store.dispatch("getActivitesByPrestataire", this.$store.state.user.userId)
+    this.$store.dispatch('getMessagesFromLivreDOr',this.$store.state.prestataire.numeroSiret)
   },
   methods: {
-    initialize() {
-      this.$store.dispatch("getActivitesByPrestataire", this.$store.state.user.userId)
-
+    refreshLO(){
+      this.$store.dispatch('getMessagesFromLivreDOr',this.$store.state.prestataire.numeroSiret)
     },
     editItem(item) {
       this.editedIndex = this.tables.indexOf(item);
@@ -349,8 +370,11 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getActivitesByPrestataire", this.$store.state.user.userId);
-    this.$store.dispatch("getPrestataire")
+    this.$store.dispatch("getPrestataire").then(() => {
+      this.$store.dispatch('getMessagesFromLivreDOr',this.$store.state.prestataire.numeroSiret)
+    });
     this.$store.dispatch("getServices");
+    this.$store.dispatch("getActivitesByPrestataire", this.$store.state.user.userId)
   },
 }
 </script>
