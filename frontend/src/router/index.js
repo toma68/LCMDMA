@@ -64,14 +64,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "prestatairesEditer" */ '../views/PrestataireView.vue'),
   },
   {
-    path: '/user/prestataire',
+    path: '/user/prestataires',
     name: 'userPrestataire',
     component: () => import(/* webpackChunkName: "userPrestataires" */ '../views/UserPrestataireView.vue')
   },
   {
     path: '/user/prestataire/:id',
     name: 'userPrestatairePage',
-    component: () => import(/* webpackChunkName: "userPrestataireSelected" */ '../components/userprestataire/SelectPrestataireComponent.vue'),
+    component: () => import(/* webpackChunkName: "userPrestataireSelected" */ '../components/prestataire/PagePersonnalisee/PrestataireComponent.vue'),
   },
     {
         path: '/admin/scan',

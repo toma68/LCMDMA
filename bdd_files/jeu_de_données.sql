@@ -82,7 +82,7 @@ INSERT INTO "infoPrestataires" VALUES
 ('84174659147008', 'Artisan Boulanger réputé', false, 'Boulan-gégé', 'Boulangère', '/image_presta/boulanger.jpg', 20),
 ('70584918093208', NULL, false, 'Spam Bow', 'Stand de tir à l arc', '/image_presta/stand_de_tir.jpg', 22);
 
-INSERT INTO "infoPrestataires" VALUES ('60732143167747', 'Messire Domas et Monsigneur Ambert sont heureux de vous présenter les spectacles de cette convention', false, 'La compagnie excalibur', 'Presentateur et chevaliers', NULL, 21);
+INSERT INTO "infoPrestataires" VALUES ('60732143167747', 'Messire Domas et Monsigneur Ambert sont heureux de vous présenter les spectacles de cette convention', false, 'La compagnie excalibur', 'Presentateur et chevaliers', '/image_presta/compagnie_excalibur.jpg', 21);
 
 
 INSERT INTO activites VALUES

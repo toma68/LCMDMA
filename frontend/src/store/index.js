@@ -30,6 +30,7 @@ export default new Vuex.Store({
         }, addAchat(state, achat) {
             state.achats.push(achat)
         }, setPrestataire(state, prestataire) {
+            console.log("ici ca set les prestataires", prestataire)
             state.prestataire = prestataire
         }, setServices(state, services) {
             state.services = services
@@ -85,6 +86,7 @@ export default new Vuex.Store({
                 .then(response => response.json())
                 .then(response => {
                     commit('setUser', "toto")
+                    router.push({name: 'billeterie'}).then(r => console.log(r))
                     return response
                 })
                 .catch(error => console.error('Error:', error))
@@ -102,7 +104,7 @@ export default new Vuex.Store({
                     localStorage.setItem('role', response.userRole)
 
                     if (response.userRole === 1) {
-                        router.push({name: 'home'})
+                        router.push({name: 'billeterie'})
                             .then(r => console.log(r))
                     } else if (response.userRole === 2) {
                         router.push({name: 'prestataires'})
@@ -161,7 +163,14 @@ export default new Vuex.Store({
                     return response.json()
                 })
                 .then(
-                    (billet) => commit('setBilletScanned', billet)
+                    (billet) => {
+                        if (billet !== null) {
+                            commit('setBilletScanned', billet)
+                        }
+                        else {
+                            commit('setBilletScanned', 'vide')
+                        }
+                    }
                 )
         },
         composterBillet({commit}, billet) {

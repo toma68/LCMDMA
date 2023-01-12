@@ -95,63 +95,63 @@
         <li id="Luther-text"><h1>Luthier</h1>
           <img src="../assets/carte/luthier.jpg" alt="luthier">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(10)">Voir le prestataire</v-btn>
           <br>
           Observez la fabrication d'instruments de musique tel qu'un violon, une guitare ou encore une contrebasse.
         </li>
         <li id="Vitrailliste-text"><h1>Vitrailliste</h1>
           <img src="../assets/carte/vitrailliste.jpg" alt="vitrailliste">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(12)">Voir le prestataire</v-btn>
           <br>
           Essayez-vous à la peinture sur verre et découvrez les secrets de la fabrication d'un vitrail.
         </li>
         <li id="forgeron_armes-text"><h1>Forgeron d'armes</h1>
           <img src="../assets/carte/forgeron_armes.jpg" alt="forgeron_armes">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(6)">Voir le prestataire</v-btn>
           <br>
           Découvrez les étapes de la fabrication d'armes comme des épées, des lances des boucliers...
         </li>
         <li id="forgeron_marechal_ferrant-text"><h1>Forgeron maréchal-ferrant</h1>
           <img src="../assets/carte/forgeron_marechal_ferrant.jpg" alt="forgeron_marechal_ferrant">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(8)">Voir le prestataire</v-btn>
           <br>
           Découvrez le processus de fabrication de la ferrure d'un cheval.
         </li>
         <li id="forgeron_outils-text"><h1>Forgeron d'outils</h1>
           <img src="../assets/carte/forgeron_outils.jpg" alt="forgeron_outils">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(7)">Voir le prestataire</v-btn>
           <br>
           Apprenez à manier le marteau (avec protection) et découvrez la fabrication d'outils comme des faux, des couteaux, des haches...
         </li>
         <li id="cordonnier-text"><h1>Cordonnier</h1>
           <img src="../assets/carte/cordonnier.jpg" alt="cordonnier">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(14)">Voir le prestataire</v-btn>
           <br>
           Observez la fabrication de chaussures et de bottes comme au Moyen-Âge.
         </li>
         <li id="ebeniste-text"><h1>Ebéniste</h1>
           <img src="../assets/carte/ebeniste.jpg" alt="ebeniste">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(9)">Voir le prestataire</v-btn>
           <br>
           Notre ébéniste vous montrera tout son savoir-faire en s'adonnant à la fabrication de vos objets en bois.
         </li>
         <li id="scene1-text"><h1>Scène 1</h1>
           <img src="../assets/carte/scene1.jpg" alt="scene1">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(0)">Voir le prestataire</v-btn>
           <br>
           Assistez à un spectacle grandiose de danse et de musique médiévale.
         </li>
         <li id="joute-text"><h1>Joute</h1>
           <img src="../assets/carte/joute.jpg" alt="joute">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(0)">Voir le prestataire</v-btn>
           <br>
           Encouragez votre chevalier préféré lors de joutes sanglantes.
         </li>
@@ -163,19 +163,21 @@
         <li id="ecurie-text"><h1>Ecurie</h1>
           <img src="../assets/carte/ecurie.jpg" alt="ecurie">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(15)">Voir le prestataire</v-btn>
           <br>
           Apprenez à vous occuper d'un cheval et chevauchez-le pour une balade dans les bois.
         </li>
         <li id="exposition_armes_de_siege-text"><h1>Exposition d'armes de siège</h1>
           <img src="../assets/carte/exposition_armes_de_siege.jpg" alt="exposition_armes_de_siege">
           <br><br>
+          <v-btn color="primary" @click="goToPrestataire(19)">Voir le prestataire</v-btn>
+          <br>
           Contempler de près les armes de siège utilisées autrefois pour assiéger des châteaux.
         </li>
         <li id="torture-text"><h1>Torture</h1>
           <img src="../assets/carte/torture.jpg" alt="torture">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(16)">Voir le prestataire</v-btn>
           <br>
           Visitez la chambre de torture et découvrez les méthodes de torture utilisées au Moyen-Âge.
         </li>
@@ -187,14 +189,14 @@
         <li id="stand_de_tir-text"><h1>Stand de tir</h1>
           <img src="../assets/carte/stand_de_tir.jpg" alt="stand de tir">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(22)">Voir le prestataire</v-btn>
           <br>
           Venez manier l'arc et tester vos compétences de tireur d'élite sur notre stand de tir.
         </li>
         <li id="voyante-text"><h1>Voyante</h1>
           <img src="../assets/carte/voyante.jpg" alt="voyante">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(17)">Voir le prestataire</v-btn>
           <br>
           Une voyante vous attend pour vous prédire votre avenir...
           N'ayez pas peur d'aller la voir, elle ne vous mordra pas.
@@ -202,14 +204,14 @@
         <li id="remedes_et_plantes-text"><h1>Remèdes et plantes</h1>
           <img src="../assets/carte/herboriste.jpg" alt="herboriste">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(18)">Voir le prestataire</v-btn>
           <br>
           Venez découvrir les plantes médicinales et les remèdes qu'utilisaient les villageois au Moyen-Âge.
         </li>
         <li id="boulanger-text"><h1>Boulanger</h1>
           <img src="../assets/carte/boulanger.jpg" alt="boulanger">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(20)">Voir le prestataire</v-btn>
           <br>
           Dégustez des pains et des viennoiseries préparés par notre boulanger.
         </li>
@@ -221,14 +223,14 @@
         <li id="scene2-text"><h1>Scène 2</h1>
           <img src="../assets/carte/scene2.jpg" alt="scene2">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(0)">Voir le prestataire</v-btn>
           <br>
           Assistez à une représentation théâtrale sur le thème de la vie quotidienne au Moyen-Âge.
         </li>
         <li id="poterie-text"><h1>Poterie</h1>
           <img src="../assets/carte/potier.jpg" alt="poterie">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(13)">Voir le prestataire</v-btn>
           <br>
           Fabriquez et repartez avec votre propre pot en terre cuite enseigné par notre potier.
         </li>
@@ -239,14 +241,14 @@
         <li id="armes_de_siege-text"><h1>Armes de siège</h1>
           <img src="../assets/carte/trebuchet.jpg" alt="trebuchet">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(19)">Voir le prestataire</v-btn>
           <br>
           Soyez témoins de la puissance des armes de siège utilisées au Moyen-Âge tel que le trebuchet, la catapulte ainsi que le baliste.
         </li>
         <li id="taverne-text"><h1>Taverne</h1>
           <img src="../assets/carte/taverne.jpg" alt="taverne">
           <br><br>
-          <v-btn color="primary" @click="goToPrestataire">Voir le prestataire</v-btn>
+          <v-btn color="primary" @click="goToPrestataire(11)">Voir le prestataire</v-btn>
           <br>
           Reprenez des forces dans notre taverne avec une bonne boisson et des mets raffinés.
         </li>
@@ -455,8 +457,13 @@ export default {
     });
   },
   methods: {
-    goToPrestataire() {
-      this.$router.push("/user/prestataire");
+    goToPrestataire(id) {
+      if (id == 0){
+        this.$router.push("/user/prestataires");
+      }
+      else {
+        this.$router.push("/user/prestataire/" + id);
+      }
     },
   }
 }
