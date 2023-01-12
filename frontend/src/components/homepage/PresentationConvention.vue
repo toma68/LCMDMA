@@ -193,7 +193,8 @@ export default {
         "/images/abwer.jpg",
         "/images/archery.jpg",
         "/images/blacksmith.jpg",
-        "/images/spectacle.jpg"
+        "/images/spectacle.jpg",
+
       ],
       panel: 0,
       activites: [
@@ -226,7 +227,7 @@ export default {
   methods: {
     getImageActivity() {
       if (this.panel === undefined) {
-        return "https://media.discordapp.net/attachments/1046545117001027654/1048743478726758561/perfect.jpg";
+        return "image_presta/compagnie_excalibur.jpg";
       } else {
         return this.photosActivites[this.panel];
       }

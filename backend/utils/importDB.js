@@ -47,7 +47,7 @@ Services.belongsToMany(InfoPrestataire, {through: 'offre'});
 
 
 
-sequelize.sync({alter: true})
+sequelize.sync({alter: true, force: false})
     .then(() => {
         console.log("Tables created");
         //insertData();
