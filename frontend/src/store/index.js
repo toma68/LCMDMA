@@ -140,7 +140,7 @@ export default new Vuex.Store({
             if (state.user !== null) {
                 return fetch('http://localhost:3000/api/achats/user/' + state.user.userId, {
                     method: 'GET', headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',  'Authorization': 'Bearer ' + localStorage.getItem('token')
                     }
                 })
                     .then((response) => {
