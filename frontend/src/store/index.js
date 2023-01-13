@@ -359,6 +359,20 @@ export default new Vuex.Store({
                 }
             )
         },
+        getAllActivites({commit}) {
+            return fetch('http://localhost:3000/api/activites', {
+                method: 'GET', headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((response) => {
+                    return response.json()
+                })
+                .then(
+                    (activites) => commit('setActivites', activites)
+                )
+        }
+        ,
         getActivitesByPrestataire({commit}, siret) {
             return fetch('http://localhost:3000/api/activites/prestataire/' + siret, {
                 method: 'GET', headers: {

@@ -107,11 +107,6 @@
                               sm="6"
                               md="4"
                           >
-                            <v-text-field
-                                v-model="editedItem.type"
-                                label="Type"
-                                required
-                            ></v-text-field>
                           </v-col>
 <!--                          <v-col-->
 <!--                              cols="12"-->
@@ -149,12 +144,12 @@
                           <v-col
                               cols="12"
                           >Heure de début<br>
-                            <DatePicker v-model="editedItem.heureDebut" mode="dateTime" :timezone="timezone" />
+                            <DatePicker v-model="editedItem.heureDebut" mode="dateTime" :timezone="timezone" :is24hr="'true'"/>
                           </v-col>
                           <v-col
                               cols="12"
                           >Heure de fin<br>
-                            <DatePicker v-model="editedItem.heureFin" mode="dateTime" :timezone="timezone" />
+                            <DatePicker v-model="editedItem.heureFin" mode="dateTime" :timezone="timezone" :is24hr="'true'" />
                           </v-col>
                         </v-row>
                       </v-container>
@@ -238,7 +233,7 @@ export default {
       dialog: false,
       dialogDelete: false,
       date: new Date(),
-      timezone: '',
+      timezone: 'UTC',
       headers: [
         {
           text: 'Nom',
@@ -261,8 +256,8 @@ export default {
       editedIndex: -1,
       editedItem: {
         nom: '',
-        heureDebut: '2023-07-07 00:00:00',
-        heureFin: '2023-07-07 00:00:00',
+        heureDebut: '2023-07-08 12:00:00',
+        heureFin: '2023-07-08 22:00:00',
         description: '',
         typeActivite: {
           libelle: ''
@@ -270,8 +265,8 @@ export default {
       },
       defaultItem: {
         nom: '',
-        heureDebut: '2023-07-07 00:00:00',
-        heureFin: '2023-07-07 00:00:00',
+        heureDebut: '2023-07-08 12:00:00',
+        heureFin: '2023-07-08 22:00:00',
         description: '',
         typeActivite: {
           libelle: ''
@@ -342,13 +337,16 @@ export default {
       });
     },
     save() {
-      this.editedItem.heureDebut = this.editedItem.heureDebut.toISOString()
-      this.editedItem.heureFin = this.editedItem.heureFin.toISOString()
+      /*this.editedItem.heureDebut = this.editedItem.heureDebut.toISOString()
+      this.editedItem.heureFin = this.editedItem.heureFin.toISOString()*/
+      //replace hour by parseInt(this.editedItem.heureDebut.split(' ')[1].split(':')[0], 10) + 2
+
+      console.log(this.editedItem.heureDebut)
       this.editedItem = {
           "nom": this.editedItem.nom,
           "heureDebut": this.editedItem.heureDebut,
-          "heureFin": this.editedItem.heureFin,
-          "description": this.editedItem.description,
+        "heureFin": this.editedItem.heureFin,
+        "description": this.editedItem.description,
           "typeActiviteId": 2,
           "standId": this.user.standId,
           "infoPrestataireId": this.user.numeroSiret

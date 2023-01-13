@@ -31,7 +31,7 @@ const routes = [
   {
     path: '/planning',
     name: 'planning',
-    component: () => import(/* webpackChunkName: "planning" */ '../views/PlanningView.vue')
+    component: () => import(/* webpackChunkName: "planning" */ '../views/PlanningViewV2.vue')
   },
     {
       path: '/admin',
