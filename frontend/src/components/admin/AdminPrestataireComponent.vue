@@ -1,8 +1,8 @@
 <template>
   <main class="bg">
     <v-container v-if="users.length>0">
-      <h1>Utilisateurs</h1>
-      <v-data-table style="margin-top: 50px;"
+      <h1 style="color: white">Utilisateurs</h1>
+      <v-data-table style="margin-bottom: 50px;"
                     :headers="headersUsers"
                     :items="users.filter(
                         user => user.roleId === 1
@@ -38,9 +38,8 @@
 
         </template>
       </v-data-table>
-
-      <h1>Personnel</h1>
-      <v-data-table style="margin-top: 50px;"
+      <h1 style="color: white">Personnel</h1>
+      <v-data-table style="margin-bottom: 50px;"
                     :headers="headersPersonnel"
                     :items="users.filter(
                         user => user.roleId > 1
@@ -98,9 +97,9 @@
         </template>
       </v-data-table>
 
-      <h1>Bannis</h1>
+      <h1 style="color: white" >Bannis</h1>
 
-      <v-data-table style="margin-top: 50px;"
+      <v-data-table style="margin-bottom: 50px;"
                     :headers="headersUsers"
                     :items="users.filter(
                         user => user.roleId === 0
