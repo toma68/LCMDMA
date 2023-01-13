@@ -63,7 +63,13 @@ INSERT INTO users VALUES
 (default, 'Blanche', 'Constance', 'constance', 'constance', 'constance@gmail.com', 2), --Boulangère
 (default, 'Domas', 'Stephane', 'stephane', 'stephane', 'stephane@gmail.com', 2), --Presentateur / commentateur / animateur des scènes
 (default, 'De La Tour', 'Aimée', 'aimée', 'aimée', 'aimée@gmail.com', 2), --Gerant de l'association de tir à l'arc
-(default, 'Maffiolini', 'Paul', 'pmaffiol  ', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'pmaffiol@gmail.com', 1);
+(default, 'Maffiolini', 'Paul', 'pmaffiol  ', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'pmaffiol@gmail.com', 1),
+(default, 'Lacroix', 'Anne-Marie', 'amlacroix', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'amlacroix10@gmail.com', 1),
+(default, 'Blanchet', 'Emile', 'eblanchet', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'emile.blanchet@gmail.com', 1),
+(default, 'Dubois', 'Lucas', 'ldubois', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'luludubois@gmail.com', 1),
+(default, 'Fabron', 'Clémentine', 'cfabron', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'clemfab@gmail.com', 1),
+(default, 'Geroux', 'Christian', 'cgeroux', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'chistian25110@gmail.com', 1),
+(default, 'Daniau', 'Olivier', 'odaniau', '$2b$10$iDd2D0alqATR2i4S5a9hQeBp/n1PsHONzhhB2VGk5raqUi5368zou', 'olivierd@gmail.com', 1);
 
 
 INSERT INTO "infoPrestataires" VALUES
