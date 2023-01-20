@@ -1,5 +1,5 @@
 # LCMDMA
-La Cour De Monseigneur Ambert
+La Cour Médiavale De Monseigneur Ambert
 
 Bienvenue à tous dans notre projet !
 
