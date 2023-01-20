@@ -2,7 +2,7 @@
   <main>
     <v-row>
       <v-col col="1"></v-col>
-      <v-col cols="3">
+      <v-col cols="4">
         <v-card elevation="5" style="margin-top: 50px;">
           <div class="card-body">
             <v-card-title class="prestataire-title">
@@ -50,7 +50,7 @@
       </v-col>
 
       <!--      erreur de v-slot-->
-      <v-col cols="7">
+      <v-col cols="6">
         <template>
           <v-data-table style="margin-top: 50px;"
                         :headers="headers"
