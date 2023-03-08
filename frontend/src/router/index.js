@@ -51,7 +51,7 @@ const routes = [
   {
     path: '/billeterie',
     name: 'billeterie',
-    component: () => import(/* webpackChunkName: "billeterie" */ '../views/BilleterieView.vue'),
+    component: () => import(/* webp ackChunkName: "billeterie" */ '../views/BilleterieView.vue'),
   },
   {
     path: '/prestataire/home',
