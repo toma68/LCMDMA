@@ -1,6 +1,3 @@
-# LCMDMA
-La Cour De Monseigneur Ambert
+# Projet de sécurité
 
-Bienvenue à tous dans notre projet !
-
-Ici, nous créerons l'application *OFFICIELLE* du regroupement médievial
+Projet de base : LCMDMA

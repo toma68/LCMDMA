@@ -105,3 +105,6 @@ dist
 .idea/vcs.xml
 .idea
 
+package-lock.json
+
+backend/package-lock.json
